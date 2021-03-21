@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import Util from "@components/Core/Util"
 import Main from "@components/Core/Layout/Main"
-import SplitPane, { Pane, Divider } from "@components/Core/Layout/SplitPane"
+import SplitPane, { Pane } from "@components/Core/Layout/SplitPane"
 
 export default function App() {
   return (
@@ -12,11 +12,13 @@ export default function App() {
           <link rel="icon" href="/favicon.ico" />
         </Head>
         <SplitPane>
-          <Pane style={{ backgroundColor: "red" }}>
+          <Pane divider={true} style={{ backgroundColor: "red" }}>
 
           </Pane>
-          <Divider />
-          <Pane style={{ backgroundColor: "green" }}>
+          <Pane divider={true} style={{ backgroundColor: "green" }}>
+
+          </Pane>
+          <Pane style={{ backgroundColor: "blue" }}>
 
           </Pane>
         </SplitPane>

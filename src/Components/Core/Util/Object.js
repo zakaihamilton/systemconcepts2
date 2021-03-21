@@ -12,19 +12,19 @@ export function createObjectProxy(props) {
     const callbacks = [];
     const forward = (method, ...args) => {
         const result = Reflect[method](...args);
-        callbacks && callbacks.forEach(cb => cb(key));
+        callbacks && callbacks.forEach(cb => cb(method, ...args));
         return result;
     }
     const proxy = new Proxy({ ...props }, {
         set: function (target, key, value) {
             if (props[key] === value) {
-                return false;
+                return true;
             }
             return forward("set", target, key, value);
         },
         deleteProperty: function (target, key) {
             if (!(key in props)) {
-                return false;
+                return true;
             }
             return forward("deleteProperty", target, key);
         },

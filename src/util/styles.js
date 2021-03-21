@@ -1,21 +1,21 @@
 import clsx from "clsx"
 
-export function joinClasses(styles, classes, className) {
+export function joinClasses(styles, ...classes) {
     const classNames = [];
-    if (classes) {
-        if (Array.isArray(classes)) {
-            classNames.push(...classes.map(id => styles[id]));
+    for (const className of classes) {
+        if (typeof className === "string") {
+            classNames.push(className);
+        }
+        else if (Array.isArray(className)) {
+            classNames.push(...className.map(id => styles[id]));
         }
         else {
-            for (const id in classes) {
-                if (classes[id]) {
+            for (const id in className) {
+                if (className[id]) {
                     classNames.push(styles[id]);
                 }
             }
         }
-    }
-    if (className) {
-        classNames.push(className);
     }
     return clsx(...classNames);
 }

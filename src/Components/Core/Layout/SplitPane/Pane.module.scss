@@ -10,3 +10,27 @@
 .root.vertical {
     flex-direction: row;
 }
+
+.pane {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+}
+
+.divider {
+    background-color: rgb(0, 0, 0, 0.5);
+}
+
+.divider.vertical {
+    border-left: 1px solid rgb(255, 255, 255, 0.5);
+    border-right: 1px solid rgb(255, 255, 255, 0.5);
+    width: 5px;
+    cursor: col-resize;
+}
+
+.divider.horizontal {
+    height: 5px;
+    cursor: row-resize;
+    border-top: 1px solid rgb(255, 255, 255, 0.5);
+    border-bottom: 1px solid rgb(255, 255, 255, 0.5);
+}

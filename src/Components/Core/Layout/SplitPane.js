@@ -2,17 +2,18 @@ import styles from "./SplitPane.module.scss"
 import React from "react"
 import { joinClasses } from "@util/styles"
 import Pane from "./SplitPane/Pane"
-import Divider from "./SplitPane/Divider"
-import { createSettings } from "@components/Core/Util/Settings"
+import { createState } from "@components/Core/Util/State"
+import { createList } from "@components/Core/Util/List"
 
-export default function SplitPane({ children }) {
-    const { orientation } = SplitPane.Settings.useSettings();
-
+export default function SplitPane({ children, orientation = "vertical" }) {
     return <div className={joinClasses(styles, ["root", orientation])}>
-        {children}
+        <SplitPane.State orientation={orientation}>
+            {children}
+        </SplitPane.State>
     </div>;
 }
 
-SplitPane.Settings = createSettings({ orientation: "vertical" });
+SplitPane.State = createState({ orientation: "vertical" });
+SplitPane.List = createList();
 
-export { Pane, Divider };
+export { Pane };
