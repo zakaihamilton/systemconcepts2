@@ -8,10 +8,10 @@ export default function Pane({ classes, divider, children, ...props }) {
     const ref = useRef();
     SplitPane.List.useList(ref);
 
-    return <div className={joinClasses(styles, { root: true, [orientation]: true }, classes && classes.root)} {...props}>
-        <div ref={ref} className={joinClasses(styles, { pane: true, [orientation]: true }, classes && classes.pane)}>
+    return <div className={joinClasses(styles, { root: true, [orientation]: true }, classes?.root)} {...props}>
+        <div ref={ref} className={joinClasses(styles, { pane: true, [orientation]: true }, classes?.pane)}>
             {children}
         </div>
-        {!!divider && <div className={joinClasses(styles, { divider: true, [orientation]: true }, classes && classes.divider)} />}
+        {!!divider && <div className={joinClasses(styles, { divider: true, [orientation]: true }, classes?.divider)} />}
     </div>;
 }
