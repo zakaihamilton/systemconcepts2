@@ -1,19 +1,26 @@
 import styles from "./SplitPane.module.scss"
-import React from "react"
+import React, { useRef } from "react"
 import { joinClasses } from "@util/styles"
 import Pane from "./SplitPane/Pane"
 import { createState } from "@components/Core/Util/State"
 import { createList } from "@components/Core/Util/List"
+import { createDrag } from "../Util/Drag"
 
 export default function SplitPane({ children, orientation = "vertical" }) {
-    return <div className={joinClasses(styles, ["root", orientation])}>
+    const ref = useRef();
+    return <div ref={ref} className={joinClasses(styles, ["root", orientation])}>
         <SplitPane.State orientation={orientation}>
-            {children}
+            <SplitPane.List>
+                <SplitPane.Drag containerRef={ref} orientation="vertical">
+                    {children}
+                </SplitPane.Drag>
+            </SplitPane.List>
         </SplitPane.State>
     </div>;
 }
 
 SplitPane.State = createState({ orientation: "vertical" });
 SplitPane.List = createList();
+SplitPane.Drag = createDrag();
 
 export { Pane };

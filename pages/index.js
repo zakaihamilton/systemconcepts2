@@ -15,6 +15,9 @@ export default function App() {
           <Pane divider={true} style={{ backgroundColor: "red" }}>
 
           </Pane>
+          <Pane divider={true} style={{ backgroundColor: "orange" }}>
+
+          </Pane>
           <Pane divider={true} style={{ backgroundColor: "green" }}>
 
           </Pane>

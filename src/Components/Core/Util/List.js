@@ -1,5 +1,5 @@
 import { createState } from "@components/Core/Util/State"
-import { useEffect } from "react";
+import { useRefCallback } from "./Ref";
 
 export function createList() {
     const State = createState({ elements: [] });
@@ -10,15 +10,10 @@ export function createList() {
     }
     List.useList = ref => {
         const list = State.useState();
-        useEffect(() => {
-            if (!ref || !ref.current) {
-                return null;
-            }
-            list.elements = [...list.elements, ref.current];
-            return () => {
-                list.elements = list.elements.filter(item => item !== ref.current);
-            };
-        }, [ref && ref.current]);
+        useRefCallback(ref, handle => {
+            list.elements = [...list.elements, handle];
+            return () => list.elements = list.elements.filter(item => item !== handle);
+        });
         return list;
     };
     return List;

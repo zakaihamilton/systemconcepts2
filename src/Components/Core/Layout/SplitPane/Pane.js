@@ -5,13 +5,15 @@ import { useRef } from "react";
 
 export default function Pane({ classes, divider, children, ...props }) {
     const { orientation } = SplitPane.State.useState();
-    const ref = useRef();
-    SplitPane.List.useList(ref);
+    const paneRef = useRef();
+    const dividerRef = useRef();
+    SplitPane.List.useList(paneRef);
+    const [dragging] = SplitPane.Drag.useDrag(dividerRef, paneRef);
 
-    return <div className={joinClasses(styles, { root: true, [orientation]: true }, classes?.root)} {...props}>
-        <div ref={ref} className={joinClasses(styles, { pane: true, [orientation]: true }, classes?.pane)}>
+    return <div ref={paneRef} className={joinClasses(styles, { root: true, [orientation]: true }, classes?.root)} {...props}>
+        <div className={joinClasses(styles, { pane: true, [orientation]: true }, classes?.pane)}>
             {children}
         </div>
-        {!!divider && <div className={joinClasses(styles, { divider: true, [orientation]: true }, classes?.divider)} />}
+        {!!divider && <div ref={dividerRef} className={joinClasses(styles, { divider: true, [orientation]: true, dragging }, classes?.divider)} />}
     </div>;
 }
