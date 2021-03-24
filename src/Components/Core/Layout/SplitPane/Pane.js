@@ -8,7 +8,14 @@ export default function Pane({ classes, divider, children, ...props }) {
     const paneRef = useRef();
     const dividerRef = useRef();
     SplitPane.List.useList(paneRef);
-    const [dragging] = SplitPane.Drag.useDrag(dividerRef, paneRef);
+    const [dragging] = SplitPane.Drag.useDrag(dividerRef, paneRef, ({ orientation, percentage }) => {
+        if (orientation === "vertical") {
+            paneRef.current.style.flex = `0 0 ${percentage.x}%`;
+        }
+        else {
+            paneRef.current.style.flex = `0 0 ${percentage.y}%`;
+        }
+    });
 
     return <div ref={paneRef} className={joinClasses(styles, { root: true, [orientation]: true }, classes?.root)} {...props}>
         <div className={joinClasses(styles, { pane: true, [orientation]: true }, classes?.pane)}>

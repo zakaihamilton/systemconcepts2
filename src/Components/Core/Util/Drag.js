@@ -10,7 +10,7 @@ export function createDrag() {
             {children}
         </State>;
     }
-    Drag.useDrag = (dragRef, objectRef) => {
+    Drag.useDrag = (dragRef, objectRef, cb) => {
         const { orientation, containerRef } = State.useState();
         const [, setCounter] = useState(0);
         const [register, unregister] = useListener();
@@ -22,12 +22,7 @@ export function createDrag() {
                 const y = (e.clientY - objectRect.top) + (dragRect.height / 2);
                 const xPercentage = x / containerRect.width * 100;
                 const yPercentage = y / containerRect.height * 100;
-                if (orientation === "vertical") {
-                    objectRef.current.style.flex = `0 0 ${xPercentage}%`;
-                }
-                else {
-                    objectRef.current.style.flex = `0 0 ${yPercentage}%`;
-                }
+                cb({ orientation, pos: { x, y }, percentage: { x: xPercentage, y: yPercentage } });
             };
             const mouseDown = e => {
                 const containerRect = containerRef.current.getBoundingClientRect();
@@ -49,7 +44,7 @@ export function createDrag() {
                 info.current.drag = false;
                 setCounter(counter => counter + 1);
             };
-            if (containerRef?.current && objectRef?.current) {
+            if (containerRef?.current && objectRef?.current && cb) {
                 register(handle, "mousedown", mouseDown);
             }
             return () => {
