@@ -1,0 +1,12 @@
+.root {
+    position: absolute;
+    top: 0.1em;
+    right: 0.1em;
+    opacity: 0.3;
+    cursor: pointer;
+    transition: opacity 0.5s;
+}
+
+.root:hover {
+    opacity: 1;
+}

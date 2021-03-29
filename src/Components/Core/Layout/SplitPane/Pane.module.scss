@@ -15,11 +15,11 @@
     display: flex;
     flex: 1;
     flex-direction: column;
+    position: relative;
 }
 
 .divider {
     background-color: rgb(0, 0, 0, 0.5);
-    user-drag: none;
     user-select: none;
 }
 
