@@ -1,7 +1,6 @@
 import styles from "./SplitPane.module.scss"
 import React, { useRef } from "react"
 import { joinClasses } from "@util/styles"
-import Pane from "./SplitPane/Pane"
 import { createState } from "@components/Core/Util/State"
 import { createList } from "@components/Core/Util/List"
 import { createDrag } from "../Util/Drag"
@@ -22,5 +21,3 @@ export default function SplitPane({ children, orientation = "vertical" }) {
 SplitPane.State = createState({ orientation: "vertical" });
 SplitPane.List = createList();
 SplitPane.Drag = createDrag();
-
-export { Pane };

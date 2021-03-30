@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import Util from "@components/Core/Util"
 import Main from "@components/Core/Layout/Main"
-import SplitPane from "@components/Core/Layout/SplitPane"
+import SplitPane from "@components/Core/Widgets/SplitPane"
 import Pane from "@components/Core/Widgets/SplitPane/Pane"
 
 export default function App() {

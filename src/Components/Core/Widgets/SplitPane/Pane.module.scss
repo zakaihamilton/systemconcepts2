@@ -1,4 +1,4 @@
-.root {
+.close {
     position: absolute;
     top: 0.1em;
     right: 0.1em;
@@ -7,6 +7,6 @@
     transition: opacity 0.5s;
 }
 
-.root:hover {
+.close:hover {
     opacity: 1;
 }
