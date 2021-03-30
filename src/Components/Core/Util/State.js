@@ -1,9 +1,10 @@
 import { useContext, createContext, useState, useRef, useEffect } from "react"
 import { objectHasChanged, createObjectProxy } from "./object"
 
-export function createState(props = {}) {
-    const [proxy, callbacks] = createObjectProxy(props);
-    const Context = createContext({ proxy, callbacks });
+export function createState(props) {
+    const hasProps = typeof props === "object";
+    const [proxy, callbacks] = (hasProps && createObjectProxy(props)) || [];
+    const Context = createContext(hasProps && { proxy, callbacks });
 
     function State({ children, ...props }) {
         const [updatedProps, setUpdatedProps] = useState(0);
@@ -24,9 +25,15 @@ export function createState(props = {}) {
             {children}
         </Context.Provider>;
     };
-    State.useState = () => {
+    State.useState = (defaultState) => {
         const [, setCounter] = useState(0);
-        const { proxy, callbacks } = useContext(Context) || {};
+        const ref = useRef();
+        let context = useContext(Context);
+        if (!context && defaultState && !ref.current) {
+            const [proxy, callbacks] = createObjectProxy(defaultState);
+            ref.current = { proxy, callbacks };
+        }
+        const { proxy, callbacks } = context || ref.current || {};
         useEffect(() => {
             const handler = () => {
                 setCounter(counter => counter + 1);

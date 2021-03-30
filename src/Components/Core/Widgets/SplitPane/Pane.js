@@ -5,14 +5,14 @@ import { createState } from "@components/Core/Util/State"
 import { useState } from "react"
 
 export default function Pane({ children, visible = true, ...props }) {
-    const [isVisible, setVisible] = useState(visible);
+    const state = Pane.State.useState({ visible });
     const onClose = () => {
-        setVisible(false);
+        state.visible = false;
     };
-    return !!isVisible && <PaneLayout {...props}>
+    return !!state.visible && <PaneLayout {...props}>
         {children}
         <MdCancel className={styles.root} onClick={onClose} />
     </PaneLayout>;
 }
 
-Pane.State = createState({ visible: true });
+Pane.State = createState();
