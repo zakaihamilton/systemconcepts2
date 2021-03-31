@@ -14,7 +14,7 @@ export function createList() {
             list.elements = [...list.elements, handle];
             return () => list.elements = list.elements.filter(item => item !== handle);
         });
-        return list;
+        return list.elements || [];
     };
     return List;
 }

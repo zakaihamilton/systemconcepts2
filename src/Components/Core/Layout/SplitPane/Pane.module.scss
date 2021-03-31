@@ -23,6 +23,10 @@
     user-select: none;
 }
 
+.divider:not(.visible) {
+    display: none;
+}
+
 .divider.vertical {
     border-left: 1px solid rgb(255, 255, 255, 0.5);
     border-right: 1px solid rgb(255, 255, 255, 0.5);

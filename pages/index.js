@@ -22,7 +22,7 @@ export default function App() {
           <Pane divider={true} style={{ backgroundColor: "green" }}>
 
           </Pane>
-          <Pane style={{ backgroundColor: "blue" }}>
+          <Pane divider={true} style={{ backgroundColor: "blue" }}>
 
           </Pane>
         </SplitPane>
