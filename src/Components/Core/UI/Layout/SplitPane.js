@@ -3,7 +3,7 @@ import React, { useRef } from "react"
 import { joinClasses } from "@util/styles"
 import { createState } from "@components/Core/Util/State"
 import { createList } from "@components/Core/Util/List"
-import { createDrag } from "../Util/Drag"
+import { createDrag } from "../../Util/Drag"
 
 export default function SplitPane({ children, orientation = "vertical" }) {
     const ref = useRef();

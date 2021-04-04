@@ -1,4 +1,4 @@
-import SplitPaneLayout from "@components/Core/Layout/SplitPane"
+import SplitPaneLayout from "@components/Core/UI/Layout/SplitPane"
 import { MdLibraryAdd } from "react-icons/md"
 import styles from "./SplitPane.module.scss"
 import { createState } from "@components/Core/Util/State"
