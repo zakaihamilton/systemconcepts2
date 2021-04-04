@@ -1,0 +1,17 @@
+.root {
+    padding: 0.5em;
+    border-radius: 0.5em;
+    border: 1px solid transparent;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.5s;
+}
+
+.root:hover {
+    border: 1px solid rgb(0, 0, 0, 0.5);
+    background-color: rgb(255, 255, 255, .1);
+}
+
+.root:hover:active {
+    background-color: rgb(0, 0, 0, 0.1);
+}
