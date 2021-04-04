@@ -4,6 +4,7 @@ import { MdCancel, MdMoreVert } from "react-icons/md"
 import styles from "./Pane.module.scss"
 import { createState } from "@components/Core/Util/State"
 import Button from "../Button"
+import Strip from "../Button/Strip"
 
 export default function Pane({ children, visible = true, ...props }) {
     const state = Pane.State.useState({ visible });
@@ -13,15 +14,15 @@ export default function Pane({ children, visible = true, ...props }) {
     };
     return !!state.visible && <PaneLayout {...props}>
         {children}
-        <div className={styles.buttons}>
-            <Button classes={{ root: styles.button }}>
+        <Strip classes={{ root: styles.strip }}>
+            <Button>
                 <MdCancel onClick={onClose} />
             </Button>
-            <Button classes={{ root: styles.button }}>
+            <Button>
                 {orientation === "vertical" && <MdMoreVert />}
                 {orientation === "horizontal" && <MdMoreHoriz />}
             </Button>
-        </div>
+        </Strip>
     </PaneLayout>;
 }
 

@@ -1,22 +1,5 @@
-.buttons {
-    display: flex;
-    align-items: center;
+.strip {
     position: absolute;
     top: 0.5em;
     right: 0em;
-}
-
-.buttons>* {
-    margin-left: 0.1em;
-    margin-right: 0.1em;
-}
-
-.button {
-    opacity: 0.3;
-    cursor: pointer;
-    transition: opacity 0.5s;
-}
-
-.button:hover {
-    opacity: 1;
 }
