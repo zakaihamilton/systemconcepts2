@@ -1,7 +1,7 @@
 import { useRef, useState } from "react"
-import { useRefCallback } from "./Ref"
+import { useRefCallback } from "@components/Core/UI/Util/Ref"
 import { useListener } from "./Listener"
-import { createState } from "./State";
+import { createState } from "@components/Core/Util/State";
 
 export function createDrag() {
     const State = createState();

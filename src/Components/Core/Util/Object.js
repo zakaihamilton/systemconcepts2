@@ -4,7 +4,7 @@ export function objectHasChanged(a, b) {
     const aKeys = Object.keys(a);
     const bKeys = Object.keys(b);
     let changed = changed || aKeys.some((_, idx) => bKeys[idx] !== aKeys[idx]);
-    changed = changed || aKeys.some(key => !Object.is(aKeys[key], bKeys[key]));
+    changed = changed || aKeys.some(key => !Object.is(a[key], b[key]));
     return changed;
 }
 
