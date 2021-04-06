@@ -17,8 +17,8 @@ export default function Pane({ children, visible = true, ...props }) {
         {children}
         <Strip classes={{ root: styles.strip }}>
             <Tooltip title="Close">
-                <Button>
-                    <MdCancel onClick={onClose} />
+                <Button onClick={onClose}>
+                    <MdCancel />
                 </Button>
             </Tooltip>
             <Button>
