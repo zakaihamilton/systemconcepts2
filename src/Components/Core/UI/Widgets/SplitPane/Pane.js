@@ -7,7 +7,7 @@ import Button from "../Button"
 import Strip from "../Button/Strip"
 import Tooltip from "../Tooltip"
 
-export default function Pane({ children, visible = true, ...props }) {
+export default function Pane({ children, closable = true, visible = true, ...props }) {
     const state = Pane.State.useState({ visible });
     const { orientation } = SplitPaneLayout.State.useState();
     const onClose = () => {
@@ -16,11 +16,11 @@ export default function Pane({ children, visible = true, ...props }) {
     return !!state.visible && <PaneLayout {...props}>
         {children}
         <Strip classes={{ root: styles.strip }}>
-            <Tooltip title="Close">
+            {!!closable && <Tooltip title="Close">
                 <Button onClick={onClose}>
                     <MdCancel />
                 </Button>
-            </Tooltip>
+            </Tooltip>}
             <Button>
                 {orientation === "vertical" && <MdMoreVert />}
                 {orientation === "horizontal" && <MdMoreHoriz />}
