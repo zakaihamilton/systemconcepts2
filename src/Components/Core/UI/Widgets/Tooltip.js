@@ -14,7 +14,7 @@ export default function Tooltip({ title, description, children }) {
     const hoverRegion = useRegion(hoverRef);
     const modalRegion = useRegion(modalRef);
     const tooltipMounted = useTimer(250, 1000, hover || modalHover);
-    const tooltipVisible = useTimer(500, 500, hover || modalHover);
+    const tooltipVisible = useTimer(500, 250, hover || modalHover);
     let [initialPos, setInitialPos] = useState({ left: 0, top: 0 });
     useEffect(() => {
         setInitialPos({ left: hoverRegion.left + (hoverRegion.width / 2), top: hoverRegion.bottom });
