@@ -22,12 +22,14 @@ export default function Tooltip({ title, description, children }) {
     useEffect(() => {
         setInitialPos(pos => {
             if (modalRegion.left < 0) {
+                pos = { ...pos };
                 pos.left = 0;
             }
             if (modalRegion.right - (modalRegion.width / 2) > window.innerWidth) {
+                pos = { ...pos };
                 pos.left = window.innerWidth - (modalRegion.width / 2) - 6;
             }
-            return { ...pos };
+            return pos;
         });
     }, [initialPos]);
 
