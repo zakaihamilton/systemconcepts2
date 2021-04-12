@@ -9,7 +9,7 @@ export default function Pane({ classes, divider, children, size, style, ...props
     const paneRef = useRef();
     const dividerRef = useRef();
     const list = SplitPane.List.useList(paneRef);
-    const [dragging] = SplitPane.Drag.useDrag(dividerRef, paneRef, ({ orientation, percentage }) => {
+    const [dragging] = SplitPane.Resize.useDrag(dividerRef, paneRef, ({ orientation, percentage }) => {
         if (orientation === "vertical") {
             setCurrentSize(`0 0 ${percentage.x}%`);
         }

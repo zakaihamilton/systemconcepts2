@@ -10,9 +10,9 @@ export default function SplitPane({ children, orientation = "vertical" }) {
     return <div ref={ref} className={joinClasses(styles, ["root", orientation])}>
         <SplitPane.State orientation={orientation}>
             <SplitPane.List>
-                <SplitPane.Drag containerRef={ref} orientation="vertical">
+                <SplitPane.Resize containerRef={ref} orientation="vertical">
                     {children}
-                </SplitPane.Drag>
+                </SplitPane.Resize>
             </SplitPane.List>
         </SplitPane.State>
     </div>;
@@ -20,4 +20,4 @@ export default function SplitPane({ children, orientation = "vertical" }) {
 
 SplitPane.State = createState({ orientation: "vertical" });
 SplitPane.List = createList();
-SplitPane.Drag = createDrag();
+SplitPane.Resize = createDrag();
