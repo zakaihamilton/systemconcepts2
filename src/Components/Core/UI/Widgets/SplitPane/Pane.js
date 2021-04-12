@@ -6,8 +6,9 @@ import { createState } from "@components/Core/Util/State"
 import Button from "../Button"
 import Strip from "../Button/Strip"
 import Tooltip from "../Tooltip"
+import Components from "@components/Core/UI/Util/Components"
 
-export default function Pane({ children, closable = true, visible = true, ...props }) {
+export default function Pane({ children, closable = true, menu, visible = true, ...props }) {
     const state = Pane.State.useState({ visible });
     const { orientation } = SplitPaneLayout.State.useState();
     const onClose = () => {
@@ -21,10 +22,12 @@ export default function Pane({ children, closable = true, visible = true, ...pro
                     <MdCancel />
                 </Button>
             </Tooltip>}
-            <Button>
-                {orientation === "vertical" && <MdMoreVert />}
-                {orientation === "horizontal" && <MdMoreHoriz />}
-            </Button>
+            {!!menu && <Components menu={menu}>
+                <Button>
+                    {orientation === "vertical" && <MdMoreVert />}
+                    {orientation === "horizontal" && <MdMoreHoriz />}
+                </Button>
+            </Components>}
         </Strip>
     </PaneLayout>;
 }
