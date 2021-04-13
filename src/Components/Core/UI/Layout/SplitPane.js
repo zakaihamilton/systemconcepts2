@@ -10,7 +10,7 @@ export default function SplitPane({ children, orientation = "vertical" }) {
     return <div ref={ref} className={joinClasses(styles, ["root", orientation])}>
         <SplitPane.State orientation={orientation}>
             <SplitPane.List>
-                <SplitPane.Resize containerRef={ref} orientation="vertical">
+                <SplitPane.Resize containerRef={ref} orientation={orientation}>
                     {children}
                 </SplitPane.Resize>
             </SplitPane.List>

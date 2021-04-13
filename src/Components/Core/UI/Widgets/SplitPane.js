@@ -4,7 +4,7 @@ import styles from "./SplitPane.module.scss"
 import { createState } from "@components/Core/Util/State"
 import Pane from "./SplitPane/Pane"
 
-export default function SplitPane({ children, ...props }) {
+export default function SplitPane({ children, insertable = false, ...props }) {
     const state = SplitPane.State.useState({ panes: [] });
     const onAddPane = () => {
         state.panes = [...state.panes, (<Pane key={state.panes.length + 1} divider={true} />)];
@@ -12,9 +12,9 @@ export default function SplitPane({ children, ...props }) {
     return <SplitPaneLayout {...props}>
         {children}
         {state.panes}
-        <div className={styles.add} onClick={onAddPane}>
+        {!!insertable && <div className={styles.add} onClick={onAddPane}>
             <MdLibraryAdd style={{ fontSize: "2em" }} />
-        </div>
+        </div>}
     </SplitPaneLayout>;
 }
 

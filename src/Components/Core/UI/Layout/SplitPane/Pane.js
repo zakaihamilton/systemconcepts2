@@ -32,6 +32,6 @@ export default function Pane({ classes, divider, children, size, style, ...props
         <div className={joinClasses(styles, { pane: true, [orientation]: true }, classes?.pane)}>
             {children}
         </div>
-        <div ref={dividerRef} className={joinClasses(styles, { divider: true, visible: divider, [orientation]: true, dragging }, classes?.divider)} />
+        <div ref={dividerRef} draggable={false} className={joinClasses(styles, { divider: true, visible: divider, [orientation]: true, dragging }, classes?.divider)} />
     </div>;
 }

@@ -5,7 +5,7 @@ import Strip from "../Button/Strip"
 import Close from "./Pane/Close"
 import Menu from "./Pane/Menu"
 
-export default function Pane({ children, closable = true, menu = true, visible = true, ...props }) {
+export default function Pane({ children, closable = true, menu = false, visible = true, ...props }) {
     const state = Pane.State.useState({ visible });
     return !!state.visible && <PaneLayout {...props}>
         {children}

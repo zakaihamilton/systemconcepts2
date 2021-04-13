@@ -10,18 +10,25 @@ export default function App() {
         <title>System Concepts</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <SplitPane>
-        <Pane divider={true} style={{ backgroundColor: "red" }}>
+      <SplitPane orientation="horizontal">
+        <Pane closable={false} divider={true} style={{ backgroundColor: "blue" }}>
 
         </Pane>
-        <Pane divider={true} style={{ backgroundColor: "orange" }}>
+        <Pane closable={false} style={{ backgroundColor: "white" }}>
+          <SplitPane insertable={true}>
+            <Pane divider={true} style={{ backgroundColor: "red" }}>
 
-        </Pane>
-        <Pane divider={true} style={{ backgroundColor: "green" }}>
+            </Pane>
+            <Pane divider={true} style={{ backgroundColor: "orange" }}>
 
-        </Pane>
-        <Pane divider={true} style={{ backgroundColor: "blue" }}>
+            </Pane>
+            <Pane divider={true} style={{ backgroundColor: "green" }}>
 
+            </Pane>
+            <Pane divider={true} style={{ backgroundColor: "yellow" }}>
+
+            </Pane>
+          </SplitPane>
         </Pane>
       </SplitPane>
     </Util>
