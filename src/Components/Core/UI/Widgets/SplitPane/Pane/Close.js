@@ -1,7 +1,6 @@
 import Tooltip from "@components/Core/UI/Widgets/Tooltip"
 import Button from "@components/Core/UI/Widgets/Button"
 import { MdCancel } from "react-icons/md"
-import Pane from "../Pane"
 
 export default function Close({ state }) {
     const onClose = () => {
