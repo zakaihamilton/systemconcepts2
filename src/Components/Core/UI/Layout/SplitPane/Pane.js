@@ -13,6 +13,7 @@ export default function Pane({ classes, divider, children, size, style, ...props
     const index = list.findIndex(ref => ref === paneRef.current);
     const isLast = index === list.length - 1;
     divider = divider && !isLast;
+    const dividerClassName = joinClasses(styles, { divider: true, visible: divider, [orientation]: true, dragging }, classes?.divider);
 
     style = { ...style };
     style.flex = currentSize;
@@ -21,6 +22,6 @@ export default function Pane({ classes, divider, children, size, style, ...props
         <div className={joinClasses(styles, { pane: true, [orientation]: true }, classes?.pane)}>
             {children}
         </div>
-        <div ref={dividerRef} draggable={false} className={joinClasses(styles, { divider: true, visible: divider, [orientation]: true, dragging }, classes?.divider)} />
+        <div ref={dividerRef} draggable={false} className={dividerClassName} />
     </div>;
 }
