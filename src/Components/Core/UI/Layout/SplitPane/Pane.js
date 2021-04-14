@@ -1,29 +1,18 @@
 import styles from "./Pane.module.scss"
 import { joinClasses } from "@util/styles"
 import SplitPane from "../SplitPane";
-import { useEffect, useRef, useState } from "react";
+import { useRef } from "react";
+import { useSize } from "./Pane/Size"
 
 export default function Pane({ classes, divider, children, size, style, ...props }) {
     const { orientation } = SplitPane.State.useState();
-    const [currentSize, setCurrentSize] = useState(size);
     const paneRef = useRef();
     const dividerRef = useRef();
     const list = SplitPane.List.useList(paneRef);
-    const [dragging] = SplitPane.Resize.useDrag(dividerRef, paneRef, ({ orientation, percentage }) => {
-        if (orientation === "vertical") {
-            setCurrentSize(`0 0 ${percentage.x}%`);
-        }
-        else {
-            setCurrentSize(`0 0 ${percentage.y}%`);
-        }
-    });
+    const [currentSize, dragging] = useSize({ dividerRef, paneRef, size });
     const index = list.findIndex(ref => ref === paneRef.current);
     const isLast = index === list.length - 1;
     divider = divider && !isLast;
-
-    useEffect(() => {
-        setCurrentSize(`1 0 ${typeof size === "undefined" ? "auto" : size}`);
-    }, [size]);
 
     style = { ...style };
     style.flex = currentSize;

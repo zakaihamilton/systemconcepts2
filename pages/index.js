@@ -11,7 +11,7 @@ export default function App() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <SplitPane orientation="horizontal">
-        <Pane closable={false} divider={true} style={{ backgroundColor: "blue" }}>
+        <Pane closable={false} divider={true} size="4em" style={{ backgroundColor: "blue" }}>
 
         </Pane>
         <Pane closable={false} style={{ backgroundColor: "white" }}>
