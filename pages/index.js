@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import Util from "@components/Core/Util"
-import SplitPane from "src/Components/Core/UI/Widgets/SplitPane"
+import SplitPane from "@components/Core/UI/Widgets/SplitPane"
 import Pane from "@components/Core/UI/Widgets/SplitPane/Pane"
 import Title from "@components/Main/Title"
 
