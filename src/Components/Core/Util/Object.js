@@ -17,13 +17,13 @@ export function createObjectProxy(props) {
     }
     const proxy = new Proxy({ ...props }, {
         set: function (target, key, value) {
-            if (props[key] === value) {
+            if (target[key] === value) {
                 return true;
             }
             return forward("set", target, key, value);
         },
         deleteProperty: function (target, key) {
-            if (!(key in props)) {
+            if (!(key in target)) {
                 return true;
             }
             return forward("deleteProperty", target, key);
