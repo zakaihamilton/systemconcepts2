@@ -1,7 +1,8 @@
 import Head from 'next/head'
 import Util from "@components/Core/Util"
 import SplitPane from "src/Components/Core/UI/Widgets/SplitPane"
-import Pane from "src/Components/Core/UI/Widgets/SplitPane/Pane"
+import Pane from "@components/Core/UI/Widgets/SplitPane/Pane"
+import Title from "@components/Main/Title"
 
 export default function App() {
   return (
@@ -11,9 +12,7 @@ export default function App() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <SplitPane orientation="horizontal">
-        <Pane closable={false} divider={true} size="4em" style={{ backgroundColor: "blue" }}>
-
-        </Pane>
+        <Title />
         <Pane closable={false} style={{ backgroundColor: "white" }}>
           <SplitPane insertable={true}>
             <Pane divider={true} style={{ backgroundColor: "red" }}>
