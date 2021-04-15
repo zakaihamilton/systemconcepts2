@@ -1,0 +1,10 @@
+.dialog {
+    min-width: 100px;
+    min-height: 100px;
+    background-color: rgba(255, 255, 255, .15);
+    backdrop-filter: blur(5px);
+}
+
+.label {
+    flex: 1;
+}

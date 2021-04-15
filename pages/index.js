@@ -13,7 +13,7 @@ export default function App() {
       </Head>
       <SplitPane orientation="horizontal">
         <Title />
-        <Pane closable={false} style={{ backgroundColor: "white" }}>
+        <Pane id="main" closable={false} style={{ backgroundColor: "white" }}>
           <SplitPane insertable={true}>
             <Pane divider={true} style={{ backgroundColor: "red" }}>
 
