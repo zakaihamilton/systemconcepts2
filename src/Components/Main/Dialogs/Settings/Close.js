@@ -6,7 +6,7 @@ export default function Close({ state }) {
     const onClose = () => {
         state.visible = false;
     };
-    return <Tooltip title="Close">
+    return <Tooltip title="Close Dialog">
         <Button onClick={onClose}>
             <MdCancel />
         </Button>

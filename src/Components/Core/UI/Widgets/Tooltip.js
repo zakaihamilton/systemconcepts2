@@ -15,7 +15,8 @@ export default function Tooltip({ title, description, children }) {
     const modalRegion = useRegion(modalRef);
     const tooltipMounted = useTimer(250, 1000, hover || modalHover);
     const tooltipVisible = useTimer(500, 250, hover || modalHover);
-    let [initialPos, setInitialPos] = useState({ left: 0, top: 0 });
+    const tooltipValid = title && hoverRegion.left && hoverRegion.right;
+    let [initialPos, setInitialPos] = useState({});
     useEffect(() => {
         setInitialPos({ left: hoverRegion.left + (hoverRegion.width / 2), top: hoverRegion.bottom });
     }, [hoverRegion]);
@@ -35,7 +36,7 @@ export default function Tooltip({ title, description, children }) {
 
     return <div ref={hoverRef} className={styles.root}>
         {children}
-        <Modal visible={tooltipMounted}>
+        <Modal visible={tooltipMounted && tooltipValid}>
             <div className={styles.modal} ref={modalRef} style={{ ...initialPos }}>
                 <div className={clsx(styles.popup, tooltipVisible && styles.visible)}>
                     {title}

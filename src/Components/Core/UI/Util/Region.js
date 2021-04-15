@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useResizeObserver } from "./Observe"
 
 export function useRegion(ref) {
-    const [region, setRegion] = useState({ left: 0, top: 0, right: 0, bottom: 0, width: 0, height: 0 });
+    const [region, setRegion] = useState({});
     const counter = useResizeObserver(ref);
 
     useEffect(() => {
