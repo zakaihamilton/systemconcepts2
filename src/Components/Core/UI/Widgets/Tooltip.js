@@ -12,27 +12,22 @@ export default function Tooltip({ title, description, children }) {
     const hover = useHover(hoverRef);
     const modalHover = useHover(modalRef);
     const hoverRegion = useRegion(hoverRef);
-    const modalRegion = useRegion(modalRef);
     const tooltipMounted = useTimer(250, 1000, hover || modalHover);
     const tooltipVisible = useTimer(500, 250, hover || modalHover);
     const tooltipValid = title && hoverRegion.left && hoverRegion.right;
     let [initialPos, setInitialPos] = useState({});
     useEffect(() => {
-        setInitialPos({ left: hoverRegion.left + (hoverRegion.width / 2), top: hoverRegion.bottom });
+        let left = hoverRegion.left - hoverRegion.width;
+        const top = hoverRegion.bottom - hoverRegion.height;
+        if (left > window.innerWidth / 2) {
+            const right = window.innerWidth - left - hoverRegion.width;
+            setInitialPos({ right, top });
+        }
+        else {
+            left = hoverRegion.right;
+            setInitialPos({ left, top });
+        }
     }, [hoverRegion]);
-    useEffect(() => {
-        setInitialPos(pos => {
-            if (modalRegion.left < 0) {
-                pos = { ...pos };
-                pos.left = 0;
-            }
-            if (modalRegion.right - (modalRegion.width / 2) > window.innerWidth) {
-                pos = { ...pos };
-                pos.left = window.innerWidth - (modalRegion.width / 2) - 6;
-            }
-            return pos;
-        });
-    }, [initialPos]);
 
     return <div ref={hoverRef} className={styles.root}>
         {children}
