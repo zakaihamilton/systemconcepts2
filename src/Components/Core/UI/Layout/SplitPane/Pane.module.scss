@@ -21,7 +21,7 @@
 .divider {
     float: right;
     user-select: none;
-    z-index: 100;
+    z-index: 1;
 }
 
 .divider:not(.visible) {

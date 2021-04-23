@@ -6,6 +6,8 @@ import { useRegion, regionToUnit } from "@components/Core/UI/Util/Region"
 import { useAlign } from "@components/Core/UI/Util/Align"
 import Close from "./Settings/Close"
 import Bar from "@components/Core/UI/Layout/Bar"
+import List from "src/Components/Core/UI/Layout/List"
+import Padding from "src/Components/Core/UI/Layout/Padding"
 
 export default function Settings() {
     const settingsState = Settings.State.useState();
@@ -25,7 +27,11 @@ export default function Settings() {
 
     return <>
         <Dialog classes={{ root: styles.dialog }} style={dialogStyles} title={title} visible={settingsState.visible}>
+            <Padding padding="1em">
+                <List>
 
+                </List>
+            </Padding>
         </Dialog>
     </>;
 }
