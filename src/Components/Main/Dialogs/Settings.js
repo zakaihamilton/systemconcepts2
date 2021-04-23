@@ -28,7 +28,7 @@ export default function Settings() {
     return <>
         <Dialog classes={{ root: styles.dialog }} style={dialogStyles} title={title} visible={settingsState.visible}>
             <Padding padding="1em">
-                <List>
+                <List className={styles.list}>
 
                 </List>
             </Padding>
