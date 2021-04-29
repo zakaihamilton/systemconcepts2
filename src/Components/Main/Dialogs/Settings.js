@@ -25,15 +25,13 @@ export default function Settings() {
         <Close state={settingsState} />
     </Bar>;
 
-    return <>
-        <Dialog classes={{ root: styles.dialog }} style={dialogStyles} title={title} visible={settingsState.visible}>
-            <Padding padding="1em">
-                <List className={styles.list}>
+    return <Dialog classes={{ root: styles.dialog }} style={dialogStyles} title={title} visible={settingsState.visible}>
+        <Padding padding="1em">
+            <List className={styles.list}>
 
-                </List>
-            </Padding>
-        </Dialog>
-    </>;
+            </List>
+        </Padding>
+    </Dialog>;
 }
 
 Settings.State = createState({ visible: false });
