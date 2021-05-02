@@ -1,5 +1,20 @@
 .root {
     display: flex;
-    flex-direction: column;
     flex: 1;
+    position: relative;
+}
+
+.root.vertical {
+    flex-direction: column;
+    overflow-y: auto;
+}
+
+.root.horizontal {
+    overflow-x: auto;
+}
+
+.end {
+    position: absolute;
+    width: 1px;
+    height: 1px;
 }

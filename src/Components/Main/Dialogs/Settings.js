@@ -8,6 +8,8 @@ import Close from "./Settings/Close"
 import Bar from "@components/Core/UI/Layout/Bar"
 import List from "src/Components/Core/UI/Layout/List"
 import Padding from "src/Components/Core/UI/Layout/Padding"
+import { useMemo } from "react"
+import SettingsItem from "./Settings/Item"
 
 export default function Settings() {
     const settingsState = Settings.State.useState();
@@ -20,14 +22,14 @@ export default function Settings() {
     const mainAlignRegion = useAlign(mainRegion, { width: "width", height: "height" });
     const dialogStyles = { ...regionToUnit(titleAlignRegion, "px"), ...regionToUnit(mainAlignRegion, "px") };
 
-    const title = <Bar>
+    const title = useMemo(() => <Bar>
         <div className={styles.label}>Settings</div>
         <Close state={settingsState} />
-    </Bar>;
+    </Bar>, [settingsState]);
 
     return <Dialog classes={{ root: styles.dialog }} style={dialogStyles} title={title} visible={settingsState.visible}>
         <Padding padding="1em">
-            <List className={styles.list}>
+            <List className={styles.list} itemSize={30} count={100} Item={SettingsItem}>
 
             </List>
         </Padding>
