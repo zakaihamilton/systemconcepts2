@@ -29,7 +29,7 @@ export default function Settings() {
 
     return <Dialog classes={{ root: styles.dialog }} style={dialogStyles} title={title} visible={settingsState.visible}>
         <Padding padding="1em">
-            <List className={styles.list} itemSize={30} count={100} Item={SettingsItem}>
+            <List className={styles.list} itemSize={40} count={100} Item={SettingsItem}>
 
             </List>
         </Padding>

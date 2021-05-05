@@ -80,7 +80,7 @@ export default function List({ className, orientation = "vertical", itemSize = 0
                 offset += itemSize;
             }
             return items;
-        }, [listState?.offset, containerLength]);
+        }, [listState?.offset, containerLength, listLength]);
     }
 
     style = { width: listWidth, height: listHeight };
