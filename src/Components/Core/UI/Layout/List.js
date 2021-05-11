@@ -1,14 +1,15 @@
 import styles from "./List.module.scss"
 import { joinClasses } from "@util/styles"
-import React, { useCallback, useMemo, useRef } from "react"
+import React, { useCallback, useEffect, useMemo, useRef } from "react"
 import { useSize } from "@components/Core/UI/Util/Size"
 import { createState } from "@components/Core/Util/State"
 import Language from "@components/Core/UI/Util/Language"
 
-export default function List({ className, orientation = "vertical", itemSize = 0, count, Item, style, children }) {
+export default function List({ className, orientation = "vertical", baseOffset = 0, itemSize = 0, count, Item, style, children }) {
     const listRef = useRef();
+    const timerRef = useRef();
+    const offsetRef = useRef();
     const [listWidth, listHeight] = useSize(listRef);
-    let listLength = 0, containerLength = 0;
     const listState = List.State.useState({ offset: 0 });
     const { direction } = Language.useLanguage();
     let items = [];
@@ -21,19 +22,16 @@ export default function List({ className, orientation = "vertical", itemSize = 0
         count = count();
     }
 
-    if (typeof itemSize === "function") {
-        listLength = new Array(count).reduce((total, _, idx) => total + itemSize(idx), 0);
-    }
-    else {
-        listLength = count * itemSize;
-    }
+    const listLength = useMemo(() => {
+        if (typeof itemSize === "function") {
+            return new Array(count).reduce((total, _, idx) => total + itemSize(idx), 0);
+        }
+        else {
+            return count * itemSize;
+        }
+    }, [count, itemSize]);
 
-    if (orientation === "vertical") {
-        containerLength = listHeight;
-    }
-    else {
-        containerLength = listWidth;
-    }
+    const containerLength = orientation === "vertical" ? listHeight : listWidth;
 
     const onScroll = useCallback(() => {
         let offset = 0;
@@ -48,7 +46,13 @@ export default function List({ className, orientation = "vertical", itemSize = 0
                 offset = listRef.current.scrollLeft;
             }
         }
-        listState.offset = offset;
+        offsetRef.current = offset;
+        if (!timerRef.current) {
+            timerRef.current = setTimeout(() => {
+                listState.offset = offsetRef.current;
+                timerRef.current = null;
+            }, 250);
+        }
     }, [orientation]);
 
     React.useEffect(() => {
@@ -58,24 +62,29 @@ export default function List({ className, orientation = "vertical", itemSize = 0
     if (Item) {
         items = useMemo(() => {
             let items = [];
-            let offset = 0;
+            let offset = baseOffset;
             for (let index = 0; index < count; index++) {
                 const size = typeof itemSize === "function" ? itemSize(index) : itemSize;
                 const itemsToShowSize = 2 * size;
-                const visible = offset > listState?.offset - itemsToShowSize && offset < listState?.offset + containerLength + itemsToShowSize;
+                const visible = offset > listState?.offset - itemsToShowSize &&
+                    offset < listState?.offset + containerLength + itemsToShowSize;
                 if (visible) {
                     const style = { position: "absolute" };
                     if (orientation === "vertical") {
+                        style.left = 0;
                         style.top = offset;
                         style.height = itemSize;
                         style.width = listWidth;
                     }
                     else {
                         style.left = offset;
-                        style.width = itemSize;
+                        style.top = 0;
+                        style.width = itemSize; s
                         style.height = listHeight;
                     }
-                    items.push(<Item key={index} index={index} style={style} />);
+                    items.push(<List.Item key={index} index={index} style={style}>
+                        <Item index={index} style={style} />
+                    </List.Item>);
                 }
                 offset += itemSize;
             }
@@ -83,11 +92,29 @@ export default function List({ className, orientation = "vertical", itemSize = 0
         }, [listState?.offset, containerLength, listLength]);
     }
 
-    style = { width: listWidth, height: listHeight };
+    style = useMemo(() => ({ width: listWidth, height: listHeight }), [listWidth, listHeight]);
 
-    const endStyles = (orientation === "vertical") ? { top: listLength } : { left: listLength };
+    const endStyles = useMemo(() => {
+        return (orientation === "vertical") ?
+            { top: listLength } :
+            { left: listLength }
+    }, [orientation, listLength]);
 
-    return <div ref={listRef} className={joinClasses(styles, ["root", orientation], className)} style={style} onScroll={onScroll}>
+    className = useMemo(() => {
+        return joinClasses(styles, ["root", orientation], className)
+    }, [orientation, className]);
+
+    useEffect(() => {
+        if (!listRef.current) {
+            return;
+        }
+        listRef.current.addEventListener('scroll', onScroll, { passive: true });
+        return () => {
+            listRef.current.removeEventListener('scroll', onScroll);
+        };
+    }, [listRef.current]);
+
+    return <div ref={listRef} className={className} style={style}>
         {children}
         {items}
         <div className={styles.end} style={endStyles} />
@@ -95,3 +122,4 @@ export default function List({ className, orientation = "vertical", itemSize = 0
 }
 
 List.State = createState();
+List.Item = createState();
