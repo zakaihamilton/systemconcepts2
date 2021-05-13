@@ -4,11 +4,10 @@ import React, { useCallback, useEffect, useMemo, useRef } from "react"
 import { useSize } from "@components/Core/UI/Util/Size"
 import { createState } from "@components/Core/Util/State"
 import Language from "@components/Core/UI/Util/Language"
+import { useListener } from "@components/Core/UI/Util/Listener"
 
 export default function List({ className, orientation = "vertical", baseOffset = 0, itemSize = 0, count, Item, style, children }) {
     const listRef = useRef();
-    const timerRef = useRef();
-    const offsetRef = useRef();
     const [listWidth, listHeight] = useSize(listRef);
     const listState = List.State.useState({ offset: 0 });
     const { direction } = Language.useLanguage();
@@ -46,13 +45,7 @@ export default function List({ className, orientation = "vertical", baseOffset =
                 offset = listRef.current.scrollLeft;
             }
         }
-        offsetRef.current = offset;
-        if (!timerRef.current) {
-            timerRef.current = setTimeout(() => {
-                listState.offset = offsetRef.current;
-                timerRef.current = null;
-            }, 250);
-        }
+        listState.offset = offset;
     }, [orientation]);
 
     React.useEffect(() => {
@@ -79,7 +72,7 @@ export default function List({ className, orientation = "vertical", baseOffset =
                     else {
                         style.left = offset;
                         style.top = 0;
-                        style.width = itemSize; s
+                        style.width = itemSize;
                         style.height = listHeight;
                     }
                     items.push(<List.Item key={index} index={index} style={style}>
@@ -104,15 +97,7 @@ export default function List({ className, orientation = "vertical", baseOffset =
         return joinClasses(styles, ["root", orientation], className)
     }, [orientation, className]);
 
-    useEffect(() => {
-        if (!listRef.current) {
-            return;
-        }
-        listRef.current.addEventListener('scroll', onScroll, { passive: true });
-        return () => {
-            listRef.current.removeEventListener('scroll', onScroll);
-        };
-    }, [listRef.current]);
+    useListener(listRef.current, "scroll", onScroll, [], { passive: true });
 
     return <div ref={listRef} className={className} style={style}>
         {children}

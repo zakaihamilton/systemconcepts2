@@ -1,6 +1,6 @@
 import { useRef, useState } from "react"
 import { useRefCallback } from "@components/Core/UI/Util/Ref"
-import { useListener } from "./Listener"
+import { useListeners } from "./Listener"
 import { createState } from "@components/Core/Util/State";
 
 export function createDrag() {
@@ -13,7 +13,7 @@ export function createDrag() {
     Drag.useDrag = (dragRef, objectRef, cb) => {
         const { orientation, containerRef } = State.useState();
         const [, setCounter] = useState(0);
-        const [register, unregister] = useListener();
+        const [register, unregister] = useListeners();
         const info = useRef({ drag: false });
         useRefCallback(dragRef, handle => {
             const updatePos = e => {

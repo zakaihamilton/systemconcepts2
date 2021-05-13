@@ -1,10 +1,10 @@
 import { useState } from "react";
-import { useListener } from "./Listener"
+import { useListeners } from "./Listener"
 import { useRefCallback } from "@components/Core/UI/Util/Ref"
 
 export function useHover(hoverRef) {
     const [hover, setHover] = useState(false);
-    const [register, unregister] = useListener();
+    const [register, unregister] = useListeners();
 
     useRefCallback(hoverRef, handle => {
         const mouseOver = () => setHover(true);
