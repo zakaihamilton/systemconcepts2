@@ -10,11 +10,6 @@ export function objectHasChanged(a, b) {
     return changed;
 }
 
-function isWritable(object, key) {
-    const desc = Object.getOwnPropertyDescriptor(object, key) || {};
-    return Boolean(desc.writable);
-}
-
 export function createObjectProxy(props) {
     const callbacks = [];
     const forward = (method, ...args) => {
