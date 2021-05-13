@@ -1,10 +1,11 @@
 import styles from "./List.module.scss"
 import { joinClasses } from "@util/styles"
-import React, { useCallback, useEffect, useMemo, useRef } from "react"
-import { useSize } from "@components/Core/UI/Util/Size"
+import React, { useCallback, useMemo, useRef } from "react"
+import { useSize } from "@components/Core/Util/Size"
 import { createState } from "@components/Core/Util/State"
-import Language from "@components/Core/UI/Util/Language"
-import { useListener } from "@components/Core/UI/Util/Listener"
+import Language from "@components/Core/Util/Language"
+import { useListener } from "@components/Core/Util/Listener"
+import { useObject } from "@components/Core/Util/Object"
 
 export default function List({ className, orientation = "vertical", baseOffset = 0, itemSize = 0, count, Item, style, children }) {
     const listRef = useRef();
@@ -85,13 +86,8 @@ export default function List({ className, orientation = "vertical", baseOffset =
         }, [listState?.offset, containerLength, listLength]);
     }
 
-    style = useMemo(() => ({ width: listWidth, height: listHeight }), [listWidth, listHeight]);
-
-    const endStyles = useMemo(() => {
-        return (orientation === "vertical") ?
-            { top: listLength } :
-            { left: listLength }
-    }, [orientation, listLength]);
+    style = useObject({ width: listWidth, height: listHeight });
+    const endStyles = useObject({ [orientation === "vertical" ? "top" : "left"]: listLength });
 
     className = useMemo(() => {
         return joinClasses(styles, ["root", orientation], className)

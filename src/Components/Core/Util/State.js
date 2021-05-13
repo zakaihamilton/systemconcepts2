@@ -1,5 +1,5 @@
 import { useContext, createContext, useState, useRef, useEffect } from "react"
-import { objectHasChanged, createObjectProxy } from "./object"
+import { objectHasChanged, createObjectProxy } from "./Object"
 
 export function createState(props) {
     const hasProps = typeof props === "object";

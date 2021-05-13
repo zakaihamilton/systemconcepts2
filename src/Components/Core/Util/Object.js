@@ -1,3 +1,5 @@
+import { useRef } from "react";
+
 export function objectHasChanged(a, b) {
     a = a || {};
     b = b || {};
@@ -6,6 +8,11 @@ export function objectHasChanged(a, b) {
     let changed = aKeys.some((_, idx) => bKeys[idx] !== aKeys[idx]);
     changed = changed || aKeys.some(key => !Object.is(a[key], b[key]));
     return changed;
+}
+
+function isWritable(object, key) {
+    const desc = Object.getOwnPropertyDescriptor(object, key) || {};
+    return Boolean(desc.writable);
 }
 
 export function createObjectProxy(props) {
@@ -33,4 +40,16 @@ export function createObjectProxy(props) {
         }
     });
     return [proxy, callbacks];
+}
+
+export function useObject(object) {
+    const ref = useRef();
+    if (!ref.current) {
+        ref.current = new Map();
+    }
+    const keys = Object.keys(object);
+    for (const key of keys) {
+        ref.current.set(key, object[key]);
+    }
+    return ref.current;
 }

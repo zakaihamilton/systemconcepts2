@@ -1,9 +1,9 @@
 import { useEffect, useRef, useState } from "react";
-import { useHover } from "@components/Core/UI/Util/Hover"
-import { useRegion } from "@components/Core/UI/Util/Region"
-import Modal from "@components/Core/UI/Util/Modal"
+import { useHover } from "@components/Core/Util/Hover"
+import { useRegion } from "@components/Core/Util/Region"
+import Modal from "@components/Core/Util/Modal"
 import styles from "./Tooltip.module.scss"
-import { useTimer } from "@components/Core/UI/Util/Timer"
+import { useTimer } from "@components/Core/Util/Timer"
 import clsx from "clsx"
 
 export default function Tooltip({ title, description, children }) {

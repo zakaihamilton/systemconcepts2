@@ -1,5 +1,5 @@
 import styles from "./Dialog.module.scss"
-import Modal from "@components/Core/UI/Util/Modal"
+import Modal from "@components/Core/Util/Modal"
 import { joinClasses } from "@util/styles"
 
 export default function Dialog({ classes, title, visible, children, ...props }) {
