@@ -89,9 +89,7 @@ export default function List({ className, orientation = "vertical", baseOffset =
     style = useObject({ width: listWidth, height: listHeight });
     const endStyles = useObject({ [orientation === "vertical" ? "top" : "left"]: listLength });
 
-    className = useMemo(() => {
-        return joinClasses(styles, ["root", orientation], className)
-    }, [orientation, className]);
+    className = useMemo(() => joinClasses(styles, ["root", orientation], className), [orientation, className]);
 
     useListener(listRef.current, "scroll", onScroll, [], { passive: true });
 
