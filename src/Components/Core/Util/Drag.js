@@ -11,7 +11,7 @@ export function createDrag() {
         </State>;
     }
     Drag.useDrag = (dragRef, objectRef, cb) => {
-        const { orientation, containerRef } = State.useState();
+        const { orientation, containerRef } = State.useState() || {};
         const [, setCounter] = useState(0);
         const [register, unregister] = useListeners();
         const info = useRef({ drag: false });

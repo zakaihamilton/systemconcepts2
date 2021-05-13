@@ -18,7 +18,7 @@ export default function List({ className, orientation = "vertical", baseOffset =
         count = React.Children.count(children);
     }
 
-    if (typeof ItemCount === "function") {
+    if (typeof count === "function") {
         count = count();
     }
 

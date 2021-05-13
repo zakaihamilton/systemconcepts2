@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 
 export function objectHasChanged(a, b) {
     a = a || {};
@@ -38,13 +38,10 @@ export function createObjectProxy(props) {
 }
 
 export function useObject(object) {
-    const ref = useRef();
-    if (!ref.current) {
-        ref.current = new Map();
-    }
-    const keys = Object.keys(object);
-    for (const key of keys) {
-        ref.current.set(key, object[key]);
-    }
+    const ref = useRef({ ...object });
+    const hasChanged = objectHasChanged(ref.current, object);
+    useEffect(() => {
+        ref.current = { ...object };
+    }, [hasChanged]);
     return ref.current;
 }
