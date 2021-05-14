@@ -7,7 +7,7 @@ import Language from "@components/Core/Util/Language"
 import { useListener } from "@components/Core/Util/Listener"
 import { useObject } from "@components/Core/Util/Object"
 
-export default function List({ className, orientation = "vertical", baseOffset = 0, itemSize = 0, count, Item, style, children }) {
+export default function List({ className, orientation = "vertical", overscanCount = 2, baseOffset = 0, itemSize = 0, count, Item, style, children }) {
     const listRef = useRef();
     const [listWidth, listHeight] = useSize(listRef);
     const listState = List.State.useState({ offset: 0 });
@@ -59,22 +59,16 @@ export default function List({ className, orientation = "vertical", baseOffset =
             let offset = baseOffset;
             for (let index = 0; index < count; index++) {
                 const size = typeof itemSize === "function" ? itemSize(index) : itemSize;
-                const itemsToShowSize = 2 * size;
+                const itemsToShowSize = overscanCount * size;
                 const visible = offset > listState?.offset - itemsToShowSize &&
                     offset < listState?.offset + containerLength + itemsToShowSize;
                 if (visible) {
-                    const style = { position: "absolute" };
+                    let style = { position: "absolute" };
                     if (orientation === "vertical") {
-                        style.left = 0;
-                        style.top = offset;
-                        style.height = itemSize;
-                        style.width = listWidth;
+                        Object.assign(style, { left: 0, top: offset, width: listWidth, height: itemSize });
                     }
                     else {
-                        style.left = offset;
-                        style.top = 0;
-                        style.width = itemSize;
-                        style.height = listHeight;
+                        Object.assign(style, { left: offset, top: 0, width: itemSize, height: listHeight });
                     }
                     items.push(<List.Item key={index} index={index} style={style}>
                         <Item index={index} style={style} />
