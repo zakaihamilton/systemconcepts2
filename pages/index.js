@@ -2,7 +2,8 @@ import Head from 'next/head'
 import Util from "@components/Core/Util"
 import SplitPane from "@components/Core/UI/Widgets/SplitPane"
 import Pane from "@components/Core/UI/Widgets/SplitPane/Pane"
-import Title from "src/Components/App/Title"
+import Title from "@components/App/Title"
+import Sidebar from "@components/App/Sidebar"
 
 export default function App() {
   return (
@@ -15,9 +16,7 @@ export default function App() {
         <Title />
         <Pane id="main" closable={false} style={{ backgroundColor: "white" }}>
           <SplitPane insertable={true}>
-            <Pane divider={true} size="20em" style={{ backgroundColor: "lightgrey" }}>
-
-            </Pane>
+            <Sidebar/>
             <Pane closable={false} divider={true} style={{ backgroundColor: "white" }}>
 
             </Pane>

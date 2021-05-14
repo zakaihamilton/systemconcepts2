@@ -43,14 +43,33 @@ export function createState(props) {
             }
             return () => {
                 if (callbacks) {
-                    const index = callbacks.indexOf(handler);
-                    if (index !== -1) {
-                        callbacks.splice(index, 1);
-                    }
+                    callbacks.remove(handler);
                 }
             };
         }, []);
         return proxy;
+    };
+    State.Notify = function NotifyState({ children, ...props }) {
+        let context = useContext(Context);
+        const keys = Object.keys(props);
+        const values = Object.values(props);
+        useEffect(() => {
+            const callbacks = context?.callbacks;
+            const update = (method, target, key) => {
+                if (props[key]) {
+                    props[key](context?.proxy[key]);
+                }
+            };
+            if (callbacks) {
+                callbacks.push(update);
+            }
+            return () => {
+                if (callbacks) {
+                    callbacks.remove(update);
+                }
+            };
+        }, [context, ...keys, ...values]);
+        return <>{children}</>;
     };
     return State;
 }
