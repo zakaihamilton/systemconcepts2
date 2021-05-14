@@ -20,11 +20,11 @@ export default function Tooltip({ title, description, children }) {
         let left = hoverRegion.left - hoverRegion.width;
         const top = hoverRegion.bottom - hoverRegion.height;
         if (left > window.innerWidth / 2) {
-            const right = window.innerWidth - left - hoverRegion.width;
+            const right = window.innerWidth - left - hoverRegion.width + 5;
             setInitialPos({ right, top });
         }
         else {
-            left = hoverRegion.right;
+            left = hoverRegion.right + 5;
             setInitialPos({ left, top });
         }
     }, [hoverRegion]);
