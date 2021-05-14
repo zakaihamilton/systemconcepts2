@@ -6,13 +6,13 @@ import { useRegion, regionToUnit } from "@components/Core/Util/Region"
 import { useAlign } from "src/Components/Core/Util/Align"
 import Close from "./Settings/Close"
 import Bar from "@components/Core/UI/Layout/Bar"
-import List from "src/Components/Core/UI/Layout/List"
+import List from "@components/Core/UI/Layout/List"
 import Padding from "src/Components/Core/UI/Layout/Padding"
 import { useMemo } from "react"
 import SettingsItem from "./Settings/Item"
 
-export default function Settings() {
-    const settingsState = Settings.State.useState();
+export default function SettingsDialog() {
+    const settingsState = SettingsDialog.State.useState();
 
     const titleRef = useRefById("title");
     const titleRegion = useRegion(titleRef);
@@ -36,4 +36,4 @@ export default function Settings() {
     </Dialog>;
 }
 
-Settings.State = createState({ visible: false });
+SettingsDialog.State = createState({ visible: false });

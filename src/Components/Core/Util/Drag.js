@@ -10,7 +10,7 @@ export function createDrag() {
             {children}
         </State>;
     }
-    Drag.useDrag = (dragRef, objectRef, cb) => {
+    Drag.useDrag = (dragRef, objectRef, cb, options) => {
         const { orientation, containerRef } = State.useState() || {};
         const [, setCounter] = useState(0);
         const [register, unregister] = useListeners();
@@ -18,8 +18,16 @@ export function createDrag() {
         useRefCallback(dragRef, handle => {
             const updatePos = e => {
                 const { dragRect, objectRect, containerRect } = info.current;
-                const x = (e.clientX - objectRect.left) + (dragRect.width / 2);
-                const y = (e.clientY - objectRect.top) + (dragRect.height / 2);
+                let x = (e.clientX - objectRect.left) + (dragRect.width / 2);
+                let y = (e.clientY - objectRect.top) + (dragRect.height / 2);
+                if (options?.minSize) {
+                    x = Math.max(x, options?.minSize);
+                    y = Math.max(y, options?.minSize);
+                }
+                if (options?.maxSize) {
+                    x = Math.min(x, options?.maxSize);
+                    y = Math.min(y, options?.maxSize);
+                }
                 const xPercentage = x / containerRect.width * 100;
                 const yPercentage = y / containerRect.height * 100;
                 cb({ orientation, pos: { x, y }, percentage: { x: xPercentage, y: yPercentage } });
@@ -50,7 +58,7 @@ export function createDrag() {
             return () => {
                 unregister(handle, "mousedown");
             };
-        }, [containerRef?.current, objectRef?.current]);
+        }, [containerRef?.current, objectRef?.current, options?.minSize, options?.maxSize]);
         return [info.current.drag];
     }
 

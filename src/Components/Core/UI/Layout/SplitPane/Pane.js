@@ -4,15 +4,11 @@ import SplitPane from "../SplitPane";
 import { useRef } from "react";
 import { useSize } from "./Pane/Size"
 
-export default function Pane({ classes, divider, children, size, style, ...props }) {
+export default function Pane({ classes, divider, children, size, minSize, maxSize, style, ...props }) {
     const { orientation } = SplitPane.State.useState();
     const paneRef = useRef();
     const dividerRef = useRef();
-    const list = SplitPane.List.useList(paneRef);
-    const [currentSize, dragging] = useSize({ dividerRef, paneRef, size });
-    const index = list.findIndex(ref => ref === paneRef.current);
-    const isLast = index === list.length - 1;
-    divider = divider && !isLast;
+    const [currentSize, dragging] = useSize({ dividerRef, paneRef, size, minSize, maxSize });
     const dividerClassName = joinClasses(styles, { divider: true, visible: divider, [orientation]: true, dragging }, classes?.divider);
 
     style = { ...style };

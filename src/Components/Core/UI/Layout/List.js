@@ -77,17 +77,16 @@ export default function List({ className, orientation = "vertical", overscanCoun
                 offset += itemSize;
             }
             return items;
-        }, [listState?.offset, containerLength, listLength]);
+        }, [listState?.offset, containerLength, listLength, listWidth, listHeight]);
     }
 
-    style = useObject({ width: listWidth, height: listHeight });
     const endStyles = useObject({ [orientation === "vertical" ? "top" : "left"]: listLength });
 
     className = useMemo(() => joinClasses(styles, ["root", orientation], className), [orientation, className]);
 
     useListener(listRef.current, "scroll", onScroll, [], { passive: true });
 
-    return <div ref={listRef} className={className} style={style}>
+    return <div ref={listRef} className={className}>
         {children}
         {items}
         <div className={styles.end} style={endStyles} />
