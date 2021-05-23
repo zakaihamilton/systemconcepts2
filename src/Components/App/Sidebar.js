@@ -15,14 +15,7 @@ const root = {
                 {
                     name: "is",
                     open: false,
-                    children: [
-                        {
-                            name: "1"
-                        },
-                        {
-                            name: "2"
-                        }
-                    ]
+                    children: new Array(100).fill(0).map((_, index) => ({ name: index }))
                 },
                 {
                     name: "an"

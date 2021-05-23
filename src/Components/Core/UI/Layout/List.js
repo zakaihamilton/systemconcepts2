@@ -61,7 +61,7 @@ export default function List({ className, orientation = "vertical", overscanCoun
             const visible = offset > listState?.offset - itemsToShowSize &&
                 offset < listState?.offset + containerLength + itemsToShowSize;
             if (visible) {
-                let style = { position: "absolute" };
+                const style = { position: "absolute" };
                 if (orientation === "vertical") {
                     Object.assign(style, { left: 0, top: offset, width: listWidth, height: itemSize });
                 }
@@ -75,7 +75,7 @@ export default function List({ className, orientation = "vertical", overscanCoun
                 }
                 else {
                     items.push(<List.Item key={index} index={index} style={style}>
-                        {children[index]}
+                        {React.cloneElement(children[index], { index, style })}
                     </List.Item>);
                 }
             }
