@@ -1,17 +1,21 @@
 import List from "@components/Core/UI/Layout/List"
-import { useMemo } from "react";
+import { useCallback, useMemo, useState } from "react";
 
-export function treeMapper(root, Item, children, depth = 0) {
+export function treeMapper({ item, Item, children, update, depth = 0 }) {
     if (!Item) {
         return null;
     }
-    if (typeof root === "object") {
-        children.push(<Item key={root.id || root.name} depth={depth} {...root} />);
+    const open = typeof item?.open === "undefined" ? true : item.open;
+    if (typeof item === "object") {
+        const setOpen = open => {
+            item.open = open;
+            update();
+        };
+        children.push(<Item key={item.id || item.name} depth={depth} {...item} open={open} setOpen={setOpen} />);
     }
-    const open = typeof root?.open === "undefined" ? true : root.open;
-    if (open && Array.isArray(root?.children)) {
-        for (const child of root.children) {
-            treeMapper(child, Item, children, depth + 1);
+    if (open && Array.isArray(item?.children)) {
+        for (const child of item.children) {
+            treeMapper({ item: child, Item, children, update, depth: depth + 1 });
         }
     }
 
@@ -19,7 +23,11 @@ export function treeMapper(root, Item, children, depth = 0) {
 }
 
 export default function Tree({ Item, root, mapper, depends = [], children, ...props }) {
-    const items = useMemo(() => (typeof mapper === "function" ? mapper(root, Item, []) : children), depends);
+    const [counter, setCounter] = useState(0);
+    const update = useCallback(() => {
+        setCounter(counter => counter + 1);
+    }, []);
+    const items = useMemo(() => (typeof mapper === "function" ? mapper({ item: root, Item, children: [], update }) : children), [root, children, counter, ...depends]);
     return <List {...props}>
         {items}
     </List >;
