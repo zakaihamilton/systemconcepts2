@@ -2,19 +2,27 @@ import styles from "./Item.module.scss"
 import { FiChevronRight, FiChevronDown } from "react-icons/fi";
 import Button from "@components/Core/UI/Widgets/Button";
 import Tooltip from "@components/Core/UI/Widgets/Tooltip";
-import { useCallback } from "react";
+import { useCallback, useEffect } from "react";
+import Sidebar from "../Sidebar"
+import clsx from "clsx"
 
-export default function SidebarItem({ name, children, depth, open, setOpen, style }) {
+export default function SidebarItem({ id, name, children, depth, open, setOpen, style }) {
+    const sidebarState = Sidebar.State.useState({});
+    const isSelected = sidebarState?.selected === id;
     const hasChildren = children?.length;
-    style = style || {};
-    style.paddingLeft = depth * 16;
+    const paddingLeft = depth * 16;
     const titleTooltip = open ? "Collapse" : "Expand";
     const onClick = useCallback(() => {
-        setOpen(!open);
+        if (hasChildren) {
+            setOpen(!open);
+        }
+        else {
+            sidebarState.selected = id;
+        }
     }, [open]);
-    return <div className={styles.root} style={style}>
+    return <div onClick={onClick} className={clsx(styles.root, isSelected && styles.selected)} style={{ ...style, paddingLeft }}>
         <Tooltip title={titleTooltip}>
-            <Button onClick={onClick} style={{ visibility: hasChildren ? "visible" : "hidden" }}>
+            <Button style={{ visibility: hasChildren ? "visible" : "hidden" }}>
                 {!!open ? <FiChevronDown /> : <FiChevronRight />}
             </Button>
         </Tooltip>

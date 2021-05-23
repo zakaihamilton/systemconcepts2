@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export function objectHasChanged(a, b) {
     a = a || {};
@@ -7,6 +7,7 @@ export function objectHasChanged(a, b) {
     const bKeys = Object.keys(b);
     let changed = aKeys.some((_, idx) => bKeys[idx] !== aKeys[idx]);
     changed = changed || aKeys.some(key => !Object.is(a[key], b[key]));
+    console.log("changed", changed, "a", a, "b", b);
     return changed;
 }
 
@@ -45,9 +46,11 @@ export function createObjectProxy(props) {
 
 export function useObject(object) {
     const ref = useRef({ ...object });
-    const hasChanged = objectHasChanged(ref.current, object);
     useEffect(() => {
-        ref.current = { ...object };
-    }, [hasChanged]);
+        const hasChanged = objectHasChanged(ref.current, object);
+        if (hasChanged) {
+            ref.current = { ...object };
+        }
+    });
     return ref.current;
 }

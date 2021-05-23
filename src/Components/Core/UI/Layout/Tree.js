@@ -11,7 +11,7 @@ export function treeMapper({ item, Item, children, update, depth = 0 }) {
             item.open = open;
             update();
         };
-        children.push(<Item key={item.id || item.name} depth={depth} {...item} open={open} setOpen={setOpen} />);
+        children.push(<Item key={item.id || item.name} {...item} depth={depth} id={item.id || item.name} open={open} setOpen={setOpen} />);
     }
     if (open && Array.isArray(item?.children)) {
         for (const child of item.children) {

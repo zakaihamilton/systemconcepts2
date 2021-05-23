@@ -6,6 +6,10 @@
     padding-bottom: 0.5em;
 }
 
+.root.selected {
+    background-color: darkgray;
+}
+
 .label {
     padding-left: 0.5em;
     user-select: none;
