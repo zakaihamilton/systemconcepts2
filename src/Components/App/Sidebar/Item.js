@@ -1,5 +1,5 @@
 import styles from "./Item.module.scss"
-import { FiChevronLeft, FiChevronDown } from "react-icons/fi";
+import { FiChevronRight, FiChevronDown } from "react-icons/fi";
 import Button from "@components/Core/UI/Widgets/Button";
 import Tooltip from "@components/Core/UI/Widgets/Tooltip";
 
@@ -12,7 +12,7 @@ export default function SidebarItem({ name, children, depth, open, style }) {
     return <div className={styles.root} style={style}>
         <Tooltip title={titleTooltip}>
             <Button style={{ visibility: hasChildren ? "visible" : "hidden" }}>
-                {!!isOpen ? <FiChevronDown /> : <FiChevronLeft />}
+                {!!isOpen ? <FiChevronDown /> : <FiChevronRight />}
             </Button>
         </Tooltip>
         <div className={styles.label}>

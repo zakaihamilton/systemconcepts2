@@ -8,8 +8,8 @@ export function treeMapper(root, Item, children, depth = 0) {
     if (typeof root === "object") {
         children.push(<Item key={root.id || root.name} depth={depth} {...root} />);
     }
-
-    if (Array.isArray(root.children)) {
+    const open = typeof root?.open === "undefined" ? true : root.open;
+    if (open && Array.isArray(root?.children)) {
         for (const child of root.children) {
             treeMapper(child, Item, children, depth + 1);
         }

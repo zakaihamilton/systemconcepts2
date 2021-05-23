@@ -14,6 +14,7 @@ const root = {
             children: [
                 {
                     name: "is",
+                    open: false,
                     children: [
                         {
                             name: "1"
