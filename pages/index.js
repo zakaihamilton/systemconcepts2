@@ -4,6 +4,7 @@ import SplitPane from "@components/Core/UI/Widgets/SplitPane"
 import Pane from "@components/Core/UI/Widgets/SplitPane/Pane"
 import Title from "@components/App/Title"
 import Sidebar from "@components/App/Sidebar"
+import Page from "@components/App/Page"
 
 export default function App() {
   return (
@@ -15,11 +16,9 @@ export default function App() {
       <SplitPane orientation="horizontal">
         <Title />
         <Pane id="main" closable={false} style={{ backgroundColor: "white" }}>
-          <SplitPane insertable={true}>
-            <Sidebar/>
-            <Pane closable={false} divider={true} style={{ backgroundColor: "white" }}>
-
-            </Pane>
+          <SplitPane>
+            <Sidebar />
+            <Page />
           </SplitPane>
         </Pane>
       </SplitPane>

@@ -7,7 +7,6 @@ export function objectHasChanged(a, b) {
     const bKeys = Object.keys(b);
     let changed = aKeys.some((_, idx) => bKeys[idx] !== aKeys[idx]);
     changed = changed || aKeys.some(key => !Object.is(a[key], b[key]));
-    console.log("changed", changed, "a", a, "b", b);
     return changed;
 }
 
