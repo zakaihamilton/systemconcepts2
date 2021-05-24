@@ -69,13 +69,13 @@ export default function List({ className, orientation = "vertical", overscanCoun
                     Object.assign(style, { left: offset, top: 0, width: itemSize, height: listHeight });
                 }
                 if (Item) {
-                    items.push(<List.Item key={index} index={index} style={style}>
-                        <Item index={index} style={style} />
+                    items.push(<List.Item key={index} index={index} count={count} style={style}>
+                        <Item index={index} style={style} count={count} />
                     </List.Item>);
                 }
                 else {
-                    items.push(<List.Item key={index} index={index} style={style}>
-                        {React.cloneElement(children[index], { index, style })}
+                    items.push(<List.Item key={index} index={index} count={count} style={style}>
+                        {React.cloneElement(children[index], { index, count, style })}
                     </List.Item>);
                 }
             }

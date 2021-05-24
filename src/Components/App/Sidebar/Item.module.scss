@@ -1,13 +1,28 @@
 .root {
     display: flex;
     align-items: center;
-    border-bottom: 1px solid darkgray;
+    border-top: 1px solid darkgray;
+    border-bottom: 1px solid transparent;
     padding-top: 0.5em;
     padding-bottom: 0.5em;
 }
 
+.root.first {
+    border-top: 1px solid transparent;
+}
+
+.root.last {
+    border-bottom: 1px solid darkgray;
+}
+
 .root.selected {
-    background-color: darkgray;
+    background-color: white;
+    filter: invert(100%);
+}
+
+.root:hover:not(.selected):not(.parent) {
+    background-color: lightgray;
+    filter: invert(100%);
 }
 
 .label {
