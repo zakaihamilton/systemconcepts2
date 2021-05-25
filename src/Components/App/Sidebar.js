@@ -5,28 +5,7 @@ import { useCallback } from "react"
 import Tree, { treeMapper } from "@components/Core/UI/Layout/Tree"
 import SidebarItem from "./Sidebar/Item"
 import Size from "@components/Core/Util/Size"
-
-const root = {
-    name: "root",
-    children: [
-        {
-            name: "this",
-            children: [
-                {
-                    name: "is",
-                    open: false,
-                    children: new Array(1000).fill(0).map((_, index) => ({ name: index }))
-                },
-                {
-                    name: "an"
-                },
-                {
-                    name: "example"
-                }
-            ]
-        }
-    ]
-};
+import items from "./Sidebar/Items"
 
 export default function Sidebar() {
     const sidebarState = Sidebar.State.useState();
@@ -34,8 +13,8 @@ export default function Sidebar() {
     const { width } = Size.useSize();
     return <Pane.State visible={sidebarState?.visible}>
         <Pane.State.Notify visible={visibleChanged} />
-        <Pane classes={{ pane: styles.root }} divider={true} minSize={250} maxSize={width / 2} size="20em" style={{ backgroundColor: "lightgrey" }}>
-            <Tree className={styles.list} root={root} itemSize={40} mapper={treeMapper} Item={SidebarItem} />
+        <Pane classes={{ pane: styles.root }} divider={true} minSize={250} maxSize={width / 2} size="20em">
+            <Tree className={styles.list} root={items} itemSize={40} mapper={treeMapper} Item={SidebarItem} />
         </Pane>
     </Pane.State>;
 }

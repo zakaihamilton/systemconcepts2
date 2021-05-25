@@ -1,7 +1,6 @@
 .root {
-    padding: 0.5em;
+    padding: 0.4em;
     border-radius: 0.5em;
-    border: 1px solid transparent;
     align-items: center;
     justify-content: center;
     transition: opacity 0.5s;
@@ -10,11 +9,14 @@
     user-select: none;
 }
 
-.root:hover {
-    border: 1px solid rgb(0, 0, 0, 0.5);
-    background-color: rgb(255, 255, 255, .1);
+.root:not(.visible) {
+    visibility: hidden;
 }
 
-.root:hover:active {
+.root.hover:hover {
+    background-color: rgb(255, 255, 255, .5);
+}
+
+.root.hover:hover:active {
     background-color: rgb(0, 0, 0, 0.1);
 }

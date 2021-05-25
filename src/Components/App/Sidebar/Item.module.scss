@@ -3,8 +3,7 @@
     align-items: center;
     border-top: 1px solid darkgray;
     border-bottom: 1px solid transparent;
-    padding-top: 0.5em;
-    padding-bottom: 0.5em;
+    padding: 0.5em;
 }
 
 .root.first {
@@ -25,7 +24,12 @@
     filter: invert(100%);
 }
 
+.icon {
+    width: 1.5em;
+    height: 1.5em;
+}
+
 .label {
-    padding-left: 0.5em;
     user-select: none;
+    flex: 1;
 }
