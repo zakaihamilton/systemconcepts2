@@ -1,7 +1,7 @@
 import styles from "./Item.module.scss"
 import { FiChevronUp, FiChevronDown } from "react-icons/fi";
 import Button from "@components/Core/UI/Widgets/Button";
-import { useCallback } from "react";
+import { useCallback, useEffect } from "react";
 import Sidebar from "../Sidebar"
 import clsx from "clsx"
 
@@ -33,7 +33,7 @@ export default function SidebarItem({ id, icon, name, index, count, children, de
         <div className={clsx(styles.label, ...classes)}>
             {name}
         </div>
-        <Button border={false} hover={false} style={{ visibility: hasChildren ? "visible" : "hidden", marginTop: "3px" }}>
+        <Button hover={false} style={{ visibility: hasChildren ? "visible" : "hidden", marginTop: "3px" }}>
             {!!open ? <FiChevronDown /> : <FiChevronUp />}
         </Button>
     </div>;

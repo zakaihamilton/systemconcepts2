@@ -1,16 +1,21 @@
 import styles from "./Sidebar.module.scss"
 import Pane from "@components/Core/UI/Widgets/SplitPane/Pane"
 import { createState } from "@components/Core/Util/State"
-import { useCallback } from "react"
+import { useCallback, useEffect } from "react"
 import Tree, { treeMapper } from "@components/Core/UI/Layout/Tree"
 import SidebarItem from "./Sidebar/Item"
 import Size from "@components/Core/Util/Size"
 import items from "./Sidebar/Items"
+import { useLocation } from "@components/Core/Util/Location"
 
 export default function Sidebar() {
+    const location = useLocation();
     const sidebarState = Sidebar.State.useState();
     const visibleChanged = useCallback(visible => sidebarState.visible = visible, [sidebarState]);
     const { width } = Size.useSize();
+    useEffect(() => {
+        sidebarState.selected = location;
+    }, [location]);
     return <Pane.State visible={sidebarState?.visible}>
         <Pane.State.Notify visible={visibleChanged} />
         <Pane classes={{ pane: styles.root }} divider={true} minSize={250} maxSize={width / 2} size="20em">

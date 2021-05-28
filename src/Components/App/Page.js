@@ -11,7 +11,7 @@ export default function Page({ }) {
     const pageId = usePageId();
     const Component = pages[pageId];
 
-    return <Pane closable={false} divider={true} style={{ backgroundColor: "white" }}>
+    return <Pane closable={false} style={{ backgroundColor: "white" }}>
         {Component && <Component />}
     </Pane>;
 }

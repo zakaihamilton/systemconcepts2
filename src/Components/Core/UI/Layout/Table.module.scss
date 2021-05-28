@@ -1,0 +1,17 @@
+.root {
+    display: flex;
+    flex: 1;
+    position: relative;
+    flex-direction: column;
+}
+
+.header {
+    display: flex;
+    position: relative;
+}
+
+.table {
+    display: flex;
+    flex: 1;
+    position: relative;
+}
