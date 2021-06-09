@@ -16,9 +16,10 @@ export default function Sidebar() {
     useEffect(() => {
         sidebarState.selected = location;
     }, [location]);
+    const classes = { pane: styles.root, divider: styles.divider };
     return <Pane.State visible={sidebarState?.visible}>
         <Pane.State.Notify visible={visibleChanged} />
-        <Pane classes={{ pane: styles.root }} divider={true} minSize={250} maxSize={width / 2} size="20em">
+        <Pane classes={classes} divider={true} minSize={250} maxSize={width / 2} size="20em">
             <Tree className={styles.list} root={items} itemSize={40} mapper={treeMapper} Item={SidebarItem} />
         </Pane>
     </Pane.State>;

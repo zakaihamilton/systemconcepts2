@@ -9,7 +9,7 @@ export default function Pane({ children, closable = true, menu = false, visible 
     const state = Pane.State.useState({ visible });
     return !!state.visible && <PaneLayout {...props}>
         {children}
-        <Strip classes={{ root: styles.strip }}>
+        <Strip className={styles.strip}>
             {!!closable && <Close state={state} />}
             {!!menu && <Menu menu={menu} />}
         </Strip>

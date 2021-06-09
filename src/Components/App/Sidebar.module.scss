@@ -1,12 +1,13 @@
 .root {
-    padding: 0.1em;
     background-color: lightgray;
-    margin-top: 0.25em;
-    margin-bottom: 0.25em;
-    margin-left: 0.25em;
+    margin: 0.5em;
     border-radius: 0.5em;
 }
 
 .list {
     margin-top: 3em;
+}
+
+.divider:hover {
+    background-color: rgb(36, 159, 224);
 }

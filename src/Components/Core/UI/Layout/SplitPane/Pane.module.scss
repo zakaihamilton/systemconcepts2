@@ -30,15 +30,13 @@
 
 .divider.vertical {
     height: 100%;
-    width: 15px;
-    margin-right: -7.5px;
+    width: 0.5em;
     cursor: col-resize;
 }
 
 .divider.horizontal {
     width: 100%;
-    height: 15px;
-    margin-bottom: -7.5px;
+    height: 0.5em;
     cursor: row-resize;
 }
 
