@@ -1,4 +1,11 @@
 .root {
+    overflow: hidden;
+    flex-basis: 20px;
+    transition: flex-basis 0.25s, opacity 0.25s;
+    opacity: 1;
+}
+
+.pane {
     background-color: lightgray;
     margin: 0.5em;
     border-radius: 0.5em;

@@ -4,7 +4,7 @@ import SplitPane from "../SplitPane";
 import { useRef } from "react";
 import { useSize } from "./Pane/Size"
 
-export default function Pane({ classes, divider, children, size, minSize, maxSize, style, ...props }) {
+export default function Pane({ classes, divider, children, size, minSize, maxSize, visible, style, ...props }) {
     const { orientation } = SplitPane.State.useState();
     const paneRef = useRef();
     const dividerRef = useRef();
@@ -13,6 +13,11 @@ export default function Pane({ classes, divider, children, size, minSize, maxSiz
 
     style = { ...style };
     style.flex = currentSize;
+
+    if (!visible) {
+        style.flex = "0 1 1em";
+        style.opacity = "0";
+    }
 
     return <div ref={paneRef} className={joinClasses(styles, { root: true, [orientation]: true }, classes?.root)} style={style} {...props}>
         <div className={joinClasses(styles, { pane: true, [orientation]: true }, classes?.pane)}>

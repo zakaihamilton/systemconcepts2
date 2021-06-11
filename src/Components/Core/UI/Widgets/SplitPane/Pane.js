@@ -7,7 +7,7 @@ import Menu from "./Pane/Menu"
 
 export default function Pane({ children, closable = true, menu = false, visible = true, ...props }) {
     const state = Pane.State.useState({ visible });
-    return !!state.visible && <PaneLayout {...props}>
+    return <PaneLayout {...props} visible={state?.visible}>
         {children}
         <Strip className={styles.strip}>
             {!!closable && <Close state={state} />}

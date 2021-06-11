@@ -16,7 +16,7 @@ export default function Sidebar() {
     useEffect(() => {
         sidebarState.selected = location;
     }, [location]);
-    const paneClasses = { pane: styles.root, divider: styles.divider };
+    const paneClasses = { root: styles.root, pane: styles.pane, divider: styles.divider };
     return <Pane.State visible={sidebarState?.visible}>
         <Pane.State.Notify visible={visibleChanged} />
         <Pane classes={paneClasses} divider={true} minSize={250} maxSize={width / 2} size="20em">
