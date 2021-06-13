@@ -21,6 +21,11 @@
 }
 
 .root:hover:not(.selected):not(.parent) {
+    background-color: darkgray;
+    filter: invert(100%);
+}
+
+.root:hover:active:not(.selected):not(.parent) {
     background-color: lightgray;
     filter: invert(100%);
 }
