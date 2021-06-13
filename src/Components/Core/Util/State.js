@@ -3,11 +3,12 @@ import { objectHasChanged, createObjectProxy } from "./Object"
 
 export function createState(props) {
     const hasProps = typeof props === "object";
-    const [proxy, callbacks] = (hasProps && createObjectProxy(props)) || [];
+    const [proxy, callbacks] = hasProps && createObjectProxy(props) || [];
     const Context = createContext(hasProps && { proxy, callbacks });
 
     function State({ children, ...props }) {
-        const [updatedProps, setUpdatedProps] = useState(0);
+        const [updatedProps, setUpdatedProps] = useState({});
+        const [value, setValue] = useState(null);
         const stateRef = useRef({ proxy: null, callbacks: [] });
         const valueChanged = stateRef.current.proxy && objectHasChanged(props, updatedProps);
         if (!stateRef.current.proxy) {
@@ -19,16 +20,17 @@ export function createState(props) {
             setUpdatedProps(props);
         }
         useEffect(() => {
-            Object.assign(stateRef.current.proxy, updatedProps);
+            Object.assign(stateRef.current.proxy, { ...updatedProps });
+            setValue({ ...stateRef.current });
         }, [updatedProps]);
-        return <Context.Provider value={stateRef.current}>
+        return <Context.Provider value={value || stateRef.current}>
             {children}
         </Context.Provider>;
-    };
+    }
     State.useState = (defaultState) => {
         const [, setCounter] = useState(0);
         const ref = useRef();
-        let context = useContext(Context);
+        const context = useContext(Context);
         if (!context && defaultState && !ref.current) {
             const [proxy, callbacks] = createObjectProxy(defaultState);
             ref.current = { proxy, callbacks };
