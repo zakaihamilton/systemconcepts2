@@ -1,8 +1,8 @@
-import styles from "./Item.module.scss"
+import styles from "./Column.module.scss"
 import Table from "../../Table"
 import { TiArrowSortedDown, TiArrowSortedUp } from 'react-icons/ti';
 
-export default function HeaderItem({ id, icon, name }) {
+export default function Column({ id, icon, name }) {
     const tableState = Table.State.useState();
     const sortedByItem = tableState.sortId === id;
     let sortIcon = null;
