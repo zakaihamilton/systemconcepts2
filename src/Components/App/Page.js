@@ -7,9 +7,15 @@ export function usePageId() {
     return (location || "").split("/")[0];
 }
 
-export default function Page({ }) {
+export function usePage() {
     const pageId = usePageId();
-    const Component = pages[pageId];
+    const page = pages.find(page => page.id === pageId);
+    return page;
+}
+
+export default function Page({ }) {
+    const page = usePage();
+    const { Component } = page || {};
 
     return <Pane closable={false} style={{ backgroundColor: "white" }}>
         {Component && <Component />}

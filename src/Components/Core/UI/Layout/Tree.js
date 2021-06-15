@@ -17,7 +17,11 @@ export function treeMapper({ item, Item, children, update, depth = 0 }) {
             item.open = open;
             update();
         };
-        children.push(<Item key={item.id || item.name} {...item} depth={depth} id={item.id || item.name} open={open} setOpen={setOpen} />);
+        const id = item.id || item.name;
+        children.push(<Item key={id} {...item} depth={depth} id={id} open={open} setOpen={setOpen} />);
+    }
+    else if (item) {
+        children.push(<Item key={item} depth={depth} id={item} />);
     }
     if (open && Array.isArray(item?.children)) {
         for (const child of item.children) {

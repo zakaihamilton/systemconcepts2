@@ -1,4 +1,3 @@
-import { GrLanguage } from "react-icons/gr";
 import { MdSettings } from "react-icons/md";
 
 export default [
@@ -26,11 +25,7 @@ export default [
         name: "Settings",
         icon: <MdSettings style={{ marginTop: "4px" }} />,
         children: [
-            {
-                id: "languages",
-                name: "Languages",
-                icon: <GrLanguage style={{ marginTop: "4px" }} />
-            }
+            "languages"
         ]
     }
 ];

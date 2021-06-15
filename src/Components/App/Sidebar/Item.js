@@ -1,15 +1,23 @@
 import styles from "./Item.module.scss"
-import { FiChevronUp, FiChevronDown } from "react-icons/fi";
-import Button from "@components/Core/UI/Widgets/Button";
-import { useCallback, useEffect } from "react";
+import { FiChevronUp, FiChevronDown } from "react-icons/fi"
+import Button from "@components/Core/UI/Widgets/Button"
+import { useCallback } from "react"
 import Sidebar from "../Sidebar"
 import clsx from "clsx"
+import pages from "@components/App/Pages"
 
-export default function SidebarItem({ id, icon, name, index, count, children, depth, open, setOpen, style }) {
+export default function SidebarItem({ id, index, count, children, depth, open, setOpen, style, icon, name }) {
     const sidebarState = Sidebar.State.useState({});
     const isSelected = sidebarState?.selected === id;
     const hasChildren = children?.length;
     const paddingLeft = depth * 16;
+    if (!name) {
+        const page = pages.find(page => page.id === id);
+        if (page) {
+            name = page.name;
+            icon = page.icon;
+        }
+    }
     const onClick = useCallback(() => {
         if (hasChildren) {
             setOpen(!open);
