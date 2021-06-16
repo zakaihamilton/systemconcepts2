@@ -6,6 +6,7 @@ import { useMemo } from "react";
 import Translation from "@components/Core/Util/Translation"
 
 export default function Languages({ }) {
+    const languages = Translation.State.useState();
     const translation = Translation.useTranslation();
     const columns = useMemo(() => ([
         {
@@ -17,12 +18,11 @@ export default function Languages({ }) {
             name: translation.DIRECTION
         }
     ]), [translation]);
+    const count = Object.keys(languages).length;
     return <>
         <Table.State columns={columns}>
             <Table className={styles.table}>
-                <List className={styles.list} itemSize={40} count={100} Item={LanguagesItem}>
-
-                </List>
+                <List className={styles.list} itemSize={40} count={count} Item={LanguagesItem} />
             </Table>
         </Table.State>
     </>;
