@@ -5,8 +5,10 @@ import { useCallback } from "react"
 import Sidebar from "../Sidebar"
 import clsx from "clsx"
 import pages from "@components/App/Pages"
+import Translation from "@components/Core/Util/Translation"
 
 export default function SidebarItem({ id, index, count, children, depth, open, setOpen, style, icon, name }) {
+    const translation = Translation.useTranslation();
     const sidebarState = Sidebar.State.useState({});
     const isSelected = sidebarState?.selected === id;
     const hasChildren = children?.length;
@@ -34,6 +36,7 @@ export default function SidebarItem({ id, index, count, children, depth, open, s
     else if (index === count - 1) {
         classes.push(styles.last);
     }
+    name = translation[name] || name;
     return <div onClick={onClick} className={clsx(styles.root, ...classes)} style={{ ...style, paddingLeft }}>
         <div className={styles.icon}>
             {icon}

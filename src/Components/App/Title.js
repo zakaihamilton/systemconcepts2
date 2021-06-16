@@ -5,7 +5,7 @@ import AppButton from "./Title/AppButton";
 
 export default function Title() {
     return <Pane id="title" closable={false} divider={true} size="4em" classes={styles}>
-        <Bar style={{ paddingRight: "1em" }}>
+        <Bar className={styles.bar}>
             <AppButton />
             <div style={{ flex: 1 }} />
         </Bar>

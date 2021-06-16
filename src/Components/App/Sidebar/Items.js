@@ -22,7 +22,7 @@ export default [
     },
     {
         id: "settings",
-        name: "Settings",
+        name: "SETTINGS",
         icon: <MdSettings style={{ marginTop: "4px" }} />,
         children: [
             "languages"

@@ -1,7 +1,7 @@
 import { createState } from "@components/Core/Util/State";
 
 export default function Language({ children, direction, id, name }) {
-    <Language.State direction={direction} id={id} name={name}>
+    return <Language.State direction={direction} id={id} name={name}>
         {children}
     </Language.State>
 }
