@@ -14,7 +14,7 @@ export default function AppButton() {
     const label = page?.name || "App";
 
     return <>
-        <Tooltip title="App Menu">
+        <Tooltip title="Sidebar">
             <Button onClick={toggleAppMenu} icon={page?.icon}>
                 {label}
             </Button>
