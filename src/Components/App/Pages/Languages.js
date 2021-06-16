@@ -14,6 +14,10 @@ export default function Languages({ }) {
             name: translation.NAME
         },
         {
+            id: "id",
+            name: translation.ID
+        },
+        {
             id: "direction",
             name: translation.DIRECTION
         }
