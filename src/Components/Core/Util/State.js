@@ -51,7 +51,7 @@ export function createState(props) {
         }, []);
         return proxy;
     };
-    State.Notify = function NotifyState({ children, ...props }) {
+    State.Notify = function NotifyState({ ...props }) {
         let context = useContext(Context);
         const keys = Object.keys(props);
         const values = Object.values(props);
@@ -71,7 +71,7 @@ export function createState(props) {
                 }
             };
         }, [context, ...keys, ...values]);
-        return <>{children}</>;
+        return null;
     };
     return State;
 }

@@ -14,7 +14,7 @@ export default function AppButton() {
     };
 
     let label = page?.name || "APP";
-    label = translation[label] || label;
+    label = translation?.[label] || label;
 
     return <>
         <Tooltip title="Sidebar">

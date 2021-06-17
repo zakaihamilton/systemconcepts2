@@ -11,15 +11,15 @@ export default function Languages({ }) {
     const columns = useMemo(() => ([
         {
             id: "name",
-            name: translation.NAME
+            name: translation?.NAME
         },
         {
             id: "id",
-            name: translation.ID
+            name: translation?.ID
         },
         {
             id: "direction",
-            name: translation.DIRECTION
+            name: translation?.DIRECTION
         }
     ]), [translation]);
     const count = Object.keys(languages).length;

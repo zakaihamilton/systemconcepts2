@@ -6,21 +6,26 @@ import Sidebar from "@components/App/Sidebar"
 import Page from "@components/App/Page"
 import Languages from "@components/App/Languages"
 import Translation from "@components/Core/Util/Translation"
+import Language from "@components/Core/Util/Language"
 
 export default function App() {
-  return (<Translation {...Languages}>
-    <Head>
-      <title>System Concepts</title>
-      <link rel="icon" href="/favicon.ico" />
-    </Head>
-    <SplitPane orientation="horizontal">
-      <Title />
-      <Pane id="main" closable={false} style={{ backgroundColor: "white" }}>
-        <SplitPane>
-          <Sidebar />
-          <Page />
+  return (
+    <Language {...Languages.eng}>
+      <Translation {...Languages}>
+        <Head>
+          <title>System Concepts</title>
+          <link rel="icon" href="/favicon.ico" />
+        </Head>
+        <SplitPane orientation="horizontal">
+          <Title />
+          <Pane id="main" closable={false} style={{ backgroundColor: "white" }}>
+            <SplitPane>
+              <Sidebar />
+              <Page />
+            </SplitPane>
+          </Pane>
         </SplitPane>
-      </Pane>
-    </SplitPane>
-  </Translation>);
+      </Translation>
+    </Language>
+  );
 }

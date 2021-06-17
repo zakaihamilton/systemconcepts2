@@ -36,7 +36,7 @@ export default function SidebarItem({ id, index, count, children, depth, open, s
     else if (index === count - 1) {
         classes.push(styles.last);
     }
-    name = translation[name] || name;
+    name = translation?.[name] || name;
     return <div onClick={onClick} className={clsx(styles.root, ...classes)} style={{ ...style, paddingLeft }}>
         <div className={styles.icon}>
             {icon}
