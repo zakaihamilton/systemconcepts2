@@ -20,12 +20,3 @@
     transition: opacity 0s linear 0.25s;
     background-color: transparent;
 }
-
-.divider:hover {
-    opacity: 1;
-    background-color: rgb(36, 159, 224);
-}
-
-.divider:hover:active {
-    background-color: rgb(36, 159, 224, 0.5);
-}
