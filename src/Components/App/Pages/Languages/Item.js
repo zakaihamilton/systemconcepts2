@@ -4,11 +4,12 @@ import Bar from "@components/Core/UI/Layout/Bar"
 
 export default function LanguagesItem({ index, style }) {
     const languages = Translation.State.useState();
+    const translation = Translation.useTranslation();
     const items = Object.keys(languages).map(key => languages[key]);
     const item = items[index];
     return <Bar className={styles.root} style={style}>
         <div className={styles.field}>{item?.name}</div>
         <div className={styles.field}>{item?.id}</div>
-        <div className={styles.field}>{item?.direction}</div>
+        <div className={styles.field}>{translation[item?.direction.toUpperCase()]}</div>
     </Bar>;
 }

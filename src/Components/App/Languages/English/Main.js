@@ -4,5 +4,7 @@ export default {
     NAME: "Name",
     DIRECTION: "Direction",
     LANGUAGES: "Languages",
-    SETTINGS: "Settings"
+    SETTINGS: "Settings",
+    LTR: "Left to Right",
+    RTL: "Right to Left"
 }

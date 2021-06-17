@@ -4,5 +4,7 @@ export default {
     NAME: "שם",
     DIRECTION: "כיוון",
     LANGUAGES: "שפה",
-    SETTINGS: "הגדרות"
+    SETTINGS: "הגדרות",
+    LTR: "משמאל לימין",
+    RTL: "מימין לשמאל"
 }
