@@ -7,7 +7,7 @@ import Language from "@components/Core/Util/Language"
 import { useListener } from "@components/Core/Util/Listener"
 import { useObject } from "@components/Core/Util/Object"
 
-export default function List({ className, orientation = "vertical", overscanCount = 2, baseOffset = 0, itemSize = 0, count, Item, children }) {
+export default function List({ className, orientation = "vertical", overscanCount = 2, baseOffset = 0, itemSize = 0, count, gap = 0, Item, children }) {
     const listRef = useRef();
     const [listWidth, listHeight] = useSize(listRef);
     const listState = List.State.useState({ offset: 0 });
@@ -79,7 +79,7 @@ export default function List({ className, orientation = "vertical", overscanCoun
                     </List.Item>);
                 }
             }
-            offset += itemSize;
+            offset += itemSize + gap;
         }
         return items;
     }, [listState?.offset, containerLength, listLength, listWidth, listHeight, Item || children]);

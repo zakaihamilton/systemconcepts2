@@ -26,7 +26,7 @@ export default function Languages({ }) {
     return <>
         <Table.State columns={columns}>
             <Table className={styles.table}>
-                <List className={styles.list} itemSize={40} count={count} Item={LanguagesItem} />
+                <List className={styles.list} itemSize={40} gap={6} count={count} Item={LanguagesItem} />
             </Table>
         </Table.State>
     </>;
