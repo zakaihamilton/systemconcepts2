@@ -1,6 +1,7 @@
 import styles from "./Column.module.scss"
 import Table from "../../Table"
-import { TiArrowSortedDown, TiArrowSortedUp } from 'react-icons/ti';
+import { TiArrowSortedDown, TiArrowSortedUp } from 'react-icons/ti'
+import clsx from "clsx"
 
 export default function Column({ id, icon, name }) {
     const tableState = Table.State.useState();
@@ -23,7 +24,7 @@ export default function Column({ id, icon, name }) {
             tableState.sortDirection = "asc";
         }
     };
-    return <div className={styles.root} onClick={onClick}>
+    return <div className={clsx(styles.root, tableState?.sortable && styles.sortable)} onClick={tableState?.sortable ? onClick : null}>
         {!!icon && <div className={styles.icon}>
             {name}
         </div>}
