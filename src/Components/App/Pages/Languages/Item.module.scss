@@ -15,7 +15,12 @@
 
 .root:hover:active {
     background-color: white;
-    filter: invert(100%)
+    filter: invert(100%);
+}
+
+.root.selected {
+    background-color: white;
+    filter: invert(100%);
 }
 
 .field {
