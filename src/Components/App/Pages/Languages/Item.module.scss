@@ -18,6 +18,10 @@
     filter: invert(100%);
 }
 
+.root:not(.selected) {
+    cursor: pointer;
+}
+
 .root.selected {
     background-color: white;
     filter: invert(100%);

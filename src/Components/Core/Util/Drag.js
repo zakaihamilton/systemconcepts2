@@ -2,6 +2,7 @@ import { useRef, useState } from "react"
 import { useRefCallback } from "@components/Core/Util/Ref"
 import { useListeners } from "./Listener"
 import { createState } from "@components/Core/Util/State";
+import Language from "@components/Core/Util/Language";
 
 export function createDrag() {
     const State = createState();
@@ -11,6 +12,7 @@ export function createDrag() {
         </State>;
     }
     Drag.useDrag = (dragRef, objectRef, cb, options) => {
+        const language = Language.useLanguage();
         const { orientation, containerRef } = State.useState() || {};
         const [, setCounter] = useState(0);
         const [register, unregister] = useListeners();
@@ -18,8 +20,14 @@ export function createDrag() {
         useRefCallback(dragRef, handle => {
             const updatePos = e => {
                 const { dragRect, objectRect, containerRect } = info.current;
-                let x = (e.clientX - objectRect.left) + (dragRect.width / 2);
+                let x = 0;
                 let y = (e.clientY - objectRect.top) + (dragRect.height / 2);
+                if (language.direction === "ltr") {
+                    x = (e.clientX - objectRect.left) + (dragRect.width / 2);
+                }
+                else {
+                    x = (objectRect.left + objectRect.width - e.clientX) + (dragRect.width / 2);
+                }
                 if (options?.minSize) {
                     x = Math.max(x, options?.minSize);
                     y = Math.max(y, options?.minSize);
