@@ -1,7 +1,12 @@
 import { useEffect, useState } from "react";
+import Language from "@components/Core/Util/Language";
 
 export function useResizeObserver(ref) {
     const [counter, setCounter] = useState(0);
+    const language = Language.useLanguage();
+    useEffect(() => {
+        setCounter(counter => counter + 1);
+    }, [language?.direction]);
     useEffect(() => {
         const handle = ref?.current;
         if (!handle) {
