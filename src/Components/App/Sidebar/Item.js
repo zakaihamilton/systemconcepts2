@@ -6,13 +6,16 @@ import Sidebar from "../Sidebar"
 import clsx from "clsx"
 import pages from "@components/App/Pages"
 import Translation from "@components/Core/Util/Translation"
+import Language from "@components/Core/Util/Language"
 
 export default function SidebarItem({ id, index, count, children, depth, open, setOpen, style, icon, name }) {
     const translation = Translation.useTranslation();
+    const language = Language.useLanguage();
     const sidebarState = Sidebar.State.useState({});
     const isSelected = sidebarState?.selected === id;
     const hasChildren = children?.length;
-    const paddingLeft = depth * 16;
+    const paddingLeft = language?.direction === "ltr" && depth * 16;
+    const paddingRight = language?.direction === "rtl" && depth * 16;
     if (!name) {
         const page = pages.find(page => page.id === id);
         if (page) {
@@ -37,7 +40,7 @@ export default function SidebarItem({ id, index, count, children, depth, open, s
         classes.push(styles.last);
     }
     name = translation?.[name] || name;
-    return <div onClick={onClick} className={clsx(styles.root, ...classes)} style={{ ...style, paddingLeft }}>
+    return <div onClick={onClick} className={clsx(styles.root, ...classes)} style={{ ...style, paddingLeft, paddingRight }}>
         <div className={styles.icon}>
             {icon}
         </div>
