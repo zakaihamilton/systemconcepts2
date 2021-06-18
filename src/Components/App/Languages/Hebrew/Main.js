@@ -6,5 +6,6 @@ export default {
     LANGUAGES: "שפה",
     SETTINGS: "הגדרות",
     LTR: "משמאל לימין",
-    RTL: "מימין לשמאל"
+    RTL: "מימין לשמאל",
+    CLOSE: "סגור"
 }

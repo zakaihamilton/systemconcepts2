@@ -6,5 +6,6 @@ export default {
     LANGUAGES: "Languages",
     SETTINGS: "Settings",
     LTR: "Left to Right",
-    RTL: "Right to Left"
+    RTL: "Right to Left",
+    CLOSE: "Close"
 }
