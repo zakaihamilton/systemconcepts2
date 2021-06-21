@@ -17,7 +17,7 @@ export default function AppButton() {
     label = translation?.[label] || label;
 
     return <>
-        <Tooltip title="Sidebar">
+        <Tooltip title={translation?.SIDEBAR}>
             <Button onClick={toggleAppMenu} icon={page?.icon}>
                 {label}
             </Button>

@@ -7,5 +7,6 @@ export default {
     SETTINGS: "הגדרות",
     LTR: "משמאל לימין",
     RTL: "מימין לשמאל",
-    CLOSE: "סגור"
+    CLOSE: "סגור",
+    SIDEBAR: "סרגל צד"
 }

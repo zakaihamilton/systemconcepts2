@@ -8,7 +8,7 @@ import pages from "@components/App/Pages"
 import Translation from "@components/Core/Util/Translation"
 import Language from "@components/Core/Util/Language"
 
-export default function SidebarItem({ id, index, count, children, depth, open, setOpen, style, icon, name }) {
+export default function SidebarItem({ id, index, count, children, onClick, depth, open, setOpen, style, icon, name }) {
     const translation = Translation.useTranslation();
     const language = Language.useLanguage();
     const sidebarState = Sidebar.State.useState({});
@@ -23,7 +23,7 @@ export default function SidebarItem({ id, index, count, children, depth, open, s
             icon = page.icon;
         }
     }
-    const onClick = useCallback(() => {
+    const onItemClick = useCallback(() => {
         if (hasChildren) {
             setOpen(!open);
         }
@@ -40,7 +40,7 @@ export default function SidebarItem({ id, index, count, children, depth, open, s
         classes.push(styles.last);
     }
     name = translation?.[name] || name;
-    return <div onClick={onClick} className={clsx(styles.root, ...classes)} style={{ ...style, paddingLeft, paddingRight }}>
+    return <div onClick={onClick || onItemClick} className={clsx(styles.root, ...classes)} style={{ ...style, paddingLeft, paddingRight }}>
         <div className={styles.icon}>
             {icon}
         </div>

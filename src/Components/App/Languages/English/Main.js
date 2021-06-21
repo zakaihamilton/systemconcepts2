@@ -7,5 +7,6 @@ export default {
     SETTINGS: "Settings",
     LTR: "Left to Right",
     RTL: "Right to Left",
-    CLOSE: "Close"
+    CLOSE: "Close",
+    SIDEBAR: "Sidebar"
 }
