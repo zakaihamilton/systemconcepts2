@@ -7,8 +7,9 @@ import clsx from "clsx"
 import pages from "@components/App/Pages"
 import Translation from "@components/Core/Util/Translation"
 import Language from "@components/Core/Util/Language"
+import Handler from "@components/Core/Util/Handler"
 
-export default function SidebarItem({ id, index, count, children, onClick, depth, open, setOpen, style, icon, name }) {
+export default function SidebarItem({ id, index, count, children, handler, onClick, depth, open, setOpen, style, icon, name }) {
     const translation = Translation.useTranslation();
     const language = Language.useLanguage();
     const sidebarState = Sidebar.State.useState({});
@@ -39,16 +40,19 @@ export default function SidebarItem({ id, index, count, children, onClick, depth
     else if (index === count - 1) {
         classes.push(styles.last);
     }
-    name = translation?.[name] || name;
-    return <div onClick={onClick || onItemClick} className={clsx(styles.root, ...classes)} style={{ ...style, paddingLeft, paddingRight }}>
-        <div className={styles.icon}>
-            {icon}
-        </div>
-        <div className={clsx(styles.label, ...classes)}>
-            {name}
-        </div>
-        <Button hover={false} style={{ visibility: hasChildren ? "visible" : "hidden", marginTop: "3px" }}>
-            {!!open ? <FiChevronDown /> : <FiChevronUp />}
-        </Button>
-    </div>;
+    return <Handler handler={handler} onClick={onClick} icon={icon} name={name}>
+        {({ onClick, icon, name }) => {
+            name = translation?.[name] || name;
+            return <div onClick={onClick || onItemClick} className={clsx(styles.root, ...classes)} style={{ ...style, paddingLeft, paddingRight }}>
+                <div className={styles.icon}>
+                    {icon}
+                </div>
+                <div className={clsx(styles.label, ...classes)}>
+                    {name}
+                </div>
+                <Button hover={false} style={{ visibility: hasChildren ? "visible" : "hidden", marginTop: "3px" }}>
+                    {!!open ? <FiChevronDown /> : <FiChevronUp />}
+                </Button>
+            </div>;
+        }}</Handler>
 }

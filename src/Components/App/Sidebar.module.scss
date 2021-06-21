@@ -11,6 +11,10 @@
     border-radius: 0.5em;
 }
 
+html[data-theme='dark'] .pane {
+    background-color: darkgray;
+}
+
 .list {
     margin-top: 3em;
 }

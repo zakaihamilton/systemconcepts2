@@ -17,7 +17,7 @@ export default function Page({ }) {
     const page = usePage();
     const { Component } = page || {};
 
-    return <Pane closable={false} style={{ backgroundColor: "white" }}>
+    return <Pane closable={false}>
         {Component && <Component />}
     </Pane>;
 }

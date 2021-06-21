@@ -8,5 +8,7 @@ export default {
     LTR: "משמאל לימין",
     RTL: "מימין לשמאל",
     CLOSE: "סגור",
-    SIDEBAR: "סרגל צד"
+    SIDEBAR: "סרגל צד",
+    LIGHT_MODE: "מצב בהיר",
+    DARK_MODE: "מצב כהה"
 }

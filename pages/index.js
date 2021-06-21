@@ -18,7 +18,7 @@ export default function App() {
         </Head>
         <SplitPane orientation="horizontal">
           <Title />
-          <Pane id="main" closable={false} style={{ backgroundColor: "white" }}>
+          <Pane id="main" closable={false}>
             <SplitPane>
               <Sidebar />
               <Page />

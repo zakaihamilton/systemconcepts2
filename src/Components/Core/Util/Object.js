@@ -53,3 +53,7 @@ export function useObject(object) {
     });
     return ref.current;
 }
+
+export function cleanObject(object) {
+    return Object.fromEntries(Object.entries(object).filter(([_, val]) => typeof val !== "undefined"));
+}

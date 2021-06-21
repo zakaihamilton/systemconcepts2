@@ -8,5 +8,7 @@ export default {
     LTR: "Left to Right",
     RTL: "Right to Left",
     CLOSE: "Close",
-    SIDEBAR: "Sidebar"
+    SIDEBAR: "Sidebar",
+    LIGHT_MODE: "Light Mode",
+    DARK_MODE: "Dark Mode"
 }

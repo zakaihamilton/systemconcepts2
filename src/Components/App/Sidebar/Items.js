@@ -1,4 +1,5 @@
 import { MdSettings } from "react-icons/md";
+import DarkMode from "@components/Core/Util/DarkMode"
 
 export default [
     {
@@ -25,7 +26,12 @@ export default [
         name: "SETTINGS",
         icon: <MdSettings style={{ marginTop: "4px" }} />,
         children: [
-            "languages"
+            "languages",
+            {
+                id: "darkMode",
+                name: "DARK_MODE",
+                handler: DarkMode
+            }
         ]
     }
 ];
