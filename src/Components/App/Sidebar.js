@@ -19,7 +19,7 @@ export default function Sidebar() {
     const paneClasses = { root: styles.root, pane: styles.pane, divider: styles.divider };
     return <Pane.State visible={sidebarState?.visible}>
         <Pane.State.Notify visible={visibleChanged} />
-        <Pane classes={paneClasses} divider={true} minSize={250} maxSize={width / 2} size="20em">
+        <Pane classes={paneClasses} divider={true} minSize={250} maxSize={width / 3} size="20em">
             <Tree className={styles.list} root={items} itemSize={40} mapper={treeMapper} Item={SidebarItem} />
         </Pane>
     </Pane.State>;
