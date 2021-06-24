@@ -1,8 +1,18 @@
 .root {
-    background: rgb(36, 159, 224);
-    background: linear-gradient(90deg, rgba(36, 159, 224, 1) 42%, rgba(81, 141, 210, 1) 72%);
-    padding-top: 0.5em;
+    background: linear-gradient(62deg, #8ec5fc, #e0c3fc);
     padding-left: 0.5em;
+}
+
+html[dir="rtl"] .root {
+    background: linear-gradient(62deg, #e0c3fc, #8ec5fc);
+}
+
+html[data-theme='dark'] .root {
+    background: radial-gradient(circle farthest-corner at 10% 20%, #003459 0%, #0076b6 90%);
+}
+
+html[data-theme='dark'][dir="rtl"] .root {
+    background: radial-gradient(circle farthest-corner at 10% 20%, #0076b6 0%, #003459 90%);
 }
 
 .bar {

@@ -3,6 +3,7 @@ import Tooltip from "@components/Core/UI/Widgets/Tooltip"
 import Sidebar from "@components/App/Sidebar"
 import { usePage } from "@components/App/Page"
 import Translation from "@components/Core/Util/Translation"
+import styles from "./AppButton.module.scss"
 
 export default function AppButton() {
     const translation = Translation.useTranslation();
@@ -18,7 +19,7 @@ export default function AppButton() {
 
     return <>
         <Tooltip title={translation?.SIDEBAR}>
-            <Button onClick={toggleAppMenu} icon={page?.icon}>
+            <Button className={styles.appMenu} onClick={toggleAppMenu} icon={page?.icon}>
                 {label}
             </Button>
         </Tooltip>

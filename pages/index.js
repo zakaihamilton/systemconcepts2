@@ -7,7 +7,6 @@ import Page from "@components/App/Page"
 import Languages from "@components/App/Languages"
 import Translation from "@components/Core/Util/Translation"
 import Language from "@components/Core/Util/Language"
-import AppBar from "src/Components/App/AppBar"
 
 export default function App() {
   return (
@@ -25,7 +24,6 @@ export default function App() {
               <Page />
             </SplitPane>
           </Pane>
-          <AppBar />
         </SplitPane>
       </Translation>
     </Language>
