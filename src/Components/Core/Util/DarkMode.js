@@ -12,7 +12,8 @@ export default function DarkMode(props) {
         document.documentElement.setAttribute('data-theme', mode);
     }, [state?.darkMode]);
     const name = state.darkMode ? "LIGHT_MODE" : "DARK_MODE";
-    const icon = state.darkMode ? <MdBrightnessHigh style={{ marginTop: "4px" }} /> : <MdBrightness4 style={{ marginTop: "4px" }} />;
+    const iconStyles = {};
+    const icon = state.darkMode ? <MdBrightnessHigh style={iconStyles} /> : <MdBrightness4 style={iconStyles} />;
     return {
         ...props, onClick, name, icon
     };

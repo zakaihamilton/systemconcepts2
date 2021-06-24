@@ -5,7 +5,7 @@ export default [
     {
         id: "languages",
         name: "LANGUAGES",
-        icon: <GrLanguage style={{ marginTop: "4px" }} />,
+        icon: <GrLanguage />,
         Component: Languages
     }
 ]

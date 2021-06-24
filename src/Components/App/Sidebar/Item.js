@@ -44,7 +44,7 @@ export default function SidebarItem({ id, index, count, children, handler, onCli
         {({ onClick, icon, name }) => {
             name = translation?.[name] || name;
             return <div onClick={onClick || onItemClick} className={clsx(styles.root, ...classes)} style={{ ...style, paddingLeft, paddingRight }}>
-                <div className={styles.icon}>
+                <div className={clsx(styles.icon, ...classes)}>
                     {icon}
                 </div>
                 <div className={clsx(styles.label, ...classes)}>

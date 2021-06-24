@@ -21,4 +21,9 @@ a {
   height: 100vh;
   overflow: hidden;
   display: flex;
+  background-color: white;
+}
+
+html[data-theme='dark'] #__next {
+  background-color: #161625;
 }
