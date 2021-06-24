@@ -1,5 +1,5 @@
 import { createState } from "./State"
-import { MdInvertColors } from "react-icons/md"
+import { MdBrightnessHigh, MdBrightness4 } from "react-icons/md"
 import { useEffect } from "react";
 
 export default function DarkMode(props) {
@@ -12,8 +12,9 @@ export default function DarkMode(props) {
         document.documentElement.setAttribute('data-theme', mode);
     }, [state?.darkMode]);
     const name = state.darkMode ? "LIGHT_MODE" : "DARK_MODE";
+    const icon = state.darkMode ? <MdBrightnessHigh style={{ marginTop: "4px" }} /> : <MdBrightness4 style={{ marginTop: "4px" }} />;
     return {
-        ...props, onClick, name, icon: <MdInvertColors style={{ marginTop: "4px" }} />
+        ...props, onClick, name, icon
     };
 }
 
