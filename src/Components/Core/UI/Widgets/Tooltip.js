@@ -14,17 +14,17 @@ export default function Tooltip({ className, title, description, children }) {
     const hoverRegion = useRegion(hoverRef);
     const tooltipMounted = useTimer(250, 1000, hover || modalHover);
     const tooltipVisible = useTimer(500, 250, hover || modalHover);
-    const tooltipValid = title && hoverRegion.left && hoverRegion.right;
+    const tooltipValid = title && hoverRegion.right;
     let [initialPos, setInitialPos] = useState({});
     useEffect(() => {
         let left = hoverRegion.left - hoverRegion.width;
-        const top = hoverRegion.bottom - hoverRegion.height;
+        const top = hoverRegion.bottom - hoverRegion.height + 6;
         if (left > window.innerWidth / 2) {
-            const right = window.innerWidth - left - hoverRegion.width + 5;
+            const right = window.innerWidth - left - hoverRegion.width + 6;
             setInitialPos({ right, top });
         }
         else {
-            left = hoverRegion.right + 5;
+            left = hoverRegion.right + 6;
             setInitialPos({ left, top });
         }
     }, [hoverRegion]);
