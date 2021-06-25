@@ -18,8 +18,8 @@ export default function AppButton() {
     label = translation?.[label] || label;
 
     return <>
-        <Tooltip title={translation?.SIDEBAR}>
-            <Button className={styles.appMenu} onClick={toggleAppMenu} icon={page?.icon}>
+        <Tooltip title={translation?.SIDEBAR} className={styles.tooltip}>
+            <Button className={styles.button} onClick={toggleAppMenu} icon={page?.icon}>
                 {label}
             </Button>
         </Tooltip>
