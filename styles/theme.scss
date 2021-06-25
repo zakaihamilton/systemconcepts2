@@ -1,0 +1,17 @@
+:root {
+    --primary-color: #818cab;
+    --secondary-color: #536390;
+    --text-color: #000;
+    --bg-color: #fff;
+    --border-color: rgba(0, 0, 0, 0.12);
+    --heading-color: lightgray;
+}
+
+html[data-theme='dark'] {
+    --primary-color: #9A97F3;
+    --secondary-color: #818cab;
+    --text-color: #eee;
+    --bg-color: #121212;
+    --border-color: rgba(255, 255, 255, 0.12);
+    --heading-color: #333;
+}

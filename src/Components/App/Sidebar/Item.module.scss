@@ -7,7 +7,6 @@
 
 html[data-theme='dark'] .root {
     color: white;
-    background-color: #0c0c1b;
 }
 
 .root.first {
@@ -15,11 +14,7 @@ html[data-theme='dark'] .root {
 }
 
 .root.selected {
-    background-color: white;
-}
-
-html[data-theme='dark'] .root.selected {
-    background-color: #161625;
+    background-color: var(--bg-color);
 }
 
 .root:hover:not(.selected):not(.parent) {

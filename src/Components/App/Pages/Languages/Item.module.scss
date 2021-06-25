@@ -1,19 +1,17 @@
 .root {
     display: flex;
     align-items: center;
-    background-color: white;
-    border-radius: 0.5em;
+    border-bottom: 2px solid transparent;
     padding-left: 0.5em;
     padding-right: 0.5em;
 }
 
 .root:hover {
-    background-color: lightblue;
+    background-color: var(--secondary-color);
 }
 
 .root:hover:active {
-    background-color: white;
-    filter: invert(100%);
+    background-color: var(--primary-color);
 }
 
 .root:not(.selected) {
@@ -21,8 +19,7 @@
 }
 
 .root.selected {
-    background-color: white;
-    filter: invert(100%);
+    background-color: var(--primary-color);
 }
 
 .field {

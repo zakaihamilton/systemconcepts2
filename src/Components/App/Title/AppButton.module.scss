@@ -5,9 +5,5 @@
 .button {
     height: 100%;
     padding-right: 1em;
-    border-right: 1px solid rgba(0, 0, 0, 0.12);
-}
-
-html[data-theme='dark'] .button {
-    filter: invert(100%);
+    border-right: 1px solid var(--border-color);
 }

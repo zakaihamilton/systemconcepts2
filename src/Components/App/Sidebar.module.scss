@@ -6,17 +6,9 @@
 }
 
 .pane {
-    background-color: lightgray;
-    margin: 0.5em;
-    border-radius: 0.5em;
-}
-
-html[data-theme='dark'] .pane {
-    background-color: #0c0c1d;
+    background-color: var(--heading-color);
 }
 
 .divider {
-    opacity: 0;
-    transition: opacity 0s linear 0.25s;
-    background-color: transparent;
+    background-color: var(--border-color);
 }

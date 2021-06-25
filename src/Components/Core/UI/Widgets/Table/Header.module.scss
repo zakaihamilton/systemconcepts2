@@ -3,13 +3,7 @@
     align-items: center;
     height: 3em;
     flex: 1;
-    background-color: lightgray;
-    margin: 0.5em;
-    border-radius: 0.5em;
+    background-color: var(--heading-color);
     padding-left: 0.5em;
     padding-right: 0.5em;
-}
-
-html[data-theme='dark'] .root {
-    background-color: darkgray;
 }
