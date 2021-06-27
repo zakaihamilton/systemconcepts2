@@ -4,14 +4,12 @@
     border-bottom: 2px solid transparent;
     padding-left: 0.5em;
     padding-right: 0.5em;
+    border-bottom: 2px solid transparent;
 }
 
-.root:hover {
-    background-color: var(--secondary-color);
-}
-
-.root:hover:active {
-    background-color: var(--primary-color);
+.root:hover:not(.selected) {
+    background-color: var(--hover-background);
+    border-bottom: 2px solid var(--hover-color);
 }
 
 .root:not(.selected) {

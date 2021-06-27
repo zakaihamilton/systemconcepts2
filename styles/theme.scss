@@ -5,13 +5,17 @@
     --bg-color: #fff;
     --border-color: rgba(0, 0, 0, 0.12);
     --heading-color: lightgray;
+    --hover-color: #8EC5FC;
+    --hover-background: rgb(232, 244, 253);
 }
 
 html[data-theme='dark'] {
-    --primary-color: #9A97F3;
+    --primary-color: #536390;
     --secondary-color: #818cab;
     --text-color: #eee;
     --bg-color: #121212;
     --border-color: rgba(255, 255, 255, 0.12);
     --heading-color: #333;
+    --hover-color: rgba(0, 168, 232, 1);
+    --hover-background: rgb(3, 14, 24);
 }
