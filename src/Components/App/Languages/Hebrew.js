@@ -1,8 +1,10 @@
 import Main from "./Hebrew/Main"
 
-export default {
+const Language = {
     id: "heb",
     name: "עברית",
     direction: "rtl",
     items: { ...Main }
 };
+
+export default Language;

@@ -19,7 +19,7 @@ export function useResizeObserver(ref) {
         return () => {
             resizeObserver.unobserve(handle);
         }
-    }, [ref?.current]);
+    }, [ref]);
 
     return counter;
 }

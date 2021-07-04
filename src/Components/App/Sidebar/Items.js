@@ -1,7 +1,7 @@
 import { MdSettings } from "react-icons/md";
 import DarkMode from "@components/Core/Util/DarkMode"
 
-export default [
+const Items = [
     {
         name: "Test",
         children: [
@@ -35,3 +35,5 @@ export default [
         ]
     }
 ];
+
+export default Items;

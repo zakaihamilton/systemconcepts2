@@ -1,8 +1,10 @@
 import Main from "./English/Main"
 
-export default {
+const Language = {
     id: "eng",
     name: "English",
     direction: "ltr",
     items: { ...Main }
 };
+
+export default Language;

@@ -7,7 +7,8 @@ export function useRefCallback(ref, callback, depends = []) {
         }
         const destructor = callback(ref.current);
         return destructor;
-    }, [ref && ref.current, ...depends]);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [ref, ...depends]);
 }
 
 export function useRefById(id) {

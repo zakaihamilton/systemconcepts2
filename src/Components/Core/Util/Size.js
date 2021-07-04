@@ -14,7 +14,7 @@ export function useSize(ref) {
         if (width !== size.width || height !== size.height) {
             setSize({ width, height });
         }
-    }, [ref?.current, counter]);
+    }, [counter, ref, size.width, size.height]);
 
     return [size?.width, size?.height];
 }

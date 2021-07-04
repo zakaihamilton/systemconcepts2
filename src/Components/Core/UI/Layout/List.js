@@ -46,11 +46,11 @@ export default function List({ className, orientation = "vertical", overscanCoun
             }
         }
         listState.offset = offset;
-    }, [orientation]);
+    }, [orientation, listRef, direction, listState, listWidth]);
 
     React.useEffect(() => {
         onScroll();
-    }, [direction, orientation]);
+    }, [onScroll]);
 
     items = useMemo(() => {
         let items = [];
@@ -82,7 +82,7 @@ export default function List({ className, orientation = "vertical", overscanCoun
             offset += itemSize + gap;
         }
         return items;
-    }, [listState?.offset, containerLength, listLength, listWidth, listHeight, Item || children]);
+    }, [baseOffset, count, itemSize, overscanCount, listState?.offset, containerLength, gap, orientation, Item, listWidth, listHeight, children]);
 
     const endStyles = useObject({ [orientation === "vertical" ? "top" : "left"]: listLength });
 

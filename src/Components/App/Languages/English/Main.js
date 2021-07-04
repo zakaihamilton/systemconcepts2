@@ -1,4 +1,4 @@
-export default {
+const English = {
     APP: "App",
     ID: "ID",
     NAME: "Name",
@@ -11,4 +11,6 @@ export default {
     SIDEBAR: "Sidebar",
     LIGHT_MODE: "Light Mode",
     DARK_MODE: "Dark Mode"
-}
+};
+
+export default English;

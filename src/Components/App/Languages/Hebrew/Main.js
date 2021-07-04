@@ -1,4 +1,4 @@
-export default {
+const Hebrew = {
     APP: "תוכנית",
     ID: "מזהה",
     NAME: "שם",
@@ -11,4 +11,6 @@ export default {
     SIDEBAR: "סרגל צד",
     LIGHT_MODE: "מצב בהיר",
     DARK_MODE: "מצב כהה"
-}
+};
+
+export default Hebrew;

@@ -37,7 +37,7 @@ export default function Tree({ Item, root, mapper, depends = [], children, ...pr
     const update = useCallback(() => {
         setCounter(counter => counter + 1);
     }, []);
-    const items = useMemo(() => (typeof mapper === "function" ? mapper({ item: root, Item, children: [], update }) : children), [root, children, counter, ...depends]);
+    const items = useMemo(() => (typeof mapper === "function" ? mapper({ item: root, Item, children: [], update }) : children), [mapper, root, Item, update, children]);
     return <List {...props}>
         {items}
     </List >;

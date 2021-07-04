@@ -32,7 +32,7 @@ export default function SidebarItem({ id, index, count, children, handler, onCli
             sidebarState.selected = id;
             window.location = "#" + id;
         }
-    }, [open]);
+    }, [open, hasChildren, id, sidebarState, setOpen]);
     const classes = [hasChildren && styles.parent, isSelected && styles.selected];
     if (!index) {
         classes.push(styles.first);

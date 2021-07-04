@@ -1,7 +1,9 @@
 import English from "./Languages/English"
 import Hebrew from "./Languages/Hebrew"
 
-export default {
+const Languages = {
     eng: English,
     heb: Hebrew
 };
+
+export default Languages;

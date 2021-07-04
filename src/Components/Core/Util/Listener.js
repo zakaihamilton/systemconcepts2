@@ -2,6 +2,17 @@ import { useEffect, useRef, useCallback } from "react";
 
 export function useListeners() {
     const items = useRef([]);
+    const unregister = useCallback((target, type) => {
+        const index = items.current.findIndex(item => item.target === target && item.type === type);
+        if (index === -1) {
+            return;
+        }
+        const item = items.current[index];
+        if (item.target) {
+            item.target.removeEventListener(item.type, item.cb);
+        }
+        items.current.splice(index, 1);
+    }, []);
     const register = useCallback((target, type, cb, ...args) => {
         const index = items.current.findIndex(item => item.target === target && item.type === type);
         if (index !== -1) {
@@ -15,21 +26,11 @@ export function useListeners() {
         if (target && type && cb) {
             target.addEventListener(type, cb, ...args);
         }
-    }, []);
-    const unregister = useCallback((target, type) => {
-        const index = items.current.findIndex(item => item.target === target && item.type === type);
-        if (index === -1) {
-            return;
-        }
-        const item = items.current[index];
-        if (item.target) {
-            item.target.removeEventListener(item.type, item.cb);
-        }
-        items.current.splice(index, 1);
-    }, []);
+    }, [unregister]);
     useEffect(() => {
+        const current = items.current;
         return () => {
-            for (const item of items.current) {
+            for (const item of current) {
                 if (item.target) {
                     item.target.removeEventListener(item.type, item.cb);
                 }
@@ -39,7 +40,7 @@ export function useListeners() {
     return [register, unregister];
 }
 
-export function useListener(target, type, cb, depends = [], ...args) {
+export function useListener(target, type, cb, ...args) {
     useEffect(() => {
         if (!target) {
             return;
@@ -48,5 +49,5 @@ export function useListener(target, type, cb, depends = [], ...args) {
         return () => {
             target.removeEventListener(type, cb);
         };
-    }, [target, type, cb, ...depends, ...args]);
+    }, [target, type, cb, args]);
 }

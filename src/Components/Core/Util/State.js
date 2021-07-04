@@ -48,7 +48,7 @@ export function createState(props) {
                     callbacks.remove(handler);
                 }
             };
-        }, []);
+        }, [callbacks]);
         return proxy;
     };
     State.Notify = function NotifyState({ ...props }) {
@@ -70,6 +70,7 @@ export function createState(props) {
                     callbacks.remove(update);
                 }
             };
+            // eslint-disable-next-line react-hooks/exhaustive-deps
         }, [context, ...keys, ...values]);
         return null;
     };
