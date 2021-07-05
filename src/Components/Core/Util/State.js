@@ -21,7 +21,6 @@ export function createState(props) {
         }
         useEffect(() => {
             Object.assign(stateRef.current.proxy, { ...updatedProps });
-            setValue({ ...stateRef.current });
         }, [updatedProps]);
         return <Context.Provider value={value || stateRef.current}>
             {children}
@@ -71,8 +70,38 @@ export function createState(props) {
                 }
             };
             // eslint-disable-next-line react-hooks/exhaustive-deps
-        }, [context, ...keys, ...values]);
+        }, [...keys, ...values]);
         return null;
+    };
+    State.Storage = function StorageState({ load, save, children }) {
+        const context = useContext(Context);
+        useEffect(() => {
+            const result = load();
+            if (result?.then) {
+                result.then(data => {
+                    if (data) {
+                        Object.assign(context?.proxy, data);
+                    }
+                })
+            }
+            else if (result) {
+                Object.assign(context?.proxy, result);
+            }
+            const saveValues = () => {
+                save(context?.proxy);
+            };
+            const callbacks = context?.callbacks;
+            if (save && callbacks) {
+                callbacks.push(saveValues);
+            }
+            return () => {
+                if (callbacks) {
+                    callbacks.remove(saveValues);
+                }
+            }
+            // eslint-disable-next-line react-hooks/exhaustive-deps
+        }, [load, save]);
+        return children || null;
     };
     return State;
 }

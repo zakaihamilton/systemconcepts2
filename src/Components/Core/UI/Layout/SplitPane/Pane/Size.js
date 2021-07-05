@@ -5,7 +5,7 @@ import Language from "@components/Core/Util/Language"
 export function useSize({ dividerRef, paneRef, size, minSize, maxSize, last }) {
     const language = Language.useLanguage();
     const [currentSize, setCurrentSize] = useState(size);
-    const reverseHorizontal = language.direction === "rtl";
+    const reverseHorizontal = language?.direction === "rtl";
     const reverseVertical = last;
     const [dragging] = SplitPane.Resize.useDrag(dividerRef, paneRef, ({ orientation, percentage }) => {
         if (orientation === "vertical") {

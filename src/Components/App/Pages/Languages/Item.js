@@ -13,10 +13,10 @@ export default function LanguagesItem({ index, style }) {
     const onClick = () => {
         Object.assign(languageState, item);
     };
-    const selected = languageState.id === item.id;
+    const selected = languageState?.id === item?.id;
     return <Bar onClick={onClick} className={clsx(styles.root, selected && styles.selected)} style={style}>
         <div className={styles.field}>{item?.name}</div>
         <div className={styles.field}>{item?.id}</div>
-        <div className={styles.field}>{translation[item?.direction?.toUpperCase()]}</div>
+        <div className={styles.field}>{translation?.[item?.direction?.toUpperCase()]}</div>
     </Bar>;
 }
