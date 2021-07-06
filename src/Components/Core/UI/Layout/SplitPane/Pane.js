@@ -15,7 +15,7 @@ export default function Pane({ classes, divider, last, children, size, minSize, 
     style.flex = currentSize;
 
     if (!visible) {
-        style.flex = "0 1 1em";
+        style.flex = "0 1 0em";
         style.opacity = "0";
     }
 
@@ -24,6 +24,6 @@ export default function Pane({ classes, divider, last, children, size, minSize, 
         <div className={joinClasses(styles, { pane: true, [orientation]: true }, classes?.pane)}>
             {children}
         </div>
-        {!last && <div ref={dividerRef} draggable={false} className={dividerClassName} />}
+        {!last && !!visible && <div ref={dividerRef} draggable={false} className={dividerClassName} />}
     </div>;
 }

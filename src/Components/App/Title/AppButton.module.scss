@@ -4,6 +4,14 @@
 
 .button {
     height: 100%;
-    padding-right: 1em;
+}
+
+html[dir="ltr"] .button {
     border-right: 1px solid var(--border-color);
+    padding-right: 1em;
+}
+
+html[dir="rtl"] .button {
+    padding-left: 1em;
+    border-left: 1px solid var(--border-color);
 }
