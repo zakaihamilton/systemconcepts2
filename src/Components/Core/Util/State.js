@@ -1,5 +1,5 @@
-import { useContext, createContext, useState, useRef, useEffect } from "react"
-import { objectHasChanged, createObjectProxy } from "./Object"
+import React, { useContext, createContext, useState, useRef, useEffect } from "react";
+import { objectHasChanged, createObjectProxy } from "./Object";
 
 export function createState(props) {
     const hasProps = typeof props === "object";
@@ -8,7 +8,6 @@ export function createState(props) {
 
     function State({ children, ...props }) {
         const [updatedProps, setUpdatedProps] = useState({});
-        const [value, setValue] = useState(null);
         const stateRef = useRef({ proxy: null, callbacks: [] });
         const valueChanged = stateRef.current.proxy && objectHasChanged(props, updatedProps);
         if (!stateRef.current.proxy) {
@@ -22,7 +21,7 @@ export function createState(props) {
         useEffect(() => {
             Object.assign(stateRef.current.proxy, { ...updatedProps });
         }, [updatedProps]);
-        return <Context.Provider value={value || stateRef.current}>
+        return <Context.Provider value={stateRef.current}>
             {children}
         </Context.Provider>;
     }
@@ -51,7 +50,7 @@ export function createState(props) {
         return proxy;
     };
     State.Notify = function NotifyState({ ...props }) {
-        let context = useContext(Context);
+        const context = useContext(Context);
         const keys = Object.keys(props);
         const values = Object.values(props);
         useEffect(() => {
@@ -73,22 +72,27 @@ export function createState(props) {
         }, [...keys, ...values]);
         return null;
     };
-    State.Storage = function StorageState({ load, save, children }) {
+    State.Storage = function StorageState({ id, load, save, children }) {
         const context = useContext(Context);
         useEffect(() => {
-            const result = load();
+            if (!load) {
+                return null;
+            }
+            const result = load(id);
             if (result?.then) {
                 result.then(data => {
                     if (data) {
                         Object.assign(context?.proxy, data);
                     }
-                })
-            }
-            else if (result) {
+                });
+            } else if (result) {
                 Object.assign(context?.proxy, result);
             }
+            // eslint-disable-next-line react-hooks/exhaustive-deps
+        }, [load, id]);
+        useEffect(() => {
             const saveValues = () => {
-                save(context?.proxy);
+                save(id, context?.proxy);
             };
             const callbacks = context?.callbacks;
             if (save && callbacks) {
@@ -98,9 +102,9 @@ export function createState(props) {
                 if (callbacks) {
                     callbacks.remove(saveValues);
                 }
-            }
-            // eslint-disable-next-line react-hooks/exhaustive-deps
-        }, [load, save]);
+            };
+            // eslint-disable-next-line react-hooks/exhaustive-deps            
+        }, [save, id]);
         return children || null;
     };
     return State;
