@@ -44,4 +44,7 @@ html[data-theme='dark'] .icon.selected {
 .label {
     user-select: none;
     flex: 1;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
 }
