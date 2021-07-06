@@ -2,7 +2,7 @@ import { createState } from "@components/Core/Util/State";
 import { useCallback } from "react";
 import { createStorageHandler } from "@components/Core/Storage/Local";
 
-const storageHandler = createStorageHandler("Language", ["id", "direction", "name"]);
+const storageHandler = createStorageHandler(["id", "direction", "name"]);
 
 export default function Language({ children, direction, id, name }) {
     const updateDirection = useCallback(direction => {
@@ -10,7 +10,7 @@ export default function Language({ children, direction, id, name }) {
     }, []);
     return <Language.State direction={direction} id={id} name={name}>
         <Language.State.Notify direction={updateDirection} />
-        <Language.State.Storage {...storageHandler} />
+        <Language.State.Storage id="Language" {...storageHandler} />
         {children}
     </Language.State>
 }
