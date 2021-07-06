@@ -37,7 +37,14 @@ export default function Tree({ Item, root, mapper, depends = [], children, ...pr
     const update = useCallback(() => {
         setCounter(counter => counter + 1);
     }, []);
-    const items = useMemo(() => (typeof mapper === "function" ? mapper({ item: root, Item, children: [], update }) : children), [mapper, root, Item, update, children]);
+    const items = useMemo(() => {
+        if (typeof mapper === "function") {
+            return mapper({ item: root, Item, children: [], update });
+        } else {
+            return children;
+        }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [mapper, root, Item, update, children, counter]);
     return <List {...props}>
         {items}
     </List >;
