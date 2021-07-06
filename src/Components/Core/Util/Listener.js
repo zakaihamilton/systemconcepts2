@@ -40,14 +40,14 @@ export function useListeners() {
     return [register, unregister];
 }
 
-export function useListener(target, type, cb, ...args) {
+export function useListener(target, type, cb, options) {
     useEffect(() => {
         if (!target) {
             return;
         }
-        target.addEventListener(type, cb, ...args);
+        target.addEventListener(type, cb, options);
         return () => {
             target.removeEventListener(type, cb);
         };
-    }, [target, type, cb, args]);
+    }, [target, type, cb, options]);
 }
