@@ -1,14 +1,14 @@
 import styles from "./Item.module.scss"
 import Translation from "@components/Core/Util/Translation"
+import Table from "@components/Core/UI/Layout/Table"
 import Language from "@components/Core/Util/Language"
 import Bar from "@components/Core/UI/Layout/Bar"
 import clsx from "clsx"
 
 export default function LanguagesItem({ index, style }) {
-    const languages = Translation.State.useState();
     const translation = Translation.useTranslation();
     const languageState = Language.State.useState();
-    const items = Object.keys(languages).map(key => languages[key]);
+    const { items } = Table.Items.useItems();
     const item = items[index];
     const onClick = () => {
         Object.assign(languageState, item);

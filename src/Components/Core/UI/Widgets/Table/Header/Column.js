@@ -21,7 +21,7 @@ export default function Column({ id, icon, name }) {
         }
         else {
             tableState.sortId = id;
-            tableState.sortDirection = "asc";
+            tableState.sortDirection = "desc";
         }
     };
     return <div className={clsx(styles.root, tableState?.sortable && styles.sortable)} onClick={tableState?.sortable ? onClick : null}>

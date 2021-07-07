@@ -8,3 +8,4 @@ export default function Table({ children }) {
 }
 
 Table.State = TableLayout.State;
+Table.Items = TableLayout.Items;

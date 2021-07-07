@@ -21,12 +21,12 @@ export default function Languages({ }) {
             name: translation?.DIRECTION
         }
     ]), [translation]);
-    const count = Object.keys(languages).length;
-    return <>
-        <Table.State columns={columns}>
+    let items = useMemo(() => Object.keys(languages).map(key => languages[key]), [languages]);
+    return <Table.State columns={columns} sortable={true}>
+        <Table.Items items={items}>
             <Table>
-                <List itemSize={40} gap={6} count={count} Item={LanguagesItem} />
+                <List itemSize={40} gap={6} count={items?.length} Item={LanguagesItem} />
             </Table>
-        </Table.State>
-    </>;
+        </Table.Items>
+    </Table.State>;
 }
