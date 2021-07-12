@@ -26,4 +26,4 @@ export default function Sidebar() {
     </Pane.State>;
 }
 
-Sidebar.State = createState({ visible: true });
+Sidebar.State = createState({ visible: false });
