@@ -22,13 +22,9 @@
 }
 
 .icon {
-    margin-left: 0.5em;
-    margin-right: 0.5em;
+    margin-right: 0.3em;
     display: flex;
     align-items: center;
     justify-content: center;
-}
-
-html[data-theme='dark'] .icon {
-    filter: invert(100%);
+    font-size: 20px !important;
 }

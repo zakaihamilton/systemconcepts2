@@ -1,11 +1,11 @@
-import { GrLanguage } from "react-icons/gr";
+import { MdLanguage } from "react-icons/md";
 import Languages from "./Pages/Languages"
 
 const Pages = [
     {
         id: "languages",
         name: "LANGUAGES",
-        icon: <GrLanguage />,
+        icon: <MdLanguage />,
         Component: Languages
     }
 ];
