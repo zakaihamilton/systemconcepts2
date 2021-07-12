@@ -6,7 +6,7 @@ import Tree, { treeMapper } from "@components/Core/UI/Layout/Tree"
 import SidebarItem from "./Sidebar/Item"
 import items from "./Sidebar/Items"
 import { useLocation } from "@components/Core/Util/Location"
-import Layout from "src/Components/Core/Util/Layout"
+import Layout from "@components/Core/Util/Layout"
 
 export default function Sidebar() {
     const layout = Layout.useLayout();

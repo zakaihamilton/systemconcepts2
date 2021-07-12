@@ -8,7 +8,7 @@ import pages from "@components/App/Pages"
 import Translation from "@components/Core/Util/Translation"
 import Language from "@components/Core/Util/Language"
 import Handler from "@components/Core/Util/Handler"
-import Layout from "src/Components/Core/Util/Layout"
+import Layout from "@components/Core/Util/Layout"
 
 export default function SidebarItem({ id, index, count, children, handler, onClick, depth, open, setOpen, style, icon, name }) {
     const layout = Layout.useLayout();

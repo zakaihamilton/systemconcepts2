@@ -7,7 +7,7 @@ import Page from "@components/App/Page"
 import Languages from "@components/App/Languages"
 import Translation from "@components/Core/Util/Translation"
 import Language from "@components/Core/Util/Language"
-import Layout from "src/Components/Core/Util/Layout"
+import Layout from "@components/Core/Util/Layout"
 
 export default function App() {
   return (
