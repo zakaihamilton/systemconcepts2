@@ -4,6 +4,7 @@
     padding: 0.5em;
     cursor: pointer;
     background-color: var(--heading-color);
+    user-select: none;
 }
 
 .root.first {
@@ -18,12 +19,16 @@ html[data-theme='dark'] .root {
     background-color: var(--bg-color);
 }
 
-.root:hover:not(.selected):not(.parent) {
-    filter: invert(100%);
+.root:hover:not(.selected) {
+    filter: invert(10%);
 }
 
 .root:hover:active:not(.selected):not(.parent) {
-    filter: invert(25%);
+    filter: invert(100%);
+}
+
+.root:hover:active:not(.selected).parent {
+    filter: invert(15%);
 }
 
 .icon {
