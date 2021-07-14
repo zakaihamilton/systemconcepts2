@@ -10,7 +10,11 @@ const English = {
     CLOSE: "Close",
     SIDEBAR: "Sidebar",
     LIGHT_MODE: "Light Mode",
-    DARK_MODE: "Dark Mode"
+    DARK_MODE: "Dark Mode",
+    STORAGE: "Storage",
+    LOCAL: "Local",
+    KEY: "Key",
+    VALUE: "Value"
 };
 
 export default English;

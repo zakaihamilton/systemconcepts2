@@ -10,7 +10,11 @@ const Hebrew = {
     CLOSE: "סגור",
     SIDEBAR: "סרגל צד",
     LIGHT_MODE: "מצב בהיר",
-    DARK_MODE: "מצב כהה"
+    DARK_MODE: "מצב כהה",
+    STORAGE: "אחסון",
+    LOCAL: "מקומי",
+    KEY: "מפתח",
+    VALUE: "ערך"
 };
 
 export default Hebrew;

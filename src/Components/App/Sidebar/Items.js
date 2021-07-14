@@ -1,5 +1,5 @@
-import { MdSettings } from "react-icons/md";
-import DarkMode from "@components/Core/Util/DarkMode"
+import Settings from "@components/App/Pages/Settings"
+import Admin from "@components/App/Pages/Admin"
 
 const Items = [
     {
@@ -21,19 +21,8 @@ const Items = [
             }
         ]
     },
-    {
-        id: "settings",
-        name: "SETTINGS",
-        icon: <MdSettings />,
-        children: [
-            "languages",
-            {
-                id: "darkMode",
-                name: "DARK_MODE",
-                handler: DarkMode
-            }
-        ]
-    }
+    ...Settings.Sidebar,
+    ...Admin.Sidebar
 ];
 
 export default Items;

@@ -1,13 +1,9 @@
-import { MdLanguage } from "react-icons/md";
-import Languages from "./Pages/Languages"
+import Settings from "@components/App/Pages/Settings"
+import Admin from "@components/App/Pages/Admin"
 
 const Pages = [
-    {
-        id: "languages",
-        name: "LANGUAGES",
-        icon: <MdLanguage />,
-        Component: Languages
-    }
+    ...Settings.Pages,
+    ...Admin.Pages
 ];
 
 export default Pages;
