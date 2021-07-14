@@ -9,8 +9,8 @@ export default function LocalStorage({ }) {
     const translation = Translation.useTranslation();
     const columns = useMemo(() => ([
         {
-            id: "key",
-            name: translation?.KEY
+            id: "id",
+            name: translation?.ID
         },
         {
             id: "value",
@@ -19,12 +19,12 @@ export default function LocalStorage({ }) {
     ]), [translation]);
     let items = useMemo(() => {
         return new Array(localStorage.length).fill(0).map((_, index) => {
-            const key = localStorage.key(index);
-            const value = localStorage.getItem(key);
-            return { key, value };
+            const id = localStorage.key(index);
+            const value = localStorage.getItem(id);
+            return { id, value };
         });
     }, []);
-    return <Table.State columns={columns} sortable={true} selectable={true}>
+    return <Table.State columns={columns} sortable={true}>
         <Table.Items items={items}>
             <Table>
                 <List itemSize={40} gap={6} count={items?.length} Item={LocalStorageItem} />
