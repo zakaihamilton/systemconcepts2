@@ -1,8 +1,11 @@
 .root {
     overflow: hidden;
     flex-basis: 20px;
-    transition: flex-basis 0.25s, opacity 0.25s;
     opacity: 1;
+}
+
+.root.active {
+    transition: flex-basis 0.25s, opacity 0.25s;
 }
 
 html[data-layout='mobile'] .root {

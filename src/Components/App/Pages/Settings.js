@@ -1,5 +1,5 @@
 import { MdSettings } from "react-icons/md";
-import DarkMode from "@components/Core/Util/DarkMode"
+import { DarkModeHandler } from "@components/Core/Util/DarkMode"
 
 import { MdLanguage } from "react-icons/md";
 import Languages from "@components/App/Pages/Settings/Languages"
@@ -23,7 +23,7 @@ const Sidebar = [
             {
                 id: "darkMode",
                 name: "DARK_MODE",
-                handler: DarkMode
+                handler: DarkModeHandler
             }
         ]
     }
