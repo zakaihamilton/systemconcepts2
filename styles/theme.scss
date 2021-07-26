@@ -1,13 +1,13 @@
 :root {
-    --primary-color: #818cab;
-    --secondary-color: #536390;
     --text-color: #000;
     --bg-color: #fff;
     --border-color: rgba(0, 0, 0, 0.12);
     --heading-color: lightgray;
-    --hover-color: #8EC5FC;
-    --hover-background: rgb(232, 244, 253);
-    --hover-border: black;
+    --hover-text: white;
+    --hover-background: darkgray;
+    --selected-text: white;
+    --selected-background: black;
+    --selected-border: transparent;
     --title-first-color: #8ec5fc;
     --title-second-color: #e0c3fc;
 }

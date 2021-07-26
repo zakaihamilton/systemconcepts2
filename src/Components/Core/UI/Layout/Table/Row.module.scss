@@ -8,8 +8,9 @@
 }
 
 .root:hover:not(.selected) {
+    color: var(--hover-text);
     background-color: var(--hover-background);
-    border-bottom: 2px solid var(--hover-color);
+    border-bottom: 2px solid var(--hover-border);
 }
 
 .root:not(.selected) {
@@ -17,5 +18,7 @@
 }
 
 .root.selected {
-    background-color: var(--primary-color);
+    background-color: var(--selected-background);
+    color: var(--selected-text);
+    border-bottom: 2px solid var(--selected-border);
 }
