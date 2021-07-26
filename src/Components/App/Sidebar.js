@@ -1,5 +1,6 @@
 import styles from "./Sidebar.module.scss"
 import Pane from "@components/Core/UI/Widgets/SplitPane/Pane"
+import SplitPaneLayout from "@components/Core/UI/Layout/SplitPane"
 import { createState } from "@components/Core/Util/State"
 import { useCallback, useEffect } from "react"
 import Tree, { treeMapper } from "@components/Core/UI/Layout/Tree"
@@ -18,18 +19,22 @@ export default function Sidebar() {
     const sidebarState = Sidebar.State.useState();
     const visibleChanged = useCallback(visible => {
         if (typeof sidebarState.visible !== "undefined") {
-            sidebarState.active = true;
+            sidebarState.animate = true;
         }
         sidebarState.visible = visible;
+    }, [sidebarState]);
+    const draggingChanged = useCallback(dragging => {
+        sidebarState.animate = !dragging;
     }, [sidebarState]);
     const isPopup = layout === "mobile";
     useEffect(() => {
         sidebarState.selected = location;
     }, [location, sidebarState]);
-    const paneClasses = { root: clsx(styles.root, sidebarState.active && styles.active), pane: styles.pane, divider: styles.divider };
+    const paneClasses = { root: clsx(styles.root, sidebarState.animate && styles.animate), pane: styles.pane, divider: styles.divider };
     return <Pane.State visible={sidebarState?.visible}>
         <Pane.State.Notify visible={visibleChanged} />
         <Pane.State.Storage id="Sidebar" {...storageHandler} />
+        <SplitPaneLayout.Resize.State.Notify dragging={draggingChanged} />
         <Pane classes={paneClasses} closable={false} divider={!isPopup} minSize={250} maxSize={500} size="20em">
             <Tree className={styles.list} root={items} itemSize={40} mapper={treeMapper} Item={SidebarItem} />
         </Pane>

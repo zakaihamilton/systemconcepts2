@@ -1,4 +1,4 @@
-import { useRef, useState } from "react"
+import { useRef } from "react"
 import { useRefCallback } from "@components/Core/Util/Ref"
 import { useListeners } from "./Listener"
 import { createState } from "@components/Core/Util/State"
@@ -10,13 +10,14 @@ export function createDrag() {
             {children}
         </State>;
     }
+    Drag.State = State;
     Drag.useDrag = (dragRef, objectRef, cb, options) => {
-        const { orientation, containerRef } = State.useState() || {};
-        const [, setCounter] = useState(0);
+        const state = State.useState() || {};
         const [register, unregister] = useListeners();
         const info = useRef({ drag: false });
         const { minSize, maxSize, reverseHorizontal, reverseVertical } = options || {};
         useRefCallback(dragRef, handle => {
+            const { orientation, containerRef } = state;
             const updatePos = e => {
                 const { dragRect, objectRect, containerRect } = info.current;
                 let x = 0;
@@ -49,21 +50,20 @@ export function createDrag() {
                 const containerRect = containerRef.current.getBoundingClientRect();
                 const objectRect = objectRef.current.getBoundingClientRect();
                 const dragRect = handle.getBoundingClientRect();
-                info.current = { drag: true, dragRect, objectRect, containerRect };
+                info.current = { dragRect, objectRect, containerRect };
                 register(document.body, "mousemove", mouseMove);
                 register(document.body, "mouseup", mouseUp);
-                setCounter(counter => counter + 1);
+                state.dragging = true;
             };
             const mouseMove = e => {
-                if (info.current.drag) {
+                if (state.dragging) {
                     updatePos(e);
                 }
             };
             const mouseUp = e => {
                 unregister(document.body, "mousemove");
                 unregister(document.body, "mouseup");
-                info.current.drag = false;
-                setCounter(counter => counter + 1);
+                state.dragging = false;
             };
             if (containerRef?.current && objectRef?.current && cb) {
                 register(handle, "mousedown", mouseDown);
@@ -71,8 +71,8 @@ export function createDrag() {
             return () => {
                 unregister(handle, "mousedown");
             };
-        }, [containerRef?.current, objectRef?.current, minSize, maxSize, reverseHorizontal, reverseVertical]);
-        return [info.current.drag];
+        }, [state?.containerRef, objectRef?.current, minSize, maxSize, reverseHorizontal, reverseVertical]);
+        return [state.dragging];
     }
 
     return Drag;
