@@ -1,6 +1,4 @@
-import Translation from "@components/Core/Util/Translation"
 import Table from "@components/Core/UI/Layout/Table"
-import Language from "@components/Core/Util/Language"
 
 export default function LocalStorageItem({ index, style }) {
     const tableState = Table.State.useState();
