@@ -25,7 +25,7 @@ export default function Languages({ }) {
     return <Table.State columns={columns} sortable={true}>
         <Table.Items items={items}>
             <Table>
-                <List itemSize={40} gap={6} count={items?.length} Item={LanguagesItem} />
+                <List itemSize={40} count={items?.length} Item={LanguagesItem} />
             </Table>
         </Table.Items>
     </Table.State>;

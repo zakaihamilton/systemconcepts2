@@ -1,16 +1,13 @@
 .root {
     display: flex;
     align-items: center;
-    border-bottom: 2px solid transparent;
     padding-left: 0.5em;
     padding-right: 0.5em;
-    border-bottom: 2px solid transparent;
 }
 
 .root:hover:not(.selected) {
     color: var(--hover-text);
     background-color: var(--hover-background);
-    border-bottom: 2px solid var(--hover-border);
 }
 
 .root:not(.selected) {
@@ -20,5 +17,4 @@
 .root.selected {
     background-color: var(--selected-background);
     color: var(--selected-text);
-    border-bottom: 2px solid var(--selected-border);
 }
