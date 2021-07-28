@@ -14,7 +14,8 @@ const Hebrew = {
     STORAGE: "אחסון",
     LOCAL: "מקומי",
     KEY: "מפתח",
-    VALUE: "ערך"
+    VALUE: "ערך",
+    ADMIN: "מנהל"
 };
 
 export default Hebrew;

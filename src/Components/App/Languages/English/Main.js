@@ -14,7 +14,8 @@ const English = {
     STORAGE: "Storage",
     LOCAL: "Local",
     KEY: "Key",
-    VALUE: "Value"
+    VALUE: "Value",
+    ADMIN: "Admin"
 };
 
 export default English;

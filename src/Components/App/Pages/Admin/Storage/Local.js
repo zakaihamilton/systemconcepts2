@@ -5,7 +5,6 @@ import Translation from "@components/Core/Util/Translation"
 import LocalStorageItem from "./Local/Item";
 
 export default function LocalStorage({ }) {
-    const languages = Translation.State.useState();
     const translation = Translation.useTranslation();
     const columns = useMemo(() => ([
         {

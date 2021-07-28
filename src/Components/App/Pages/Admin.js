@@ -1,12 +1,20 @@
-import { MdStorage } from "react-icons/md";
 import Storage from "@components/App/Pages/Admin/Storage"
+import { MdExtension } from "react-icons/md";
 
 const Pages = [
     ...Storage.Pages
 ];
 
 const Sidebar = [
-    ...Storage.Sidebar
+    {
+        id: "admin",
+        name: "ADMIN",
+        open: false,
+        icon: <MdExtension />,
+        children: [
+            ...Storage.Sidebar
+        ]
+    }
 ];
 
 const Admin = {
