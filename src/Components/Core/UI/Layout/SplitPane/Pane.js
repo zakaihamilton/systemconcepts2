@@ -16,6 +16,7 @@ export default function Pane({ classes, divider, last, children, size, minSize, 
 
     if (!visible) {
         style.flex = "0 1 0em";
+        style.display = "none";
     }
 
     return <div ref={paneRef} className={joinClasses(styles, { root: true, [orientation]: true }, classes?.root)} style={style} {...props}>
