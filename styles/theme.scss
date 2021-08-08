@@ -7,7 +7,6 @@
     --hover-background: darkgray;
     --selected-text: white;
     --selected-background: black;
-    --selected-border: transparent;
     --title-first-color: #8ec5fc;
     --title-second-color: #e0c3fc;
 }
@@ -21,6 +20,8 @@ html[data-theme='dark'] {
     --heading-color: #333;
     --hover-color: rgba(0, 168, 232, 1);
     --hover-background: rgb(3, 14, 24);
+    --selected-text: black;
+    --selected-background: white;
     --hover-border: white;
     --title-first-color: #003459;
     --title-second-color: #0076b6;
