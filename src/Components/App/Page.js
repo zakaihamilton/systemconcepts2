@@ -1,7 +1,6 @@
 import Pane from "@components/Core/UI/Widgets/SplitPane/Pane"
 import { useLocation } from "@components/Core/Util/Location";
 import pages from "./Pages"
-import Menu from "@components/Core/UI/Widgets/Menu"
 
 export function usePageId() {
     const location = useLocation();
@@ -19,7 +18,6 @@ export default function Page({ }) {
     const { Component } = page || {};
 
     return <Pane closable={false}>
-        <Menu />
         {Component && <Component />}
     </Pane>;
 }

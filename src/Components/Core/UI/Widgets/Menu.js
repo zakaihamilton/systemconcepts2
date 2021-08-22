@@ -6,9 +6,9 @@ import Item from "./Menu/Item";
 
 export default function Menu({ }) {
     const menuState = Menu.State.useState();
-    const visible = true;
+    const visible = true || menuState?.items?.length;
     const items = useMemo(() => {
-        return menuState?.items.map(item => (<Item key={item.id} {...item} />)).filter(Boolean);
+        return menuState?.items?.map(item => (<Item key={item.id} {...item} />)).filter(Boolean);
     }, [menuState?.items]);
     return <div className={clsx(styles.root, visible && styles.visible)}>
         {items}

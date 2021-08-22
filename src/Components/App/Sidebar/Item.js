@@ -56,7 +56,7 @@ export default function SidebarItem({ id, index, count, children, handler, onCli
                     {name}
                 </div>
                 <Button hover={false} style={{ visibility: hasChildren ? "visible" : "hidden", marginTop: "3px" }}>
-                    {!!open ? <FiChevronDown /> : <FiChevronUp />}
+                    {!!open ? <FiChevronUp /> : <FiChevronDown />}
                 </Button>
             </div>;
         }}</Handler>

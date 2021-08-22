@@ -3,6 +3,7 @@ import Table from "@components/Core/UI/Widgets/Table"
 import LanguagesItem from "./Languages/Item"
 import { useMemo } from "react";
 import Translation from "@components/Core/Util/Translation"
+import Menu from "@components/Core/UI/Widgets/Menu"
 
 export default function Languages({ }) {
     const languages = Translation.State.useState();
@@ -22,11 +23,22 @@ export default function Languages({ }) {
         }
     ]), [translation]);
     let items = useMemo(() => Object.keys(languages).map(key => languages[key]), [languages]);
-    return <Table.State columns={columns} sortable={true}>
-        <Table.Items items={items}>
-            <Table>
-                <List itemSize={40} count={items?.length} Item={LanguagesItem} />
-            </Table>
-        </Table.Items>
-    </Table.State>;
+    const menuItems = useMemo(() => (
+        [
+            {
+                id: "file",
+                name: translation?.FILE
+            }
+        ]
+    ), [translation]);
+    return <Menu.State items={menuItems}>
+        <Menu />
+        <Table.State columns={columns} sortable={true}>
+            <Table.Items items={items}>
+                <Table>
+                    <List itemSize={40} count={items?.length} Item={LanguagesItem} />
+                </Table>
+            </Table.Items>
+        </Table.State>
+    </Menu.State>;
 }
