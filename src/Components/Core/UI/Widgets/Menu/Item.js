@@ -10,7 +10,6 @@ export default function Item({ id, items, handler, onClick, ...props }) {
     const handleClick = useCallback(onClick => {
         const result = onClick && onClick();
         if (!result) {
-            console.log("popupState", popupState);
             if (popupState?.onClick) {
                 popupState.onClick();
             }
