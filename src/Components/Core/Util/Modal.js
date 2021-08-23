@@ -18,6 +18,7 @@ export default function Modal({ children, visible = true }) {
         modalRoot.appendChild(element);
         return () => {
             modalRoot.removeChild(element);
+            setElement(null);
         };
     }, [visible]);
     return element && ReactDOM.createPortal && ReactDOM.createPortal(

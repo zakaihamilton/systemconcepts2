@@ -16,7 +16,8 @@ const English = {
     KEY: "Key",
     VALUE: "Value",
     ADMIN: "Admin",
-    FILE:"File"
+    FILE: "File",
+    EXPORT: "Export"
 };
 
 export default English;

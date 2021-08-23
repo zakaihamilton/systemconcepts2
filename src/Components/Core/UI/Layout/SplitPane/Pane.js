@@ -1,8 +1,9 @@
 import styles from "./Pane.module.scss"
 import { joinClasses } from "@util/styles"
 import SplitPane from "../SplitPane";
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import { useSize } from "./Pane/Size"
+import Observe from "@components/Core/Util/Observe";
 
 export default function Pane({ classes, divider, last, children, size, minSize, maxSize, visible, style, ...props }) {
     const { orientation } = SplitPane.State.useState();
@@ -10,9 +11,14 @@ export default function Pane({ classes, divider, last, children, size, minSize, 
     const dividerRef = useRef();
     const [currentSize, dragging] = useSize({ dividerRef, paneRef, size, minSize, maxSize, last });
     const dividerClassName = joinClasses(styles, { divider: true, last, visible: divider, [orientation]: true, dragging }, classes?.divider);
+    const observeState = Observe.useState();
 
     style = { ...style };
     style.flex = currentSize;
+
+    useEffect(() => {
+        observeState.counter++;
+    }, [observeState, currentSize]);
 
     if (!visible) {
         style.flex = "0 1 0em";

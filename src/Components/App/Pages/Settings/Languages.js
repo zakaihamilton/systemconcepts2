@@ -27,7 +27,13 @@ export default function Languages({ }) {
         [
             {
                 id: "file",
-                name: translation?.FILE
+                name: translation?.FILE,
+                items: [
+                    {
+                        id: "export",
+                        name: translation?.EXPORT
+                    }
+                ]
             }
         ]
     ), [translation]);

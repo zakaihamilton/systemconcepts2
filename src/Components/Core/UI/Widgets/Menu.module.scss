@@ -2,7 +2,7 @@
     display: none;
     align-items: center;
     width: 100%;
-    height: 48px;
+    height: 36px;
     border-bottom: 1px solid var(--border-color);
     background-color: var(--heading-color);
 }
@@ -10,4 +10,16 @@
 .root.visible {
     display: flex;
     align-items: stretch;
+}
+
+.root.vertical {
+    flex-direction: column;
+    align-items: initial;
+    width: 100px;
+    height: max-content;
+}
+
+.root.popup {
+    position: fixed;
+    border: 1px solid var(--border-color);
 }

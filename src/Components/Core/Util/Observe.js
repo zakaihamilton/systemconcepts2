@@ -1,25 +1,33 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import Language from "@components/Core/Util/Language";
+import { createState } from "./State";
 
 export function useResizeObserver(ref) {
-    const [counter, setCounter] = useState(0);
+    const state = Observe.useState();
     const language = Language.useLanguage();
     useEffect(() => {
-        setCounter(counter => counter + 1);
-    }, [language?.direction]);
+        state.counter++;
+    }, [state, language?.direction]);
     useEffect(() => {
         const handle = ref?.current;
         if (!handle) {
             return;
         }
         const resizeObserver = new ResizeObserver(entries => {
-            setCounter(counter => counter + 1);
+            state.counter++;
         });
         resizeObserver.observe(handle);
         return () => {
             resizeObserver.unobserve(handle);
         }
-    }, [ref]);
+    }, [state, ref]);
 
-    return counter;
+    return state?.counter;
 }
+
+export default function Observe({ children }) {
+    return children;
+}
+
+Observe.State = createState({ counter: 0 });
+Observe.useState = Observe.State.useState;

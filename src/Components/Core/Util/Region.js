@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { createState } from "./State"
 import { useResizeObserver } from "./Observe"
 
 export function useRegion(ref) {
@@ -32,3 +33,13 @@ export function regionToUnit(region, unit) {
     }
     return result;
 }
+
+export default function Region({ targetRef, children }) {
+    const region = useRegion(targetRef);
+    return <Region.State {...region}>
+        {children}
+    </Region.State>;
+}
+
+Region.State = createState();
+Region.useRegion = Region.State.useState;

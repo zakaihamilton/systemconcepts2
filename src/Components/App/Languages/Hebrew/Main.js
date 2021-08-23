@@ -16,7 +16,8 @@ const Hebrew = {
     KEY: "מפתח",
     VALUE: "ערך",
     ADMIN: "מנהל",
-    FILE: "קובץ"
+    FILE: "קובץ",
+    EXPORT: "ייצוא"
 };
 
 export default Hebrew;
