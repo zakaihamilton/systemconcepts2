@@ -1,11 +1,14 @@
 import Button from "@components/Core/UI/Widgets/Button"
 import Handler from "@components/Core/Util/Handler";
-import styles from "./Item.module.scss"
-import SubMenu from "./SubMenu"
-import Popup from "@components/Core/Util/Popup"
+import styles from "./Item.module.scss";
+import Menu from "../Menu";
+import SubMenu from "./SubMenu";
+import Popup from "@components/Core/Util/Popup";
 import { useCallback } from "react";
+import clsx from "clsx";
 
 export default function Item({ id, items, handler, onClick, ...props }) {
+    const menuState = Menu.State.useState();
     const popupState = Popup.State.useState();
     const handleClick = useCallback(onClick => {
         const result = onClick && onClick();
@@ -20,8 +23,16 @@ export default function Item({ id, items, handler, onClick, ...props }) {
         handler = SubMenu;
     }
     return <Handler handler={handler} onClick={onClick} items={items} {...props}>
-        {({ onClick, icon, name, ...props }) => (<Button icon={icon} className={styles.root} onClick={() => handleClick(onClick)} {...props}>
-            {name}
-        </Button>)}
+        {({ onClick, name, icon, iconSuffix, ...props }) => {
+            if (!icon) {
+                icon = <div className={styles.emptyIcon} />;
+            }
+            if (!iconSuffix) {
+                iconSuffix = <div className={styles.emptyIcon} />;
+            }
+            return <Button className={clsx(styles.root, menuState.vertical && styles.popup)} icon={icon} iconSuffix={iconSuffix} onClick={() => handleClick(onClick)} {...props}>
+                {name}
+            </Button>
+        }}
     </Handler>;
 }
