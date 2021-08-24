@@ -3,7 +3,7 @@ import { useCallback, useMemo, useRef } from "react";
 import Popup from "@components/Core/Util/Popup";
 import Menu from "../Menu"
 import Item from "./Item"
-import { MdNavigateNext } from "react-icons/md"
+import { MdNavigateNext, MdNavigateBefore } from "react-icons/md"
 
 export default function SubMenu({ items, ...props }) {
     const menuState = Menu.State.useState();
@@ -19,17 +19,28 @@ export default function SubMenu({ items, ...props }) {
     const children = useMemo(() => {
         let iconSuffix = null;
         let menuStyles = { top: itemRegion.bottom };
-        if (itemRegion.left > window.innerWidth / 2) {
-            const right = window.innerWidth - itemRegion.left - itemRegion.width;
-            menuStyles.right = right;
-        }
-        else if (menuState.vertical) {
-            menuStyles.left = itemRegion.right;
+        if (menuState.vertical) {
+            if (itemRegion.left > window.innerWidth / 2) {
+                const left = window.innerWidth - itemRegion.left;
+                menuStyles.right = left;
+            }
+            if (!menuStyles.right) {
+                menuStyles.left = itemRegion.right;
+                iconSuffix = <MdNavigateNext />;
+            }
+            else {
+                iconSuffix = <MdNavigateBefore />;
+            }
             menuStyles.top = itemRegion.top;
-            iconSuffix = <MdNavigateNext />;
         }
         else {
-            menuStyles.left = itemRegion.left;
+            if (itemRegion.left > window.innerWidth / 2) {
+                const right = window.innerWidth - itemRegion.left - itemRegion.width;
+                menuStyles.right = right;
+            }
+            else {
+                menuStyles.left = itemRegion.left;
+            }
         }
         return <>
             <Item {...props} selected={menuState.visible} rootRef={itemRef} onClick={onClick} iconSuffix={iconSuffix} />
