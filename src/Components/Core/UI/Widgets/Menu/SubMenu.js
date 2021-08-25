@@ -11,12 +11,7 @@ export default function SubMenu({ id, items, ...props }) {
     const selected = menuState.selected === id;
 
     const onClick = useCallback(() => {
-        if (menuState.selected === id) {
-            menuState.selected = undefined;
-        }
-        else {
-            menuState.selected = id;
-        }
+        menuState.selected = menuState.selected !== id ? id : undefined;
         return true;
     }, [id, menuState]);
 
