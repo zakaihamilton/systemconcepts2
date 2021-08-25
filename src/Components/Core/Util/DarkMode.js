@@ -31,9 +31,9 @@ export function DarkModeHandler(props) {
     const onClick = () => {
         state.darkMode = !state.darkMode;
     };
-    const name = state.darkMode ? "LIGHT_MODE" : "DARK_MODE";
+    const name = state?.darkMode ? "LIGHT_MODE" : "DARK_MODE";
     const iconStyles = {};
-    const icon = state.darkMode ? <MdBrightnessHigh style={iconStyles} /> : <MdBrightness4 style={iconStyles} />;
+    const icon = state?.darkMode ? <MdBrightnessHigh style={iconStyles} /> : <MdBrightness4 style={iconStyles} />;
     return {
         ...props, onClick, name, icon
     };

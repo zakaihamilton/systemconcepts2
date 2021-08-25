@@ -31,7 +31,7 @@ export default function Item({ id, items, handler, onClick, ...props }) {
                 iconSuffix = <div className={styles.emptyIcon} />;
             }
             return <Button className={clsx(styles.root, menuState.vertical && styles.popup)} icon={icon} iconSuffix={iconSuffix} onClick={() => handleClick(onClick)} {...props}>
-                {name}
+                <div className={styles.name}>{name}</div>
             </Button>
         }}
     </Handler>;

@@ -46,7 +46,22 @@ export default function Languages({ }) {
                                 name: "Item 2"
                             }
                         ]
+                    },
+                    {
+                        id: "subMenu1",
+                        name: "SUB_MENU_1",
+                        items: [
+                            {
+                                id: "item1",
+                                name: "Item 1"
+                            },
+                            {
+                                id: "Item2",
+                                name: "Item 2"
+                            }
+                        ]
                     }
+
                 ]
             }
         ]

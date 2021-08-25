@@ -7,20 +7,26 @@ export function createState(props) {
     const Context = createContext(hasProps && { proxy, callbacks });
 
     function State({ children, ...props }) {
-        const [updatedProps, setUpdatedProps] = useState({});
+        const [updatedProps, setUpdatedProps] = useState({ ...props });
         const stateRef = useRef({ proxy: null, callbacks: [] });
         const valueChanged = stateRef.current.proxy && objectHasChanged(props, updatedProps);
+        const changeRef = useRef(0);
         if (!stateRef.current.proxy) {
             const [proxy, callbacks] = createObjectProxy(props);
             stateRef.current.proxy = proxy;
             stateRef.current.callbacks = callbacks;
         }
         if (valueChanged) {
-            setUpdatedProps(props);
+            changeRef.current++;
         }
         useEffect(() => {
-            Object.assign(stateRef.current.proxy, { ...updatedProps });
-        }, [updatedProps]);
+            if (!changeRef.current) {
+                return;
+            }
+            setUpdatedProps({ ...props });
+            Object.assign(stateRef.current.proxy, { ...props });
+            // eslint-disable-next-line react-hooks/exhaustive-deps
+        }, [changeRef.current]);
         return <Context.Provider value={stateRef.current}>
             {children}
         </Context.Provider>;

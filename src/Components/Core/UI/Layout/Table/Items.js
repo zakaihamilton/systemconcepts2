@@ -3,7 +3,7 @@ import TableLayout from "@components/Core/UI/Layout/Table"
 import { useMemo } from "react";
 
 function useSort(items) {
-    const tableState = TableLayout.State.useState();
+    const tableState = TableLayout.State.useState() || {};
     const { sortId, sortDirection } = tableState;
     items = useMemo(() => {
         const list = [...items];
