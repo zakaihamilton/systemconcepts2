@@ -1,12 +1,3 @@
-.tooltip {
-    display: flex;
-    align-self: stretch;
-    position: absolute;
-    right: 0px;
-    height: 48px;
-    background-color: var(--heading-color);
-}
-
-.button {
-    align-self: stretch;
+.root {
+    height: 3em;
 }

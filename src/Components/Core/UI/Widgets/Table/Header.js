@@ -2,6 +2,7 @@ import Table from "@components/Core/UI/Layout/Table"
 import styles from "./Header.module.scss"
 import { useMemo } from "react"
 import Column from "./Header/Column"
+import SearchButton from "./Header/Search/SearchButton"
 import Search from "./Header/Search"
 
 export default function TableHeader({ }) {
@@ -12,7 +13,10 @@ export default function TableHeader({ }) {
         ))
     ), [tableState?.columns]);
     return <div className={styles.root}>
-        {columns}
         <Search />
+        <div className={styles.row}>
+            {columns}
+            <SearchButton />
+        </div>
     </div>;
 }
