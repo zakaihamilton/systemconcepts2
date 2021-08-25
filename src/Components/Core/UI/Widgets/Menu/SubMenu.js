@@ -5,14 +5,20 @@ import Menu from "../Menu"
 import Item from "./Item"
 import { MdNavigateNext, MdNavigateBefore } from "react-icons/md"
 
-export default function SubMenu({ items, ...props }) {
+export default function SubMenu({ id, items, ...props }) {
     const menuState = Menu.State.useState();
     const itemRef = useRef();
+    const selected = menuState.selected === id;
 
     const onClick = useCallback(() => {
-        menuState.visible = !menuState.visible;
+        if (menuState.selected === id) {
+            menuState.selected = undefined;
+        }
+        else {
+            menuState.selected = id;
+        }
         return true;
-    }, [menuState]);
+    }, [id, menuState]);
 
     const itemRegion = useRegion(itemRef);
 
@@ -43,14 +49,14 @@ export default function SubMenu({ items, ...props }) {
             }
         }
         return <>
-            <Item {...props} selected={menuState.visible} rootRef={itemRef} onClick={onClick} iconSuffix={iconSuffix} />
+            <Item id={id} {...props} selected={selected} rootRef={itemRef} onClick={onClick} iconSuffix={iconSuffix} />
             <Menu.State items={items} vertical={true} popup={true} visible={false}>
-                <Popup visible={menuState?.visible || false} onClick={!menuState.vertical ? onClick : null}>
+                <Popup visible={selected || false} onClick={!menuState.vertical ? onClick : null}>
                     <Menu style={menuStyles} />
                 </Popup>
             </Menu.State>
         </>
-    }, [props, menuState?.vertical, menuState?.visible, onClick, items, itemRegion]);
+    }, [props, id, menuState?.vertical, selected, onClick, items, itemRegion]);
 
     return { children };
 }

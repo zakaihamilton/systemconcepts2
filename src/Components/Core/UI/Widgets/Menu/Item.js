@@ -22,8 +22,8 @@ export default function Item({ id, items, handler, onClick, ...props }) {
     if (items && !handler) {
         handler = SubMenu;
     }
-    return <Handler handler={handler} onClick={onClick} items={items} {...props}>
-        {({ onClick, name, icon, iconSuffix, ...props }) => {
+    return <Handler handler={handler} id={id} onClick={onClick} items={items} {...props}>
+        {({ onClick, name, icon, iconSuffix, id, ...props }) => {
             if (!icon) {
                 icon = <div className={styles.emptyIcon} />;
             }

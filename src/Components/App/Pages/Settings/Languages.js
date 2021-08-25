@@ -63,6 +63,45 @@ export default function Languages({ }) {
                     }
 
                 ]
+            },
+            {
+                id: "view",
+                name: translation?.VIEW,
+                items: [
+                    {
+                        id: "export",
+                        name: translation?.EXPORT
+                    },
+                    {
+                        id: "subMenu",
+                        name: "SUB_MENU",
+                        items: [
+                            {
+                                id: "item1",
+                                name: "Item 1"
+                            },
+                            {
+                                id: "Item2",
+                                name: "Item 2"
+                            }
+                        ]
+                    },
+                    {
+                        id: "subMenu1",
+                        name: "SUB_MENU_1",
+                        items: [
+                            {
+                                id: "item1",
+                                name: "Item 1"
+                            },
+                            {
+                                id: "Item2",
+                                name: "Item 2"
+                            }
+                        ]
+                    }
+
+                ]
             }
         ]
     ), [translation]);

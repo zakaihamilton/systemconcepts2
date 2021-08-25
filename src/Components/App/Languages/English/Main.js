@@ -17,7 +17,8 @@ const English = {
     VALUE: "Value",
     ADMIN: "Admin",
     FILE: "File",
-    EXPORT: "Export"
+    EXPORT: "Export",
+    VIEW: "View"
 };
 
 export default English;
