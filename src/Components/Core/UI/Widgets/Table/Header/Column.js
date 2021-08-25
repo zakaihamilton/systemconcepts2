@@ -2,6 +2,7 @@ import styles from "./Column.module.scss"
 import Table from "../../Table"
 import { TiArrowSortedDown, TiArrowSortedUp } from 'react-icons/ti'
 import clsx from "clsx"
+import Button from "../../Button";
 
 export default function Column({ id, icon, name }) {
     const tableState = Table.State.useState();
@@ -24,13 +25,13 @@ export default function Column({ id, icon, name }) {
             tableState.sortDirection = "desc";
         }
     };
-    return <div className={clsx(styles.root, tableState?.sortable && styles.sortable)} onClick={tableState?.sortable ? onClick : null}>
+    return <Button className={clsx(styles.root, tableState?.sortable && styles.sortable)} onClick={tableState?.sortable ? onClick : null}>
         {!!icon && <div className={styles.icon}>
-            {name}
+            {icon}
         </div>}
         <div className={styles.name}>
             {name}
         </div>
         {sortIcon}
-    </div>
+    </Button>
 }

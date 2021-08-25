@@ -18,7 +18,8 @@ const Hebrew = {
     ADMIN: "מנהל",
     FILE: "קובץ",
     EXPORT: "ייצוא",
-    VIEW: "תצוגה"
+    VIEW: "תצוגה",
+    SEARCH: "חיפוש"
 };
 
 export default Hebrew;
