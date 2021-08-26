@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react"
+import { useEffect, useState } from "react"
 
 export function useTimer(onDelay, offDelay, cond) {
     const [timerState, setTimerState] = useState(false);

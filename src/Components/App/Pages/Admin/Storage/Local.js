@@ -26,7 +26,7 @@ export default function LocalStorage({ }) {
     return <Table.State columns={columns} sortable={true}>
         <Table.Items items={items}>
             <Table>
-                <List itemSize={40} count={items?.length} Item={LocalStorageItem} />
+                <List itemSize={40} Item={LocalStorageItem} />
             </Table>
         </Table.Items>
     </Table.State>;

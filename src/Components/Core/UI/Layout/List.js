@@ -14,6 +14,9 @@ export default function List({ className, orientation = "vertical", overscanCoun
     const { direction } = Language.useLanguage();
     let items = [];
 
+    if (typeof listState.count !== "undefined") {
+        count = listState.count;
+    }
     if (!count) {
         count = React.Children.count(children);
     }

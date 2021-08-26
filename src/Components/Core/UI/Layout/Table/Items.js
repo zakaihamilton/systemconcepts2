@@ -1,6 +1,7 @@
 import { createState } from "@components/Core/Util/State";
 import TableLayout from "@components/Core/UI/Layout/Table"
 import { useMemo } from "react";
+import List from "../List";
 
 function useSort(items) {
     const tableState = TableLayout.State.useState() || {};
@@ -27,10 +28,41 @@ function useSort(items) {
     return items;
 }
 
+function useSearch(items) {
+    const tableState = TableLayout.State.useState() || {};
+    const { search } = tableState;
+    items = useMemo(() => {
+        const text = (search || "").toLowerCase();
+        if (!text) {
+            return items;
+        }
+        const list = items.filter(item => {
+            const keys = Object.keys(item);
+            let match = keys.some(key => {
+                let val = item[key];
+                if (typeof val === "number") {
+                    val = val.toString();
+                }
+                if (typeof val === "string") {
+                    const includes = val.toLowerCase().includes(text);
+                    return includes;
+                }
+                return false;
+            });
+            return match;
+        });
+        return list;
+    }, [items, search]);
+    return items;
+}
+
 export default function Items({ children, items }) {
     items = useSort(items);
+    items = useSearch(items);
     return <Items.State items={items}>
-        {children}
+        <List.State count={items?.length} offset={0}>
+            {children}
+        </List.State>
     </Items.State>;
 }
 

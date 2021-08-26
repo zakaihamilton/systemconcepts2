@@ -6,7 +6,7 @@ import styles from "./Tooltip.module.scss"
 import { useTimer } from "@components/Core/Util/Timer"
 import clsx from "clsx"
 
-export default function Tooltip({ className, title, description, children }) {
+export default function Tooltip({ className, enabled = true, title, description, children }) {
     const hoverRef = useRef();
     const modalRef = useRef();
     const hover = useHover(hoverRef);
@@ -31,7 +31,7 @@ export default function Tooltip({ className, title, description, children }) {
 
     return <div ref={hoverRef} className={clsx(styles.root, className)}>
         {children}
-        <Modal visible={tooltipMounted && tooltipValid}>
+        <Modal visible={tooltipMounted && tooltipValid && enabled}>
             <div className={styles.modal} ref={modalRef} style={{ ...initialPos }}>
                 <div className={clsx(styles.popup, tooltipVisible && styles.visible)}>
                     {title}

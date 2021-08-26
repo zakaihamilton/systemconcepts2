@@ -1,0 +1,21 @@
+.root {
+    display: flex;
+    align-content: center;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    margin-left: 0.5em;
+    margin-right: 0.5em;
+    padding: 0.5em;
+    border-radius: 0.5em;
+}
+
+.input {
+    color: var(--text-color);
+    outline: none;
+    display: block;
+    border: none;
+    min-width: 0;
+    flex: 1 1 auto;
+    font-size: 1em;
+    background: none;
+}

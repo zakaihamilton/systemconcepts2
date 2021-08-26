@@ -19,7 +19,8 @@ const Hebrew = {
     FILE: "קובץ",
     EXPORT: "ייצוא",
     VIEW: "תצוגה",
-    SEARCH: "חיפוש"
+    SEARCH: "חיפוש",
+    CLEAR: "נקה"
 };
 
 export default Hebrew;

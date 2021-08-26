@@ -19,7 +19,8 @@ const English = {
     FILE: "File",
     EXPORT: "Export",
     VIEW: "View",
-    SEARCH: "Search"
+    SEARCH: "Search",
+    CLEAR: "Clear"
 };
 
 export default English;
