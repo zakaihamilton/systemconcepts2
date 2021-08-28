@@ -2,9 +2,16 @@
     display: flex;
     align-self: stretch;
     position: absolute;
-    right: 0px;
     height: 48px;
     background-color: var(--heading-color);
+}
+
+html[dir="ltr"] .tooltip {
+    right: 0px;
+}
+
+html[dir="rtl"] .tooltip {
+    left: 0px;
 }
 
 .button {

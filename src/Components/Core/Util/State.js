@@ -55,6 +55,17 @@ export function createState(props) {
         }, [callbacks]);
         return proxy;
     };
+    State.Init = function InitState({ ...props }) {
+        const context = useContext(Context);
+        useEffect(() => {
+            const keys = Object.keys(props);
+            const { proxy } = context || ref.current || {};
+            keys.forEach(key => {
+                props[key](proxy[key]);
+            });
+        }, [props, context]);
+        return null;
+    }
     State.Notify = function NotifyState({ ...props }) {
         const context = useContext(Context);
         const keys = Object.keys(props);

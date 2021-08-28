@@ -25,8 +25,8 @@ export default function Search() {
     }, [tableState]);
 
     const clearIcon = useMemo(() => {
-        return <Tooltip enabled={tableState.search} title={translation.CLEAR}>
-            <MdClear onClick={emptySearch} className={clsx(styles.clearIcon, tableState.search && styles.visible)} />
+        return <Tooltip enabled={tableState?.search} title={translation.CLEAR}>
+            <MdClear onClick={emptySearch} className={clsx(styles.clearIcon, tableState?.search && styles.visible)} />
         </Tooltip>
     }, [translation, emptySearch, tableState?.search]);
 

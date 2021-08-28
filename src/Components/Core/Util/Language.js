@@ -1,5 +1,5 @@
 import { createState } from "@components/Core/Util/State";
-import { useCallback } from "react";
+import { useCallback, useEffect } from "react";
 import { createStorageHandler } from "@components/Core/Storage/Local";
 import Observe from "@components/Core/Util/Observe";
 
@@ -12,6 +12,7 @@ export default function Language({ children, direction, id, name }) {
         observeState.counter++;
     }, [observeState]);
     return <Language.State direction={direction} id={id} name={name}>
+        <Language.State.Init direction={updateDirection} />
         <Language.State.Notify direction={updateDirection} />
         <Language.State.Storage id="Language" {...storageHandler} />
         {children}

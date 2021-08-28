@@ -32,11 +32,11 @@
     font-size: 20px !important;
 }
 
-html[dir="ltr"] .icon {
+html[dir="ltr"] .icon.children {
     margin-right: 0.3em;
 }
 
-html[dir="rtl"] .icon {
+html[dir="rtl"] .icon.children {
     margin-left: 0.3em;
 }
 
