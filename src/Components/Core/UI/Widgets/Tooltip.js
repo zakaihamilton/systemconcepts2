@@ -3,17 +3,14 @@ import { useHover } from "@components/Core/Util/Hover"
 import { useRegion } from "@components/Core/Util/Region"
 import Modal from "@components/Core/Util/Modal"
 import styles from "./Tooltip.module.scss"
-import { useTimer } from "@components/Core/Util/Timer"
 import clsx from "clsx"
 
-export default function Tooltip({ className, enabled = true, title, description, children }) {
+export default function Tooltip({ className, enabled = true, title, children }) {
     const hoverRef = useRef();
     const modalRef = useRef();
     const hover = useHover(hoverRef);
     const modalHover = useHover(modalRef);
     const hoverRegion = useRegion(hoverRef);
-    const tooltipMounted = useTimer(250, 1000, hover || modalHover);
-    const tooltipVisible = useTimer(500, 250, hover || modalHover);
     const tooltipValid = title && hoverRegion.right;
     let [initialPos, setInitialPos] = useState({});
     useEffect(() => {
@@ -29,11 +26,13 @@ export default function Tooltip({ className, enabled = true, title, description,
         }
     }, [hoverRegion]);
 
+    const visible = tooltipValid && enabled && (hover || modalHover);
+
     return <div ref={hoverRef} className={clsx(styles.root, className)}>
         {children}
-        <Modal visible={tooltipMounted && tooltipValid && enabled}>
+        <Modal visible={visible}>
             <div className={styles.modal} ref={modalRef} style={{ ...initialPos }}>
-                <div className={clsx(styles.popup, tooltipVisible && styles.visible)}>
+                <div className={clsx(styles.popup, visible && styles.visible)}>
                     {title}
                 </div>
             </div>

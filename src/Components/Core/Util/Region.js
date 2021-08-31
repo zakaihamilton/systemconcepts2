@@ -11,10 +11,8 @@ export function useRegion(ref) {
             return;
         }
         const { left, top, right, bottom, width, height } = ref.current.getBoundingClientRect();
-        if (left !== region.left || top !== region.top || right !== region.right || bottom !== region.bottom) {
-            setRegion({ left, top, right, bottom, width, height });
-        }
-    }, [counter, ref, region.bottom, region.left, region.right, region.top]);
+        setRegion({ left, top, right, bottom, width, height });
+    }, [counter, ref]);
 
     return region;
 }

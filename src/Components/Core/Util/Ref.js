@@ -5,10 +5,10 @@ export function useRefCallback(ref, callback, depends = []) {
         if (!ref || !ref.current) {
             return null;
         }
-        const destructor = callback(ref.current);
+        const destructor = callback && callback(ref.current);
         return destructor;
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [ref, ...depends]);
+    }, [ref?.current, ...depends]);
 }
 
 export function useRefById(id) {

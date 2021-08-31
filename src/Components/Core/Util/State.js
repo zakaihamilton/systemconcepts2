@@ -57,13 +57,15 @@ export function createState(props) {
     };
     State.Init = function InitState({ ...props }) {
         const context = useContext(Context);
+        const keys = Object.keys(props);
+        const values = Object.values(props);
         useEffect(() => {
-            const keys = Object.keys(props);
             const { proxy } = context || ref.current || {};
             keys.forEach(key => {
                 props[key](proxy[key]);
             });
-        }, [props, context]);
+            // eslint-disable-next-line react-hooks/exhaustive-deps
+        }, [...keys, ...values]);
         return null;
     }
     State.Notify = function NotifyState({ ...props }) {

@@ -1,5 +1,5 @@
 import { createState } from "@components/Core/Util/State";
-import { useCallback, useEffect } from "react";
+import { useCallback } from "react";
 import { createStorageHandler } from "@components/Core/Storage/Local";
 import Observe from "@components/Core/Util/Observe";
 

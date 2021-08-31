@@ -6,7 +6,14 @@
 
 .searchIcon {
     font-size: 1.2em;
+}
+
+html[dir="ltr"] .searchIcon {
     margin-right: 0.25em;
+}
+
+html[dir="rtl"] .searchIcon {
+    margin-left: 0.25em;
 }
 
 .clearIcon {
