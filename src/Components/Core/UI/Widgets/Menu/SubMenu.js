@@ -27,7 +27,7 @@ export default function SubMenu({ id, items, ...props }) {
 
     const children = useMemo(() => {
         let iconSuffix = null;
-        let menuStyles = { top: itemRegion.bottom };
+        let menuStyles = { top: itemRegion.bottom, zIndex: 1 };
         if (menuState.vertical) {
             if (itemRegion.left > window.innerWidth / 2) {
                 const left = window.innerWidth - itemRegion.left;
