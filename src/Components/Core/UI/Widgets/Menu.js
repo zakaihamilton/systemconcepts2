@@ -6,7 +6,7 @@ import Item from "./Menu/Item";
 
 export default function Menu({ ...props }) {
     const menuState = Menu.State.useState();
-    const visible = true || menuState?.items?.length;
+    const visible = menuState?.items?.length;
     const items = useMemo(() => {
         return menuState?.items?.map(item => (<Item key={item.id} {...item} />)).filter(Boolean);
     }, [menuState?.items]);

@@ -7,6 +7,7 @@ import { MdNavigateNext, MdNavigateBefore } from "react-icons/md"
 
 export default function SubMenu({ id, items, ...props }) {
     const menuState = Menu.State.useState();
+    const popupState = Popup.State.useState();
     const itemRef = useRef();
     const selected = menuState.selected === id;
 
@@ -14,6 +15,13 @@ export default function SubMenu({ id, items, ...props }) {
         menuState.selected = menuState.selected !== id ? id : undefined;
         return true;
     }, [id, menuState]);
+
+    const popupClick = useCallback(() => {
+        onClick();
+        if (popupState?.onClick) {
+            popupState.onClick();
+        }
+    }, [onClick, popupState]);
 
     const itemRegion = useRegion(itemRef);
 
@@ -43,15 +51,16 @@ export default function SubMenu({ id, items, ...props }) {
                 menuStyles.left = itemRegion.left;
             }
         }
+        const popupVisible = selected || false;
         return <>
             <Item id={id} {...props} selected={selected} rootRef={itemRef} onClick={onClick} iconSuffix={iconSuffix} />
             <Menu.State items={items} vertical={true} popup={true} visible={false}>
-                <Popup visible={selected || false} onClick={!menuState.vertical ? onClick : null}>
+                <Popup visible={popupVisible} onClick={popupClick}>
                     <Menu style={menuStyles} />
                 </Popup>
             </Menu.State>
         </>
-    }, [props, id, menuState?.vertical, selected, onClick, items, itemRegion]);
+    }, [props, id, menuState?.vertical, selected, onClick, popupClick, items, itemRegion]);
 
     return { children };
 }
