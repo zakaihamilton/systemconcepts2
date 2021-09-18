@@ -1,10 +1,13 @@
-import Table from "@components/Core/UI/Layout/Table"
+import Table from "@components/Core/UI/Layout/Table";
+import ItemPanel from "@components/App/ItemPanel";
 
 export default function LocalStorageItem({ index, style }) {
     const tableState = Table.State.useState();
     const item = Table.Items.useItem(index);
+    const itemPanelState = ItemPanel.State.useState();
     const onClick = () => {
         tableState.selected = item?.id;
+        itemPanelState.visible = true;
     };
     const selected = tableState?.selected === item?.id;
     return <Table.Row onClick={onClick} selected={selected} style={style}>

@@ -9,6 +9,7 @@ import Translation from "@components/Core/Util/Translation"
 import Language from "@components/Core/Util/Language"
 import Layout from "@components/Core/Util/Layout"
 import DarkMode from "@components/Core/Util/DarkMode"
+import ItemPanel from "@components/App/ItemPanel"
 
 export default function App() {
   return (
@@ -26,6 +27,7 @@ export default function App() {
                 <SplitPane>
                   <Sidebar />
                   <Page />
+                  <ItemPanel />
                 </SplitPane>
               </Pane>
             </SplitPane>

@@ -1,0 +1,26 @@
+.root {
+    overflow: hidden;
+    flex-basis: 20px;
+    opacity: 1;
+}
+
+.root.animate {
+    transition: flex-basis 0.25s;
+}
+
+html[data-layout='mobile'] .root {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 9000;
+}
+
+.pane {
+    background-color: var(--heading-color);
+}
+
+.divider {
+    background-color: var(--border-color);
+}
