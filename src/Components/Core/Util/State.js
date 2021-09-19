@@ -76,7 +76,8 @@ export function createState(props) {
             const callbacks = context?.callbacks;
             const update = (method, target, key) => {
                 if (props[key]) {
-                    props[key](context?.proxy[key]);
+                    const value = context?.proxy[key];
+                    props[key](value);
                 }
             };
             if (callbacks) {

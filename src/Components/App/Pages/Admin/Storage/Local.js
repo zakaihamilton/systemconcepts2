@@ -3,6 +3,9 @@ import Table from "@components/Core/UI/Widgets/Table"
 import { useMemo } from "react";
 import Translation from "@components/Core/Util/Translation"
 import LocalStorageItem from "./Local/Item";
+import SplitPane from "@components/Core/UI/Widgets/SplitPane"
+import ItemPanel from "@components/App/ItemPanel"
+import Pane from "@components/Core/UI/Widgets/SplitPane/Pane"
 
 export default function LocalStorage({ }) {
     const translation = Translation.useTranslation();
@@ -24,10 +27,15 @@ export default function LocalStorage({ }) {
         });
     }, []);
     return <Table.State columns={columns} sortable={true}>
-        <Table.Items items={items}>
-            <Table>
-                <List itemSize={40} Item={LocalStorageItem} />
-            </Table>
-        </Table.Items>
+        <SplitPane>
+            <Pane closable={false}>
+                <Table.Items items={items}>
+                    <Table>
+                        <List itemSize={40} Item={LocalStorageItem} />
+                    </Table>
+                </Table.Items>
+            </Pane>
+            <ItemPanel />
+        </SplitPane>
     </Table.State>;
 }

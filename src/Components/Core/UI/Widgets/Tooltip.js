@@ -20,7 +20,7 @@ export default function Tooltip({ className, enabled = true, title, children }) 
             const right = window.innerWidth - left - hoverRegion.width + 6;
             setInitialPos({ right, top });
         }
-        else {
+        else if (hoverRegion.right) {
             left = hoverRegion.right + 6;
             setInitialPos({ left, top });
         }
