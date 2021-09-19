@@ -9,7 +9,7 @@ export default function Menu({ menu }) {
 
     return <Components menu={menu}>
         <Tooltip title="Menu">
-            <Button>
+            <Button rounded={false}>
                 {orientation === "vertical" && <MdMoreVert />}
                 {orientation === "horizontal" && <MdMoreHoriz />}
             </Button>

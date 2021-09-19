@@ -55,7 +55,7 @@ export default function SidebarItem({ id, index, count, children, handler, onCli
                 <div className={clsx(styles.label, ...classes)}>
                     {name}
                 </div>
-                <Button hover={false} style={{ visibility: hasChildren ? "visible" : "hidden", marginTop: "3px" }}>
+                <Button rounded={false} hover={false} style={{ visibility: hasChildren ? "visible" : "hidden", marginTop: "3px" }}>
                     {!!open ? <FiChevronUp /> : <FiChevronDown />}
                 </Button>
             </div>;

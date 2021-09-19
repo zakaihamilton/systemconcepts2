@@ -19,7 +19,7 @@ export default function AppButton() {
 
     return <>
         <Tooltip title={translation?.SIDEBAR} className={styles.tooltip}>
-            <Button className={styles.button} onClick={toggleAppMenu} icon={page?.icon}>
+            <Button rounded={false} className={styles.button} onClick={toggleAppMenu} icon={page?.icon}>
                 {label}
             </Button>
         </Tooltip>

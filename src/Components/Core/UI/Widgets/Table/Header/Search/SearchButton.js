@@ -13,6 +13,6 @@ export default function SearchButton() {
         state.inSearch = !state.inSearch;
     }, [state]);
     return <Tooltip className={styles.tooltip} title={translation?.SEARCH}>
-        <Button selected={state?.inSearch} onClick={onClick} className={styles.button} icon={<MdSearch />} />
+        <Button rounded={false} selected={state?.inSearch} onClick={onClick} className={styles.button} icon={<MdSearch />} />
     </Tooltip>;
 }

@@ -25,7 +25,7 @@ export default function Column({ id, icon, name }) {
             tableState.sortDirection = "desc";
         }
     };
-    return <Button className={clsx(styles.root, tableState?.sortable && styles.sortable)} onClick={tableState?.sortable ? onClick : null}>
+    return <Button rounded={false} className={clsx(styles.root, tableState?.sortable && styles.sortable)} onClick={tableState?.sortable ? onClick : null}>
         {!!icon && <div className={styles.icon}>
             {icon}
         </div>}

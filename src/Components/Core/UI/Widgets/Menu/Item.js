@@ -30,7 +30,7 @@ export default function Item({ id, items, handler, onClick, ...props }) {
             if (!iconSuffix) {
                 iconSuffix = <div className={styles.emptyIcon} />;
             }
-            return <Button className={clsx(styles.root, menuState.vertical && styles.popup)} icon={icon} iconSuffix={iconSuffix} onClick={() => handleClick(onClick)} {...props}>
+            return <Button rounded={false} className={clsx(styles.root, menuState.vertical && styles.popup)} icon={icon} iconSuffix={iconSuffix} onClick={() => handleClick(onClick)} {...props}>
                 <div className={styles.name}>{name}</div>
             </Button>
         }}

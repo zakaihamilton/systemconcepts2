@@ -9,6 +9,10 @@
     display: flex;
 }
 
+.root.rounded {
+    border-radius: 0.5em;
+}
+
 .root:not(.visible) {
     visibility: hidden;
 }
