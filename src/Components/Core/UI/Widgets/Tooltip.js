@@ -7,12 +7,11 @@ import clsx from "clsx"
 
 export default function Tooltip({ className, enabled = true, title, children }) {
     const hoverRef = useRef();
-    const modalRef = useRef();
     const hover = useHover(hoverRef);
-    const modalHover = useHover(modalRef);
     const hoverRegion = useRegion(hoverRef);
     const tooltipValid = title && hoverRegion.right;
     let [initialPos, setInitialPos] = useState({});
+
     useEffect(() => {
         let left = hoverRegion.left - hoverRegion.width;
         const top = hoverRegion.bottom - hoverRegion.height + 6;
@@ -26,12 +25,12 @@ export default function Tooltip({ className, enabled = true, title, children }) 
         }
     }, [hoverRegion]);
 
-    const visible = tooltipValid && enabled && (hover || modalHover);
+    const visible = !!(tooltipValid && enabled && hover);
 
     return <div ref={hoverRef} className={clsx(styles.root, className)}>
         {children}
         <Modal visible={visible}>
-            <div className={styles.modal} ref={modalRef} style={{ ...initialPos }}>
+            <div className={styles.modal} style={{ ...initialPos }}>
                 <div className={clsx(styles.popup, visible && styles.visible)}>
                     {title}
                 </div>
