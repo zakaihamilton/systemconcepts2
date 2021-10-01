@@ -20,7 +20,8 @@ const Hebrew = {
     EXPORT: "ייצוא",
     VIEW: "תצוגה",
     SEARCH: "חיפוש",
-    CLEAR: "נקה"
+    CLEAR: "נקה",
+    FILTER: "סינון"
 };
 
 export default Hebrew;

@@ -1,5 +1,5 @@
 import { createState } from "@components/Core/Util/State";
-import styles from "./Search.module.scss";
+import styles from "./Filter.module.scss";
 import Input from "@components/Core/UI/Widgets/Input";
 import { MdSearch, MdClear } from "react-icons/md";
 import { useCallback, useEffect, useMemo, useRef } from "react";
@@ -8,8 +8,8 @@ import Translation from "@components/Core/Util/Translation";
 import Table from "@components/Core/UI/Layout/Table";
 import clsx from "clsx";
 
-export default function Search() {
-    const state = Search.State.useState();
+export default function Filter() {
+    const state = Filter.State.useState();
     const tableState = Table.State.useState();
     const translation = Translation.useTranslation();
     const timerRef = useRef();
@@ -47,7 +47,7 @@ export default function Search() {
         }
     }, []);
 
-    if (!state.inSearch) {
+    if (!state.showFilter) {
         return null;
     }
 
@@ -59,4 +59,4 @@ export default function Search() {
     </div>;
 }
 
-Search.State = createState({});
+Filter.State = createState({});

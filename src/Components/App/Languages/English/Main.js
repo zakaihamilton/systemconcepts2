@@ -20,7 +20,8 @@ const English = {
     EXPORT: "Export",
     VIEW: "View",
     SEARCH: "Search",
-    CLEAR: "Clear"
+    CLEAR: "Clear",
+    FILTER: "Filter"
 };
 
 export default English;
