@@ -21,7 +21,7 @@ export default function Pane({ classes, divider, last, children, size, minSize, 
     }, [observeState, currentSize]);
 
     if (!visible) {
-        style.flex = "0 1 0em";
+        style.flex = "0 0 0em";
         style.pointerEvents = "none";
         style.opacity = "0";
     }

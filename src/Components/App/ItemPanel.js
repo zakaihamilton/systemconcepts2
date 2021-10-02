@@ -1,4 +1,4 @@
-import styles from "./Sidebar.module.scss"
+import styles from "./ItemPanel.module.scss"
 import Pane from "@components/Core/UI/Widgets/SplitPane/Pane"
 import SplitPaneLayout from "@components/Core/UI/Layout/SplitPane"
 import { createState } from "@components/Core/Util/State"
@@ -23,11 +23,14 @@ export default function ItemPanel() {
     }, [itemPanelState]);
     const isPopup = layout === "mobile";
     const paneClasses = { root: clsx(styles.root, itemPanelState.animate && styles.animate), pane: styles.pane, divider: styles.divider };
-    return <Pane.State visible={!!(itemPanelState?.visible && tableState?.selected)}>
+    const visible = !!(itemPanelState?.visible && tableState?.selected);
+    return <Pane.State visible={visible}>
         <Pane.State.Notify visible={visibleChanged} />
         <Pane.State.Storage id="ItemPanel" {...storageHandler} />
         <SplitPaneLayout.Resize.State.Notify dragging={draggingChanged} />
-        <Pane classes={paneClasses} minSize={250} maxSize={500} size="20em" />
+        <Pane classes={paneClasses} last={true} divider={!isPopup} minSize={250} maxSize={500} size="30em">
+            {itemPanelState.pane}
+        </Pane>
     </Pane.State>;
 }
 
