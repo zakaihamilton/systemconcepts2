@@ -6,6 +6,7 @@ import { useCallback, useEffect } from "react";
 import { createState } from "@components/Core/Util/State";
 import LocalStorage from "../Local";
 import ItemPanel from "@components/App/ItemPanel";
+import { replaceItem } from "@util/storage/localstorage";
 
 export default function Pane() {
     const itemPanelState = ItemPanel.State.useState();
@@ -18,8 +19,9 @@ export default function Pane() {
         pane.id = item.id;
     }, [pane, item, localStorageState.counter]);
     const updateItem = useCallback(() => {
-        item.value = pane.value;
-        item.id = pane.id;
+        if (!replaceItem(item.id, pane.id, pane.value)) {
+            alert("Failed to replace item");
+        }
         localStorageState.counter++;
     }, [pane, item, localStorageState]);
     const updateId = useCallback(id => {

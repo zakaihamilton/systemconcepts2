@@ -15,7 +15,7 @@ export function localStorageCall(method, ...args) {
     if (typeof callback !== "function") {
         return callback;
     }
-    const result = callback(...args);
+    const result = window.localStorage[method](...args);
     return result;
 }
 
@@ -42,6 +42,24 @@ export function removeItem(id) {
         return;
     }
     localStorageCall("removeItem", id);
+}
+
+export function replaceItem(oldId, id, value = "") {
+    if (!oldId || !id) {
+        return false;
+    }
+    if (oldId === id) {
+        console.log("oldId", oldId, "id", id, "value", value);
+        localStorageCall("setItem", id, value);
+        return true;
+    }
+    const result = localStorageCall("getItem", id);
+    if (result !== null) {
+        return false;
+    }
+    localStorageCall("setItem", id, value);
+    localStorageCall("removeItem", oldId);
+    return true;
 }
 
 export function clear() {
