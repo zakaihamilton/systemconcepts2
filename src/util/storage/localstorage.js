@@ -49,7 +49,6 @@ export function replaceItem(oldId, id, value = "") {
         return false;
     }
     if (oldId === id) {
-        console.log("oldId", oldId, "id", id, "value", value);
         localStorageCall("setItem", id, value);
         return true;
     }
