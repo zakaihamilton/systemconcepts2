@@ -28,7 +28,7 @@ export default function ItemPanel() {
         <Pane.State.Notify visible={visibleChanged} />
         <Pane.State.Storage id="ItemPanel" {...storageHandler} />
         <SplitPaneLayout.Resize.State.Notify dragging={draggingChanged} />
-        <Pane classes={paneClasses} last={true} divider={!isPopup} minSize={250} maxSize={500} size="30em">
+        <Pane classes={paneClasses} last={true} divider={!isPopup} minSize={250} maxSize={750} size="30em">
             {itemPanelState.pane}
         </Pane>
     </Pane.State>;
