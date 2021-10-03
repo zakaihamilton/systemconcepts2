@@ -21,7 +21,8 @@ const English = {
     VIEW: "View",
     SEARCH: "Search",
     CLEAR: "Clear",
-    FILTER: "Filter"
+    FILTER: "Filter",
+    UPDATE: "Update"
 };
 
 export default English;

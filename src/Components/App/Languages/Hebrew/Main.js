@@ -21,7 +21,8 @@ const Hebrew = {
     VIEW: "תצוגה",
     SEARCH: "חיפוש",
     CLEAR: "נקה",
-    FILTER: "סינון"
+    FILTER: "סינון",
+    UPDATE: "עדכון"
 };
 
 export default Hebrew;

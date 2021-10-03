@@ -9,6 +9,7 @@
     --selected-background: black;
     --title-first-color: #8ec5fc;
     --title-second-color: #e0c3fc;
+    --button-border-color: darkgray;
 }
 
 html[data-theme='dark'] {
@@ -25,4 +26,5 @@ html[data-theme='dark'] {
     --hover-border: white;
     --title-first-color: #003459;
     --title-second-color: #0076b6;
+    --button-border-color: lightgray;
 }

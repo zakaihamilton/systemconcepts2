@@ -1,13 +1,46 @@
+import Button from "@components/Core/UI/Widgets/Button";
 import Edit from "src/Components/Core/UI/Widgets/Edit";
 import styles from "./Panel.module.scss";
+import Translation from "@components/Core/Util/Translation"
+import { useCallback, useEffect } from "react";
+import { createState } from "@components/Core/Util/State";
+import LocalStorage from "../Local";
+import ItemPanel from "@components/App/ItemPanel";
 
-export default function Pane({ item }) {
+export default function Pane() {
+    const itemPanelState = ItemPanel.State.useState();
+    const localStorageState = LocalStorage.State.useState();
+    const pane = Pane.State.useState();
+    const translation = Translation.useTranslation();
+    const item = itemPanelState?.item;
+    useEffect(() => {
+        pane.id = item.value;
+        pane.id = item.id;
+    }, [pane, item, localStorageState.counter]);
+    const updateItem = useCallback(() => {
+        item.value = pane.value;
+        item.id = pane.id;
+        localStorageState.counter++;
+    }, [pane, item, localStorageState]);
+    const updateId = useCallback(id => {
+        pane.id = id;
+    }, [pane]);
+    const updateValue = useCallback(value => {
+        pane.value = value;
+    }, [pane]);
     return <div className={styles.root}>
         <Edit.State value={item.id}>
-            <Edit className={styles.title} />
+            <Edit.State.Notify value={updateId} />
+            <Edit />
         </Edit.State>
         <Edit.State value={item.value}>
+            <Edit.State.Notify value={updateValue} />
             <Edit multiLine={true} className={styles.value} />
         </Edit.State>
+        <Button onClick={updateItem} border={true} className={styles.update}>
+            {translation?.UPDATE}
+        </Button>
     </div>;
 }
+
+Pane.State = createState({});

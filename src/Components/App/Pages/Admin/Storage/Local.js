@@ -6,8 +6,10 @@ import LocalStorageItem from "./Local/Item";
 import SplitPane from "@components/Core/UI/Widgets/SplitPane"
 import ItemPanel from "@components/App/ItemPanel"
 import Pane from "@components/Core/UI/Widgets/SplitPane/Pane"
+import { createState } from "@components/Core/Util/State";
 
 export default function LocalStorage({ }) {
+    const state = LocalStorage.State.useState();
     const translation = Translation.useTranslation();
     const columns = useMemo(() => ([
         {
@@ -25,7 +27,8 @@ export default function LocalStorage({ }) {
             const value = localStorage.getItem(id);
             return { id, value };
         });
-    }, []);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [state?.counter]);
     return <Table.State columns={columns} sortable={true}>
         <SplitPane>
             <Pane closable={false}>
@@ -39,3 +42,5 @@ export default function LocalStorage({ }) {
         </SplitPane>
     </Table.State>;
 }
+
+LocalStorage.State = createState({ counter: 0 });

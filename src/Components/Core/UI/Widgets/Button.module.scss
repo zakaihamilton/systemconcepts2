@@ -9,6 +9,10 @@
     display: flex;
 }
 
+.root.border {
+    border: 1px solid var(--button-border-color);
+}
+
 .root.rounded {
     border-radius: 0.5em;
 }
