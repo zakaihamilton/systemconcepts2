@@ -1,6 +1,6 @@
 import Table from "@components/Core/UI/Layout/Table";
 import ItemPanel from "@components/App/ItemPanel";
-import Pane from "./Pane";
+import Pane from "./Panel";
 
 export default function LocalStorageItem({ index, style }) {
     const tableState = Table.State.useState();
