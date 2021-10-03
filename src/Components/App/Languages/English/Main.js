@@ -22,7 +22,9 @@ const English = {
     SEARCH: "Search",
     CLEAR: "Clear",
     FILTER: "Filter",
-    UPDATE: "Update"
+    UPDATE: "Update",
+    RECORD: "Record",
+    DELETE: "Delete"
 };
 
 export default English;

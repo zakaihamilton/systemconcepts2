@@ -8,8 +8,13 @@ export function createStorageHandler(keys) {
         },
         load: (id) => {
             const result = window.localStorage.getItem(id);
-            const data = JSON.parse(result);
-            return data;
+            try {
+                const data = JSON.parse(result);
+                return data;
+            }
+            catch {
+                return {};
+            }
         }
     };
 }

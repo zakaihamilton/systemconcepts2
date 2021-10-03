@@ -101,7 +101,7 @@ export function createState(props) {
             const result = load(id);
             if (result?.then) {
                 result.then(data => {
-                    if (data) {
+                    if (typeof data === "object") {
                         Object.assign(context?.proxy, data);
                     }
                 });

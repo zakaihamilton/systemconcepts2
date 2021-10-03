@@ -22,7 +22,9 @@ const Hebrew = {
     SEARCH: "חיפוש",
     CLEAR: "נקה",
     FILTER: "סינון",
-    UPDATE: "עדכון"
+    UPDATE: "עדכון",
+    RECORD: "רשומה",
+    DELETE: "מחיקה"
 };
 
 export default Hebrew;
