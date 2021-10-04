@@ -1,12 +1,12 @@
 import { MdStorage, MdDevices } from "react-icons/md";
-import LocalStorage from "@components/App/Pages/Admin/Storage/Local"
+import LocalStoragePage from "@components/App/Pages/Admin/Storage/Local"
 
 const Pages = [
     {
         id: "localstorage",
         name: "LOCAL",
         icon: <MdDevices />,
-        Component: LocalStorage
+        Component: LocalStoragePage
     }
 ];
 

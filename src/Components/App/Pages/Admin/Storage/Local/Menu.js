@@ -1,12 +1,12 @@
 import { useMemo } from "react";
 import Translation from "@components/Core/Util/Translation"
-import LocalStorage from "../Local";
+import LocalStoragePage from "../Local";
 import ItemPanel from "@components/App/ItemPanel";
 import { removeItem } from "@util/storage/localstorage";
 
 export default function useMenu() {
     const translation = Translation.useTranslation();
-    const state = LocalStorage.State.useState();
+    const state = LocalStoragePage.State.useState();
     const itemPanelState = ItemPanel.State.useState();
     const hasRecord = !!state?.selected;
     const menuItems = useMemo(() => (

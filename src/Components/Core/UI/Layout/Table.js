@@ -1,9 +1,10 @@
-import styles from "./Table.module.scss"
-import { createState } from "@components/Core/Util/State"
-import clsx from "clsx"
-import Items from "./Table/Items"
-import Field from "./Table/Field"
-import Row from "./Table/Row"
+import styles from "./Table.module.scss";
+import { createState } from "@components/Core/Util/State";
+import clsx from "clsx";
+import Items from "./Table/Items";
+import Field from "./Table/Field";
+import Row from "./Table/Row";
+import Checkbox from "./Table/Checkbox";
 
 export default function Table({ className, children, header }) {
     return <div className={clsx(styles.root, className)}>
@@ -20,3 +21,4 @@ Table.State = createState();
 Table.Items = Items;
 Table.Field = Field;
 Table.Row = Row;
+Table.CheckBox = Checkbox;

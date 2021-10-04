@@ -10,8 +10,8 @@ import { createState } from "@components/Core/Util/State";
 import Menu from "@components/Core/UI/Widgets/Menu"
 import useMenu from "./Local/Menu";
 
-export default function LocalStorage({ }) {
-    const state = LocalStorage.State.useState();
+export default function LocalStoragePage({ }) {
+    const state = LocalStoragePage.State.useState();
     const translation = Translation.useTranslation();
     const columns = useMemo(() => ([
         {
@@ -35,7 +35,8 @@ export default function LocalStorage({ }) {
         });
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [state?.counter]);
-    return <Table.State columns={columns} sortable={true}>
+    const checked = useMemo(() => ([]), []);
+    return <Table.State columns={columns} sortable={true} checked={checked}>
         <Table.State.Notify selected={updateSelected} />
         <Menu.State items={menuItems}>
             <Menu />
@@ -53,4 +54,4 @@ export default function LocalStorage({ }) {
     </Table.State>;
 }
 
-LocalStorage.State = createState({ counter: 0, selected: null });
+LocalStoragePage.State = createState({ counter: 0, selected: null });

@@ -4,13 +4,13 @@ import styles from "./Panel.module.scss";
 import Translation from "@components/Core/Util/Translation"
 import { useCallback, useEffect } from "react";
 import { createState } from "@components/Core/Util/State";
-import LocalStorage from "../Local";
+import LocalStoragePage from "../Local";
 import ItemPanel from "@components/App/ItemPanel";
 import { replaceItem } from "@util/storage/localstorage";
 
 export default function Pane() {
     const itemPanelState = ItemPanel.State.useState();
-    const localStorageState = LocalStorage.State.useState();
+    const localStorageState = LocalStoragePage.State.useState();
     const pane = Pane.State.useState();
     const translation = Translation.useTranslation();
     const item = itemPanelState?.item;

@@ -67,9 +67,12 @@ export default function Items({ children, items }) {
 }
 
 Items.State = createState();
-Items.useItems = Items.State.useState;
+Items.useItems = function () {
+    const state = Items.State.useState();
+    return state?.items || [];
+};
 Items.useItem = index => {
-    const { items = [] } = Items.useItems() || {};
+    const items = Items.useItems() || [];
     const item = items[index];
     return item;
 };
