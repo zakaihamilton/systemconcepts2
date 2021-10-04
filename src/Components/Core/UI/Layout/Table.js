@@ -5,6 +5,7 @@ import Items from "./Table/Items";
 import Field from "./Table/Field";
 import Row from "./Table/Row";
 import Checkbox from "./Table/Checkbox";
+import ItemMenu from "./Table/ItemMenu";
 
 export default function Table({ className, children, header }) {
     return <div className={clsx(styles.root, className)}>
@@ -22,3 +23,4 @@ Table.Items = Items;
 Table.Field = Field;
 Table.Row = Row;
 Table.CheckBox = Checkbox;
+Table.ItemMenu = ItemMenu;

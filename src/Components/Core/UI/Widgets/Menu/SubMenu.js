@@ -55,9 +55,11 @@ export default function SubMenu({ id, items, ...props }) {
         return <>
             <Item id={id} {...props} selected={selected} rootRef={itemRef} onClick={onClick} iconSuffix={iconSuffix} />
             <Menu.State items={items} vertical={true} popup={true} visible={false}>
-                <Popup visible={popupVisible} onClick={popupClick}>
-                    <Menu style={menuStyles} />
-                </Popup>
+                <Popup.State onClick={popupClick} visible={popupVisible}>
+                    <Popup>
+                        <Menu style={menuStyles} />
+                    </Popup>
+                </Popup.State>
             </Menu.State>
         </>
     }, [props, id, menuState?.vertical, selected, onClick, popupClick, items, itemRegion]);

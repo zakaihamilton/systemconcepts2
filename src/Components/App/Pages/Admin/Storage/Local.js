@@ -35,8 +35,7 @@ export default function LocalStoragePage({ }) {
         });
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [state?.counter]);
-    const checked = useMemo(() => ([]), []);
-    return <Table.State columns={columns} sortable={true} checked={checked}>
+    return <Table.State columns={columns} sortable={true}>
         <Table.State.Notify selected={updateSelected} />
         <Menu.State items={menuItems}>
             <Menu />

@@ -1,0 +1,13 @@
+.root {
+    margin-left: 0.5em;
+    margin-right: 0.5em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    visibility: hidden;
+}
+
+.root.visible {
+    visibility: visible;
+}
