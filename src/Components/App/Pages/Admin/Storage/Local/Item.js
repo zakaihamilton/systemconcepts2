@@ -11,10 +11,12 @@ export default function LocalStorageItem({ index, style }) {
     const itemPanelState = ItemPanel.State.useState();
     const onClick = useCallback(() => {
         tableState.selected = item?.id;
-        itemPanelState.visible = true;
         itemPanelState.item = item;
         itemPanelState.pane = <Pane />;
     }, [item, tableState, itemPanelState]);
+    const onDoubleClick = useCallback(() => {
+        itemPanelState.visible = true;
+    }, [itemPanelState]);
     useEffect(() => {
         if (item.id === tableState.selected) {
             itemPanelState.item = item;
@@ -33,7 +35,7 @@ export default function LocalStorageItem({ index, style }) {
         ].filter(Boolean);
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [translation, tableState, tableState?.checked, item.id]);
-    return <Table.Row onClick={onClick} selected={selected} style={style}>
+    return <Table.Row onClick={onClick} onDoubleClick={onDoubleClick} selected={selected} style={style}>
         <Table.CheckBox id={item?.id} />
         <Table.Field>{item?.id}</Table.Field>
         <Table.Field>{item?.value}</Table.Field>
