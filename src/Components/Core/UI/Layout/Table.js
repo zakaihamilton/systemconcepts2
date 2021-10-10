@@ -7,13 +7,16 @@ import Row from "./Table/Row";
 import Checkbox from "./Table/Checkbox";
 import ItemMenu from "./Table/ItemMenu";
 
-export default function Table({ className, children, header }) {
+export default function Table({ className, children, header, footer }) {
     return <div className={clsx(styles.root, className)}>
         <div className={styles.header}>
             {header}
         </div>
         <div className={styles.table}>
             {children}
+        </div>
+        <div className={styles.footer}>
+            {footer}
         </div>
     </div>
 }
