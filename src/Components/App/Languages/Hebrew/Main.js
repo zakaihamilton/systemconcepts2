@@ -24,7 +24,8 @@ const Hebrew = {
     FILTER: "סינון",
     UPDATE: "עדכון",
     RECORD: "רשומה",
-    DELETE: "מחיקה"
+    DELETE: "מחיקה",
+    EDIT: "שינוי"
 };
 
 export default Hebrew;

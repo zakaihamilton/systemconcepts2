@@ -24,7 +24,8 @@ const English = {
     FILTER: "Filter",
     UPDATE: "Update",
     RECORD: "Record",
-    DELETE: "Delete"
+    DELETE: "Delete",
+    EDIT: "Edit"
 };
 
 export default English;

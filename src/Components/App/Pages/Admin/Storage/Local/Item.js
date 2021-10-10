@@ -31,6 +31,16 @@ export default function LocalStorageItem({ index, style }) {
                 onClick: () => {
                     tableState.checked = [item.id];
                 }
+            },
+            !tableState.checked && {
+                id: "edit",
+                name: translation?.EDIT,
+                onClick: () => {
+                    tableState.selected = item?.id;
+                    itemPanelState.item = item;
+                    itemPanelState.pane = <Pane />;
+                    itemPanelState.visible = true;
+                }
             }
         ].filter(Boolean);
         // eslint-disable-next-line react-hooks/exhaustive-deps
