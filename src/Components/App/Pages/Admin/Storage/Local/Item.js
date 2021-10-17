@@ -15,7 +15,7 @@ export default function LocalStorageItem({ index, style }) {
         itemPanelState.pane = <Pane />;
     }, [item, tableState, itemPanelState]);
     const onDoubleClick = useCallback(() => {
-        itemPanelState.visible = true;
+        itemPanelState.visible = !itemPanelState.visible;
     }, [itemPanelState]);
     useEffect(() => {
         if (item.id === tableState.selected) {

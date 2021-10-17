@@ -34,4 +34,4 @@ export default function ItemPanel() {
     </Pane.State>;
 }
 
-ItemPanel.State = createState({});
+ItemPanel.State = createState({ visible: false });
